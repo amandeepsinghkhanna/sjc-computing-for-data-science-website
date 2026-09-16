@@ -1,0 +1,128 @@
+{
+  "app.js": {
+    "mtime": 1788840409.714062,
+    "seen": 1788840457.9929156,
+    "ast_hash": "c81be8685bbe828bba22e2391fc749d7",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1788786211.923147,
+    "seen": 1788840457.9929273,
+    "ast_hash": "991d289494bcb2d1547725bf3093fc68",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1788840418.5012805,
+    "seen": 1788840457.9929392,
+    "ast_hash": "f502c10332fb250b102a1c7374c8d038",
+    "semantic_hash": ""
+  },
+  "robots.txt": {
+    "mtime": 1788777611.8143444,
+    "seen": 1788840457.99294,
+    "ast_hash": "72ebd5c8577a08d50755ede76717d700",
+    "semantic_hash": "72ebd5c8577a08d50755ede76717d700"
+  },
+  "profile.png": {
+    "mtime": 1788777611.8132646,
+    "seen": 1788840457.9929423,
+    "ast_hash": "8bdbe89e8ed5efb384f491f84d61583a",
+    "semantic_hash": "8bdbe89e8ed5efb384f491f84d61583a"
+  },
+  ".cursor/skills/graphify-knowledge-graph/SKILL.md": {
+    "mtime": 1788783947.2864892,
+    "seen": 1788840457.99292,
+    "ast_hash": "1390d7e6c2e5b5a5c348be0323e2b1b1",
+    "semantic_hash": ""
+  },
+  ".cursor/skills/maintain-changelog/SKILL.md": {
+    "mtime": 1788783947.2875118,
+    "seen": 1788840457.9929223,
+    "ast_hash": "ce0566a897deeffa06fc4be19beebfe0",
+    "semantic_hash": ""
+  },
+  ".cursor/skills/project-documentation/SKILL.md": {
+    "mtime": 1788783947.2885208,
+    "seen": 1788840457.992924,
+    "ast_hash": "ca84588370628006c511488307b62503",
+    "semantic_hash": ""
+  },
+  ".cursor/skills/yagni-development/SKILL.md": {
+    "mtime": 1788783947.2885208,
+    "seen": 1788840457.9929252,
+    "ast_hash": "3064d533b41ac63649b90418489fa8b9",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1788783947.2895873,
+    "seen": 1788840457.9929261,
+    "ast_hash": "417e123d072cb6d68c6001da099c05ef",
+    "semantic_hash": ""
+  },
+  "changelog.md": {
+    "mtime": 1788840435.3065212,
+    "seen": 1788840457.992928,
+    "ast_hash": "32105f642a4497dcf3f2d0707f63e6f9",
+    "semantic_hash": ""
+  },
+  "docs/README.md": {
+    "mtime": 1788786211.923147,
+    "seen": 1788840457.992929,
+    "ast_hash": "528bfb4b9f6dee9280bd6f72062f9108",
+    "semantic_hash": ""
+  },
+  "docs/agent-workflow.md": {
+    "mtime": 1788783947.2936008,
+    "seen": 1788840457.9929304,
+    "ast_hash": "7956a9b0a2955fe0cb2c593af0903a31",
+    "semantic_hash": ""
+  },
+  "docs/algorithms.md": {
+    "mtime": 1788840425.1078908,
+    "seen": 1788840457.9929314,
+    "ast_hash": "87eac86ceb94463d95905172036d8d18",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1788839842.8637602,
+    "seen": 1788840457.992932,
+    "ast_hash": "e92678637b6a227fd4853ed11f9007ba",
+    "semantic_hash": ""
+  },
+  "docs/data-structures.md": {
+    "mtime": 1788840425.909335,
+    "seen": 1788840457.9929338,
+    "ast_hash": "b2221be45d05ad08b6bbad22578fc91e",
+    "semantic_hash": ""
+  },
+  "docs/deployment.md": {
+    "mtime": 1788783947.295799,
+    "seen": 1788840457.9929347,
+    "ast_hash": "21d50ac86bf7290cf643e28f4267d69d",
+    "semantic_hash": ""
+  },
+  "docs/features.md": {
+    "mtime": 1788840427.6650817,
+    "seen": 1788840457.992936,
+    "ast_hash": "139d84adcfa908080808b25a4294c6d0",
+    "semantic_hash": ""
+  },
+  "docs/frontend.md": {
+    "mtime": 1788840433.7791588,
+    "seen": 1788840457.9929368,
+    "ast_hash": "dc29f3eb21709f519bb34327092b2090",
+    "semantic_hash": ""
+  },
+  "docs/overview.md": {
+    "mtime": 1788840431.7566817,
+    "seen": 1788840457.992938,
+    "ast_hash": "d99c60f8773a3646740cead3db786a2c",
+    "semantic_hash": ""
+  },
+  "scripts/self-check.html": {
+    "mtime": 1788783947.3069046,
+    "seen": 1788840457.9929414,
+    "ast_hash": "01b08211270d4fc1af0f6befd96cb18c",
+    "semantic_hash": ""
+  }
+}

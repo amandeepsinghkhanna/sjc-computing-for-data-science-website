@@ -1,0 +1,12 @@
+---
+description: Use Graphify before exploring; update after code changes
+alwaysApply: true
+---
+
+# Graphify knowledge graph
+
+This project has a Graphify graph at `graphify-out/`.
+
+- Before exploring with Read/Grep/Glob, run `graphify query`, `graphify path`, or `graphify explain`.
+- After modifying source files, run `graphify update .`.
+- Prefer `graphify-out/wiki/index.md` when it exists.

@@ -1,0 +1,10 @@
+---
+description: Keep comprehensive docs in /docs in sync with the site
+alwaysApply: true
+---
+
+# Project documentation
+
+Create and maintain detailed, comprehensive documentation of the project in the `/docs` folder that captures everything about the project.
+
+When you change site behavior, content, or architecture, update the relevant file(s) under `/docs` in the same turn. Start from `docs/README.md`.

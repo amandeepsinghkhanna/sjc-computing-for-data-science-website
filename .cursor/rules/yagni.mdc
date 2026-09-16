@@ -1,0 +1,14 @@
+---
+description: YAGNI — do not build what is not needed
+alwaysApply: true
+---
+
+# YAGNI
+
+Follow YAGNI principles in all code development for this project.
+
+- Ship the smallest change that satisfies the request.
+- Reuse `Visualizer`, DS visualizers, CSS variables, and existing section markup.
+- No new libraries, build tools, or frameworks unless explicitly requested.
+- No speculative algorithms, extra pages, or unused abstractions.
+- Prefer editing the existing three source files (`index.html`, `style.css`, `app.js`) over adding new ones.

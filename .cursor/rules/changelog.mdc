@@ -1,0 +1,10 @@
+---
+description: Append changelog.md after every agent change
+alwaysApply: true
+---
+
+# changelog.md
+
+A changelog.md must be maintained that captures timestamp, change made by the agent and a easy to understand change along with the benifit associated to the change.
+
+After finishing work, append one entry to `/changelog.md` using the template in `.cursor/skills/maintain-changelog/SKILL.md`.
