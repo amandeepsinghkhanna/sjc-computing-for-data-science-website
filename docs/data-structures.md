@@ -30,7 +30,7 @@ Visualizers store values in JavaScript arrays (max 10). They illustrate access p
 ## Hash map
 
 - **Ops:** `put` / `get` average O(1); worst O(n) if all keys collide in one bucket
-- **Visualizer:** `HashMapVisualizer` on `#canvas-hash-map` — 7 buckets, vertical chains per bucket, `hashKey` from char codes
+- **Visualizer:** `HashMapVisualizer` on `#canvas-hash-map` — 7 buckets rendered in a responsive grid (`.ds-hash-row`, min 68px/bucket with horizontal scroll on mobile), vertical chains per bucket, `hashKey` from char codes
 - **Controls:** `#input-hash-key`, `#input-hash-val`, `#btn-hash-put`, `#btn-hash-get`, `#btn-hash-reset`
 - **Snippet:** `code-hash-map` — list-of-lists buckets + simple string hash
 - **Use when:** fast lookup by key (counts, visited sets, caches). Collisions use chains (linked lists in buckets).

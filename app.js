@@ -643,6 +643,9 @@ const HASH_BUCKETS = 7;
 class HashMapVisualizer {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+        if (this.container) {
+            this.container.classList.add('ds-hash-canvas');
+        }
         this.buckets = Array.from({ length: HASH_BUCKETS }, () => []);
         this.highlightBucket = -1;
         this.highlightKey = null;
@@ -1357,10 +1360,11 @@ function buildQuiz() {
         progress.textContent = `Question ${qIdx + 1} of ${quizQuestions.length}`;
 
         const heading = document.createElement('h3');
+        heading.className = 'quiz-question';
         heading.textContent = item.q;
 
         const optsWrap = document.createElement('div');
-        optsWrap.className = 'quiz-options';
+        optsWrap.className = 'quiz-options quiz-opts';
         optsWrap.id = `opts-${qIdx}`;
 
         item.opts.forEach((opt, optIdx) => {

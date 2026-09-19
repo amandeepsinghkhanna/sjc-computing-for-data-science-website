@@ -2,6 +2,26 @@
 
 Agent-maintained log. Newest first. Each entry: timestamp, who changed it, a plain-language change, and the benefit.
 
+## 2026-09-19T11:42:00-07:00
+
+- **Timestamp:** 2026-09-19T11:42:00-07:00
+- **Changed by:** agent
+- **Change:** Fixed layout and viewport clipping for Hash Map and Breadth-First Search (BFS) / Tree Visualizers:
+  1. **Hash Map Layout**: Replaced unstyled vertical stacking with a 7-column responsive grid (`.ds-hash-row`, 68px minimum bucket width, horizontal scroll on mobile). Added natural container expansion (`height: auto; min-height: 220px; overflow-x: auto`), bucket framing (`.ds-hash-bucket`, 110px min-height), vertical chain stacks (`.ds-hash-chain`), empty slot badges (`.ds-hash-empty`), and search hit glow animations (`.ds-hash-chain-item.is-hit`).
+  2. **BFS & Pathfinding Tree Layout**: Resolved vertical clipping where Node A (top) and Nodes H & I (bottom) were cut off by the canvas bounds. Expanded `.path-tree-canvas` min-height to 380px with natural height (`height: auto`), shifted vertical alignment from centered to top-aligned (`justify-content: flex-start`), added 2.25rem top padding to provide clear headroom for floating `START` and `GOAL` badges, and tuned connector spacing.
+  3. **Data Structure Stage Wrappers**: Styled `.ds-stack-wrapper`, `.ds-queue-wrapper`, and `.ds-ll-wrapper` with responsive flexbox and clear alignment, ensuring all four core data structures display consistently.
+- **Benefit:** All 7 hash buckets are clearly visible side-by-side with collision chains legible, and the full multi-tier hierarchy in tree visualizers is fully visible from top to bottom with zero clipping.
+
+## 2026-09-19T11:35:00-07:00
+
+- **Timestamp:** 2026-09-19T11:35:00-07:00
+- **Changed by:** agent
+- **Change:** Refined hero header, knowledge check options ergonomics, and creator profile portrait:
+  1. **Hero Badge Removal:** Removed the `INTERACTIVE LEARNING LABORATORY · SJU CDS LAB` pill element above the primary hero headline.
+  2. **Knowledge Check Spacing:** Connected `.quiz-options` and `.quiz-opts` layout styles, increased vertical option spacing (`gap: 0.875rem`), expanded touch/click padding (`1.05rem 1.35rem`, 1rem text size), styled the question heading class, and added spacing above the next question navigation button.
+  3. **Creator Profile Image Reframing:** Upgraded `.author-img` sizing to 120px with `object-position: center 12%`, properly framing the creator's full head, hair, face, and collar without any top-of-head cropping.
+- **Benefit:** Cleaner hero aesthetic, significantly more comfortable and readable quiz answer selection, and a polished, professional creator presentation.
+
 ## 2026-09-19T00:11:00-07:00
 
 - **Timestamp:** 2026-09-19T00:11:00-07:00

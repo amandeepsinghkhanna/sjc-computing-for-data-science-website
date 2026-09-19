@@ -29,7 +29,7 @@ Animation: bars outside `[low, high]` get `inactive`; `mid` is `active`.
 
 - **Need sorted?** No (not a list search). Unweighted hops on a graph.
 - **Time:** O(V+E) (grid ≈ rows×cols); **space** O(V)
-- **Visualizers:** `TreeSearchVisualizer('canvas-bfs-tree', 'bfs')`, `GridSearchVisualizer('canvas-bfs-grid', 'bfs')` sharing `sharedMaze`
+- **Visualizers:** `TreeSearchVisualizer('canvas-bfs-tree', 'bfs')`, `GridSearchVisualizer('canvas-bfs-grid', 'bfs')` sharing `sharedMaze`. The tree view uses `.path-tree-canvas` with expanded headroom (min-height 380px, top-aligned) preventing any node clipping across all 4 levels.
 - **Controls:** Find path / New tree; Find path / New maze (`#btn-bfs-tree-run`, `#btn-bfs-grid-run`, …)
 - **Tabs:** Switch between "Org chart (Tree)" and "City grid (2D Maze)"
 - **Snippets:** `code-bfs-tree` (`deque` + adjacency dict), `code-bfs-grid` (4-neighbors, `#` walls)

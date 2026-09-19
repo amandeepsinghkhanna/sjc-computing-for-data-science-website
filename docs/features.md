@@ -41,7 +41,7 @@ Comparison tables ordered to match curriculum (Data Structures, Searching, Pathf
 
 ## Knowledge check (`#quiz`)
 
-Eighteen multiple-choice questions in `quizQuestions`. One card visible at a time. Keys `1`–`4` select options. Results show `score/18` and **Review …** links for missed topics. `resetQuiz` rebuilds the DOM.
+Eighteen multiple-choice questions in `quizQuestions`. One card visible at a time. Generously spaced options (`.quiz-opts`, `.quiz-options`) with clear vertical separation, touch-friendly padding, and keyboard accessibility (keys `1`–`4` or Enter/Space). Results show `score/18` and **Review …** links for missed topics. `resetQuiz` rebuilds the DOM.
 
 ## Bento Grid Glossary (`#glossary`)
 
@@ -49,7 +49,7 @@ Terms from `glossaryTerms` rendered in a modern CSS Grid Bento layout with categ
 
 ## Author (`#author`)
 
-`profile.png`, short bio, portfolio link.
+`profile.png` presented with professional circular framing (`object-position: center 12%`, 120px) preventing top-of-head cropping, short bio, and portfolio link.
 
 ## Print
 
