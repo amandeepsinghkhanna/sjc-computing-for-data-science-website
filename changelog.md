@@ -2,6 +2,28 @@
 
 Agent-maintained log. Newest first. Each entry: timestamp, who changed it, a plain-language change, and the benefit.
 
+## 2026-09-19T00:11:00-07:00
+
+- **Timestamp:** 2026-09-19T00:11:00-07:00
+- **Changed by:** agent
+- **Change:** Fixed navigation bar highlight lag and click synchronization across all sections (YAGNI):
+  1. **Immediate Click Feedback:** Clicking any navigation link (such as "Pre-requisites" from Home) immediately activates the target anchor (`setActiveNav`), closing the mobile drawer and suppressing intermediate scroll events during smooth-scrolling with a clean 800ms debounce timer.
+  2. **Viewport-Accurate Scroll Spy:** Switched from fragile element `offsetTop` calculations (which caused a one-section lag due to parent padding and CSS scroll margins) to direct viewport measurement using `getBoundingClientRect().top <= 150` (below the 64px sticky navbar).
+  3. **Consistent Scroll Offsets:** Removed redundant `scroll-padding-top: 80px` on `html` and standardized `scroll-margin-top: 80px` across both `header#home` and `section` elements, preventing browser double-offset stacking and ensuring sections land at the exact target position.
+- **Benefit:** Navigating by click or manual scrolling highlights the exact active section instantly without lagging or getting stuck on the previous section.
+
+## 2026-09-18T23:45:00-07:00
+
+- **Timestamp:** 2026-09-18T23:45:00-07:00
+- **Changed by:** agent
+- **Change:** Fixed navigation bar scroll spy highlight tracking across all sections (YAGNI refactor) and enriched BFS and A* pathfinding visualizers:
+  1. **YAGNI Navigation Highlight Fix:** Replaced fragile IntersectionObserver margin threshold calculation with a robust, direct scroll offset listener (`updateActiveNav()`). As a result, the red active highlight seamlessly follows the student across all curriculum sections (Home, Pre-requisites, Data Structures, Searching, Sorting, Cheat Sheet, and Glossary), as well as on click and at document boundaries.
+  2. **Explicit BFS & A* Visualizer Layouts:** Restored CSS Grid layout for the 2D maze (`.path-grid { display: grid; }`) and vertical tree level flex hierarchy (`.path-tree-level`), resolving squashed flex layout rendering defects.
+  3. **Node & Cell State Indicators:** Styled explicit visual states with high-contrast color badges: Start (deep blue with 'S' badge), Goal (emerald green with 'G' badge), Frontier/Open Set (warm amber with glow), Visited/Closed Set (subtle crimson tint), and Shortest Path (vibrant emerald with glow).
+  4. **Dynamic Telemetry & Descriptive Status Messages:** Added live mathematical telemetry on nodes and cells: A* displays explicit f, g, and h costs (`g + h = f`) in the cell and status bar, while BFS displays queue counts, node depth hops, and explicit distinction between uninformed breadth-first ripple vs. heuristic-directed exploration.
+  5. **Visualizer Color Legends & Tabs:** Styled `.viz-legend` with descriptive labels matching course concepts and updated visualizer tabs to explicitly state "Org chart (Tree)" and "City grid (2D Maze)".
+- **Benefit:** Ensures students can always track their exact position in the curriculum via the top navigation bar and makes the comparative mechanics of BFS vs. A* search visually transparent and intuitive to understand.
+
 ## 2026-09-16T05:20:00-07:00
 
 - **Timestamp:** 2026-09-16T05:20:00-07:00

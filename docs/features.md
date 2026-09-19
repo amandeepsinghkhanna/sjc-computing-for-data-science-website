@@ -2,7 +2,7 @@
 
 ## Navigation and chrome
 
-- Floating dock `.site-nav` with backdrop blur, rounded contour, and ordered section labels: Home, Pre-requisites, Data Structures, Searching, Sorting, Cheat Sheet, Glossary. About is in the footer.
+- Full-width sticky `.site-nav` with containerized layout, ordered section labels (Home, Pre-requisites, Data Structures, Searching, Sorting, Cheat Sheet, Glossary), immediate click activation, and accurate active red highlight tracking across all sections via YAGNI `getBoundingClientRect` viewport detection. About is in the footer.
 - Hero interactive algorithm arena with real-time partitioning and telemetry.
 - Ambient organic gradient mesh backdrop with slow drift animation for visual depth.
 - Skip link to `#main-content`

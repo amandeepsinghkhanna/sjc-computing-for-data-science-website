@@ -887,10 +887,13 @@ class TreeSearchVisualizer {
                 label.textContent = id;
                 node.appendChild(label);
                 const sc = this.scores[id];
+                const meta = document.createElement('span');
+                meta.className = 'path-node-meta';
                 if (sc && this.mode === 'astar') {
-                    const meta = document.createElement('span');
-                    meta.className = 'path-node-meta';
-                    meta.textContent = 'g' + sc.g + ' h' + sc.h + ' f' + sc.f;
+                    meta.textContent = 'g=' + sc.g + ' h=' + sc.h + ' f=' + sc.f;
+                    node.appendChild(meta);
+                } else if (this.mode === 'bfs' && this.tree.depth[id] !== undefined) {
+                    meta.textContent = 'hop ' + this.tree.depth[id];
                     node.appendChild(meta);
                 }
                 row.appendChild(node);
@@ -926,21 +929,21 @@ class TreeSearchVisualizer {
         const queue = [root];
         const visited = new Set([root]);
         const parent = { [root]: null };
-        setStatus(statusEl, 'Queue: ' + root);
+        setStatus(statusEl, 'Queue initialized with root: [' + root + ']');
         this.setNode(root, 'frontier');
         await pathSleep(this.delay);
         if (!this.isSorting) return false;
         while (queue.length) {
             const node = queue.shift();
             this.setNode(node, 'visited');
-            setStatus(statusEl, 'Visiting ' + node + (queue.length ? ' | queue: ' + queue.join(', ') : ''));
+            setStatus(statusEl, 'Visiting node ' + node + ' (depth ' + this.tree.depth[node] + ') | Queue: [' + queue.join(', ') + ']');
             await pathSleep(this.delay);
             if (!this.isSorting) return false;
             if (node === goal) {
                 const path = reconstruct(parent, goal);
                 path.forEach(id => { this.paint[id] = 'path'; });
                 this.render();
-                setStatus(statusEl, 'Path: ' + path.join(' → ') + ' (' + (path.length - 1) + ' hops)');
+                setStatus(statusEl, '✓ Goal reached: ' + path.join(' → ') + ' (' + (path.length - 1) + ' hops)');
                 return true;
             }
             (children[node] || []).forEach(ch => {
@@ -966,7 +969,7 @@ class TreeSearchVisualizer {
         const openSet = new Set([root]);
         this.scores[root] = { g: 0, h: this.h(root), f: this.h(root) };
         this.setNode(root, 'frontier', this.scores[root]);
-        setStatus(statusEl, 'Open: ' + root + ' f=' + this.scores[root].f);
+        setStatus(statusEl, 'Open: ' + root + ' | g=0 + h=' + this.scores[root].h + ' ⇒ f=' + this.scores[root].f);
         await pathSleep(this.delay);
         if (!this.isSorting) return false;
         while (open.length) {
@@ -977,14 +980,14 @@ class TreeSearchVisualizer {
             const node = open.splice(bestI, 1)[0];
             openSet.delete(node);
             this.setNode(node, 'visited', this.scores[node]);
-            setStatus(statusEl, 'Expand ' + node + ' (f=' + this.scores[node].f + ')');
+            setStatus(statusEl, 'Expand ' + node + ' | g=' + this.scores[node].g + ' + h=' + this.scores[node].h + ' ⇒ f=' + this.scores[node].f + ' (lowest f)');
             await pathSleep(this.delay);
             if (!this.isSorting) return false;
             if (node === goal) {
                 const path = reconstruct(parent, goal);
                 path.forEach(id => { this.paint[id] = 'path'; });
                 this.render();
-                setStatus(statusEl, 'Path: ' + path.join(' → ') + ' | goal popped with f=' + this.scores[goal].f);
+                setStatus(statusEl, '✓ Shortest path: ' + path.join(' → ') + ' (' + (path.length - 1) + ' hops) | f=' + this.scores[goal].f);
                 return true;
             }
             (children[node] || []).forEach(ch => {
@@ -1039,10 +1042,12 @@ class GridSearchVisualizer {
                 if (maze.walls.has(k)) cell.classList.add('path-cell--wall');
                 const state = this.paint[k];
                 if (state) cell.classList.add('path-cell--' + state);
-                if (r === maze.start[0] && c === maze.start[1]) cell.classList.add('path-cell--start');
-                if (r === maze.goal[0] && c === maze.goal[1]) cell.classList.add('path-cell--goal');
+                const isStart = (r === maze.start[0] && c === maze.start[1]);
+                const isGoal = (r === maze.goal[0] && c === maze.goal[1]);
+                if (isStart) cell.classList.add('path-cell--start');
+                if (isGoal) cell.classList.add('path-cell--goal');
                 const sc = this.scores[k];
-                if (sc && this.mode === 'astar' && !maze.walls.has(k)) {
+                if (sc && this.mode === 'astar' && !maze.walls.has(k) && !isStart && !isGoal) {
                     const meta = document.createElement('span');
                     meta.className = 'path-cell-meta';
                     meta.textContent = sc.f;
@@ -1077,7 +1082,7 @@ class GridSearchVisualizer {
         let expanded = 0;
         this.paint[startK] = 'frontier';
         this.render();
-        setStatus(statusEl, 'Ripple from start…');
+        setStatus(statusEl, 'Ripple starting from Start (S)…');
         await pathSleep(this.delay);
         if (!this.isSorting) return false;
         while (queue.length) {
@@ -1089,7 +1094,7 @@ class GridSearchVisualizer {
                 const path = reconstruct(parent, goalK);
                 path.forEach(pk => { this.paint[pk] = 'path'; });
                 this.render();
-                setStatus(statusEl, 'Path ' + (path.length - 1) + ' steps | visited ' + expanded + ' cells');
+                setStatus(statusEl, '✓ Path found! ' + (path.length - 1) + ' steps | Explored ' + expanded + ' cells across all directions (uninformed BFS ripple)');
                 return true;
             }
             for (const [nr, nc] of neighbors4(r, c)) {
@@ -1102,7 +1107,7 @@ class GridSearchVisualizer {
                 this.paint[nk] = 'frontier';
             }
             this.render();
-            setStatus(statusEl, 'Visiting (' + r + ',' + c + ') | frontier ' + queue.length);
+            setStatus(statusEl, 'Visiting (' + r + ',' + c + ') | Queue: ' + queue.length + ' cells waiting');
             await pathSleep(this.delay);
             if (!this.isSorting) return false;
         }
@@ -1123,7 +1128,7 @@ class GridSearchVisualizer {
         this.scores[startK] = { g: 0, h: manhattan(sr, sc, gr, gc), f: manhattan(sr, sc, gr, gc) };
         this.paint[startK] = 'frontier';
         this.render();
-        setStatus(statusEl, 'Open start f=' + this.scores[startK].f);
+        setStatus(statusEl, 'Start (S) open | g=0 + h=' + this.scores[startK].h + ' ⇒ f=' + this.scores[startK].f);
         await pathSleep(this.delay);
         if (!this.isSorting) return false;
         let expanded = 0;
@@ -1143,7 +1148,7 @@ class GridSearchVisualizer {
                 const path = reconstruct(parent, goalK);
                 path.forEach(pk => { this.paint[pk] = 'path'; });
                 this.render();
-                setStatus(statusEl, 'Path ' + (path.length - 1) + ' steps | expanded ' + expanded + ' cells');
+                setStatus(statusEl, '✓ Path found! ' + (path.length - 1) + ' steps | Explored ' + expanded + ' cells (heuristic steered directly toward goal)');
                 return true;
             }
             for (const [nr, nc] of neighbors4(r, c)) {
@@ -1164,7 +1169,7 @@ class GridSearchVisualizer {
                 }
             }
             this.render();
-            setStatus(statusEl, 'Pop (' + r + ',' + c + ') f=' + this.scores[k].f);
+            setStatus(statusEl, 'Pop (' + r + ',' + c + ') | g=' + this.scores[k].g + ' + h=' + this.scores[k].h + ' ⇒ f=' + this.scores[k].f + ' | Open set: ' + open.length);
             await pathSleep(this.delay);
             if (!this.isSorting) return false;
         }
@@ -2132,12 +2137,12 @@ function buildColorLegends() {
     });
     const pathLegendHtml = `
         <div class="viz-legend">
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-frontier"></span> Waiting in line</span>
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-visited"></span> Already checked</span>
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-path"></span> Final walk</span>
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-wall"></span> Wall</span>
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-start"></span> Start</span>
-            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-goal"></span> Goal</span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-start"></span> <strong>Start (S)</strong></span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-goal"></span> <strong>Goal (G)</strong></span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-frontier"></span> Waiting in line (Queue / Open Set)</span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-visited"></span> Already checked (Visited)</span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-path"></span> Final walk (Shortest path)</span>
+            <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-wall"></span> Wall (Obstacle)</span>
         </div>`;
     document.querySelectorAll('#bfs .viz-container, #astar .viz-container').forEach(container => {
         if (!container.querySelector('.viz-legend')) {
@@ -2401,11 +2406,7 @@ hamburger.addEventListener('click', () => {
 
 navOverlay.addEventListener('click', closeNav);
 
-navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeNav);
-});
-
-// Top Navigation Scroll Spy for professional intuitive feedback
+// Top Navigation Active Highlight & Scroll Spy (YAGNI)
 const mainNavAnchors = Array.from(navLinks.querySelectorAll('a[href^="#"]'));
 const mainSections = mainNavAnchors
     .map(a => {
@@ -2415,19 +2416,64 @@ const mainSections = mainNavAnchors
     })
     .filter(Boolean);
 
-if ('IntersectionObserver' in window && mainSections.length) {
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                mainNavAnchors.forEach(a => a.classList.remove('is-active'));
-                const match = mainSections.find(s => s.el === entry.target);
-                if (match) match.a.classList.add('is-active');
-            }
-        });
-    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.05 });
+let clickNavTimer = null;
 
-    mainSections.forEach(s => navObserver.observe(s.el));
+function setActiveNav(targetAnchor) {
+    mainNavAnchors.forEach(a => {
+        const isActive = Boolean(targetAnchor && a === targetAnchor);
+        a.classList.toggle('is-active', isActive);
+        a.classList.toggle('active', isActive);
+    });
 }
+
+function updateActiveNav() {
+    if (clickNavTimer || !mainSections.length) return;
+
+    // At top of page, highlight the first section (Home)
+    if (window.scrollY < 50) {
+        setActiveNav(mainNavAnchors[0]);
+        return;
+    }
+
+    // At bottom of page, highlight the last section (Glossary)
+    const docBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
+    if (docBottom) {
+        setActiveNav(mainNavAnchors[mainNavAnchors.length - 1]);
+        return;
+    }
+
+    // Determine active section using getBoundingClientRect().
+    // Threshold of 150px sits comfortably below the 64px sticky nav bar.
+    const threshold = 150;
+    let current = mainSections[0];
+    for (let i = 0; i < mainSections.length; i++) {
+        const rect = mainSections[i].el.getBoundingClientRect();
+        if (rect.top <= threshold) {
+            current = mainSections[i];
+        }
+    }
+    if (current) {
+        setActiveNav(current.a);
+    }
+}
+
+navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+        closeNav();
+        if (a.getAttribute('href')?.startsWith('#')) {
+            setActiveNav(a);
+            if (clickNavTimer) clearTimeout(clickNavTimer);
+            clickNavTimer = setTimeout(() => {
+                clickNavTimer = null;
+                updateActiveNav();
+            }, 800);
+        }
+    });
+});
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+window.addEventListener('resize', updateActiveNav, { passive: true });
+updateActiveNav();
 
 // Copy Code
 document.querySelectorAll('.copy-btn').forEach(btn => {
@@ -2555,7 +2601,7 @@ document.querySelectorAll('#bfs .algo-visualizer, #astar .algo-visualizer').forE
     const tabs = document.createElement('div');
     tabs.className = 'viz-tabs';
     tabs.setAttribute('role', 'tablist');
-    ['Org chart', 'City grid'].forEach((label, i) => {
+    ['Org chart (Tree)', 'City grid (2D Maze)'].forEach((label, i) => {
         const b = document.createElement('button');
         b.type = 'button';
         b.className = 'viz-tab' + (i === 0 ? ' is-active' : '');

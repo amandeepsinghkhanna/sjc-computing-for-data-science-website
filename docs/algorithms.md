@@ -31,20 +31,22 @@ Animation: bars outside `[low, high]` get `inactive`; `mid` is `active`.
 - **Time:** O(V+E) (grid ≈ rows×cols); **space** O(V)
 - **Visualizers:** `TreeSearchVisualizer('canvas-bfs-tree', 'bfs')`, `GridSearchVisualizer('canvas-bfs-grid', 'bfs')` sharing `sharedMaze`
 - **Controls:** Find path / New tree; Find path / New maze (`#btn-bfs-tree-run`, `#btn-bfs-grid-run`, …)
+- **Tabs:** Switch between "Org chart (Tree)" and "City grid (2D Maze)"
 - **Snippets:** `code-bfs-tree` (`deque` + adjacency dict), `code-bfs-grid` (4-neighbors, `#` walls)
 - **Use when:** fewest hops on a tree, maze, or unweighted graph
 
-Tree paints level-order via a FIFO queue. Grid first hit on the goal is shortest step-count. Both reconstruct via parent pointers.
+Tree paints level-order via a FIFO queue, displaying explicit depth hops on nodes (`hop <depth>`). Grid visually displays an expanding ripple across all unblocked directions, tracking queue size and cell visits until reaching the goal, followed by vibrant shortest path reconstruction.
 
 ## A* Search
 
 - **Heuristic:** Manhattan `|dx|+|dy|` on grids (admissible with 4-way moves). Tree uses `|depth(goal) − depth(node)|`.
 - **Time:** typical O(E log V) with a heap; JS visualizer scans the tiny open list
 - **Visualizers:** same two classes with `mode: 'astar'` (`#canvas-astar-tree`, `#canvas-astar-grid`)
+- **Tabs:** Switch between "Org chart (Tree)" and "City grid (2D Maze)"
 - **Snippets:** `code-astar-tree`, `code-astar-grid` (`heapq`, `f = g + h`)
 - **Use when:** pathfinding with a guess toward the goal. `h = 0` behaves like Dijkstra / BFS on equal costs.
 
-Stop when the goal is **popped**, not merely discovered. Do not implement Dijkstra as a separate lesson.
+Displays mathematical costs directly on nodes and cells: `g` (steps taken), `h` (estimated remaining), and `f = g + h` (total estimated cost). Status telemetry explicitly reports the minimum `f` node popped on each cycle. Reconstructs and highlights the shortest path in emerald once the goal is popped. Stop when the goal is **popped**, not merely discovered.
 
 ## Selection Sort
 
