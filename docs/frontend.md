@@ -9,21 +9,30 @@ Single HTML document. `html` has `data-theme` (`light` | `dark`). Head includes:
 - Canonical URL and JSON-LD (`WebSite`, `LearningResource`, `Person`, `ImageObject`, `BreadcrumbList`)
 - Inline SVG favicon
 - `style.css`
-- Google Fonts: Inter, JetBrains Mono
+- Google Fonts: Outfit (Display/Headings), Plus Jakarta Sans (Body), JetBrains Mono (Code & Stats)
 - `app.js` with `defer`
 - Mermaid 11 from jsDelivr, initialized inline
 
 Section IDs: `home`, `prerequisites`, `searching`, `sorting`, `finding-sorted`, `data-structures`, `pathfinding`, `chains`, `divide`, `cheat-sheet`, `quiz`, `glossary`, `author`. Nested topic IDs: `linear-search`, `binary-search`, `bfs`, `astar`, `selection-sort`, `bubble-sort`, `quick-sort`, `merge-sort`, `stack`, `queue`, `linked-list`, `hash-map`.
 
-## Design tokens (`style.css`)
+## Refined Neo-Minimalist Design System & Tokens (`style.css`)
 
 CSS custom properties on `:root` and `[data-theme="dark"]`:
 
-- Surfaces: `--color-bg-primary/secondary/tertiary`
-- Text: `--color-text-primary/secondary`
-- Accents: search blue, sort purple, success, warning, error
-- Syntax: `--syn-kw`, `--syn-str`, `--syn-num`, `--syn-comment`, `--syn-func`
-- Radii and shadows
+- **Surfaces & Palette:** Glare-Free Soft Slate, Crisp White, and Crimson Red:
+  - Light mode: Soft glare-free canvas `--color-bg-primary` (`#fbfbfc`), crisp white surface `--color-bg-secondary` (`#ffffff`), subtle elevated panel `--color-bg-tertiary` (`#f1f3f7`), refined border `--color-border` (`#e2e8f0`), and slate text (`#0f172a`).
+  - Dark mode: Cosmic space obsidian canvas `--color-bg-primary` (`#09090e`), elevated surface `--color-bg-secondary` (`#12121a`), panel `--color-bg-tertiary` (`#181824`), crisp border (`#262633`), and white text (`#f8fafc`).
+  - Accents: Vibrant Crimson `--color-accent-red` (`#e11d48`), Electric Scarlet `--color-accent-red-bright` (`#f43f5e`), and Deep Ruby Wine `--color-accent-red-dark` (`#be123c`).
+- **Typography & Scale:** Standardized mathematical scale:
+  - Display & Headings: *Outfit* (bold geometric display weights 800–900).
+  - Body Copy: *Plus Jakarta Sans* (standard 16px / `1rem` baseline, 1.65 line-height, constrained reading width).
+  - Code & Telemetry: *JetBrains Mono* for code snippets, Big-O badges, stats, and memory traces.
+- **Pixel-Perfect Borders & Elevation:** Crisp 1px borders with zero double-border overlap on tables (`border-collapse: separate; border-spacing: 0;`), cards, and lesson folds. Soft-tech modern elevation replacing raw harsh 0-blur slabs with subtle multi-layer drop shadows (`--shadow-card`, `--shadow-card-hover`, `--shadow-btn-hover`).
+- **Interactive Gen-Z Hero Algorithm Deck:** Terminal-style live execution stage (`#hero-algo-deck`) featuring animated quick sort partitioning, crimson pivot selection, comparison scanning beam, live O(n log n) telemetry, hover pulse waves, and instant scramble controls. Clean hero title without noisy stat boxes.
+- **Spacious Pre-requisites Layout:** Un-cramped 360px+ responsive grid (`.starter-grid`) with generous 1.75rem padding, rounded floating icon badges, readable text hierarchy, and dedicated spacing for practice question accordions.
+- **Vibrant Codeblock Syntax Highlighting:** Multi-token theme for `.code-container`: `.kw` in vivid coral/crimson (`#ff5277`), `.func` in sky blue (`#38bdf8`), `.str` in emerald green (`#34d399`), `.num` in tangerine orange (`#fb923c`), and `.comment` in muted slate italic (`#94a3b8`), with clean line-number gutters and border separators.
+- **Professional Navigation:** Full-width sticky top navigation bar (`.site-nav`) with containerized layout, `[CDS]` logo badge, clear section links, automated scroll spy highlighting, and a responsive mobile menu.
+- **Visualizer Colors:** Visualizer bars use `.viz-bar.comparing` (crimson red fiery gradient with glowing drop shadow), `.active` (amber), `.pivot` (deep wine), and `.sorted` (emerald).
 
 Bar states: `.viz-bar.active` (checking), `.comparing`, `.sorted`, `.pivot`, `.inactive`. Pathfinding cells/nodes: `.path-cell--*` / `.path-node--*` (frontier, visited, path, wall, start, goal).
 

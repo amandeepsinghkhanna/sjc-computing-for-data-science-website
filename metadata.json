@@ -1,0 +1,6 @@
+{
+  "name": "Computing for Data Science Lab",
+  "description": "Interactive DSA learning hub — explore searching & sorting algorithms with visualizers, annotated Python code, and quizzes. Built for SJU CDS Lab students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

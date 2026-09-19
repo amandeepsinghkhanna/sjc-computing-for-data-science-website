@@ -2,12 +2,14 @@
 
 ## Navigation and chrome
 
-- Fixed `.site-nav` with section labels: Home, Pre-requisites, Searching, Sorting, Data Structures, Cheat Sheet. About is in the footer. Pathfinding is reached via scroll or by scrolling past Data Structures (no separate top-nav item).
+- Floating dock `.site-nav` with backdrop blur, rounded contour, and ordered section labels: Home, Pre-requisites, Data Structures, Searching, Sorting, Cheat Sheet, Glossary. About is in the footer.
+- Hero interactive algorithm arena with real-time partitioning and telemetry.
+- Ambient organic gradient mesh backdrop with slow drift animation for visual depth.
 - Skip link to `#main-content`
-- Notion-style **scroll outline** (`#scroll-outline`) on the right edge — hover to see **per-topic** labels (Linear Search … Hash Map, Cheat Sheet, Quiz) and jump (desktop only)
+- Notion-style **scroll outline** (`#scroll-outline`) on the right edge — dynamically tracks the pedagogical order: Pre-requisites → Data Structures (Stack, Queue, Linked List, Hash Map) → Searching (Linear Search, Binary Search, BFS, A*) → Sorting (Selection Sort, Bubble Sort, Quick Sort, Merge Sort) → Cheat Sheet → Quiz → Glossary (desktop only)
 - All lesson sections always visible (no collapse gates)
-- Scroll progress bar (`#progress-bar`)
-- Dark/light toggle (`#theme-toggle`); preference stored as `localStorage.theme`
+- Scroll progress bar (`#progress-bar`) with dynamic gradient trail
+- Dark/light toggle (`#theme-toggle`) with tactile hover rotation; preference stored as `localStorage.theme`
 - Pathfinding visualizers: Org chart / City grid tabs
 - Footer year filled from `new Date().getFullYear()`
 
@@ -17,23 +19,33 @@ Mermaid flowcharts are authored in HTML. Colors are baked at render time, so `re
 
 ## Pre-requisites (`#prerequisites`)
 
-Formal section title **Pre-requisites** with `.section-lede`. Nine `.starter-card` items use `.lesson-header` (eyebrow `Pre-requisites · N of 9`, explicit `.lesson-title`). Folds: `.lesson-fold.fold-code` (Python), `.lesson-fold.fold-paper` (practice question with hidden answer line). Optional dict/grid fold at the end.
+Formal section title **Pre-requisites** with `.section-lede`. Nine `.starter-card` items use `.lesson-header` (eyebrow `Pre-requisites · N of 9`, explicit `.lesson-title`). Spacious multi-column responsive layout without horizontal cramping. Folds: `.lesson-fold.fold-code` (Python with vibrant syntax highlighting), `.lesson-fold.fold-paper` (practice question with hidden answer line).
+
+## Section Organization & Pedagogical Flow
+
+The entire curriculum is logically organized into dedicated, sequential modules:
+1. **Data Structures (`#data-structures`)**: Stack, Queue, Linked List, and Hash Map. Foundational memory organization before complex algorithmic processing.
+2. **Searching Algorithms (`#searching`)**: Linear Search, Big-O aside, Binary Search, and Graph Pathfinding (BFS, A* Search).
+3. **Sorting Algorithms (`#sorting`)**: Selection Sort, Bubble Sort, Recursion Bridge, Quick Sort, and Merge Sort.
+4. **Cheat Sheet (`#cheat-sheet`)**: Unified quick-reference tables ordered by Data Structures, Searching, Pathfinding, and Sorting.
+5. **Knowledge Check (`#quiz`)**: 18-question interactive assessment.
+6. **Bento Grid Glossary (`#glossary`)**: Modular, categorized dictionary with instant search and filtering.
 
 ## Algorithm and structure lessons
 
-Each lesson opens with `.lesson-header`: `.lesson-eyebrow` (parent section), `.lesson-title` (algorithm name), `.lesson-meta` tags. Folds use `.lesson-fold` modifiers: `fold-flowchart`, `fold-steps`, `fold-code`, `fold-help` (per-algorithm help title). Big-O intro after Linear Search is a static `.lesson-aside` (`#speed-talk`), not a collapsed box. Brain-map cards, visualizers, and Quick Checks unchanged. Details: [algorithms.md](algorithms.md), [data-structures.md](data-structures.md).
+Each lesson opens with `.lesson-header`: `.lesson-eyebrow` (parent section), `.lesson-title` (algorithm name), `.lesson-meta` tags. Folds use `.lesson-fold` modifiers: `fold-flowchart`, `fold-steps`, `fold-code` (vibrant syntax highlighting), `fold-help` (spacious, isolated card padding without double borders). Quick Checks use dedicated badge headers, lettered option buttons (A, B, C), and instant visual feedback callouts with custom icons. Details: [algorithms.md](algorithms.md), [data-structures.md](data-structures.md).
 
 ## Cheat sheet (`#cheat-sheet`)
 
-Comparison tables for list search, pathfinding, sorting, and structures, including **Use it when…** and **Do not use when…**, plus a decision list.
+Comparison tables ordered to match curriculum (Data Structures, Searching, Pathfinding, Sorting), including **Use it when…** and **Do not use when…**, plus a decision list.
 
 ## Knowledge check (`#quiz`)
 
 Eighteen multiple-choice questions in `quizQuestions`. One card visible at a time. Keys `1`–`4` select options. Results show `score/18` and **Review …** links for missed topics. `resetQuiz` rebuilds the DOM.
 
-## Glossary (`#glossary`)
+## Bento Grid Glossary (`#glossary`)
 
-Terms from `glossaryTerms`, sorted A–Z into `#glossary-grid`. Inline `.glossary-term` tooltips use `data-definition`.
+Terms from `glossaryTerms` rendered in a modern CSS Grid Bento layout with category tags (`structures`, `algorithms`, `complexity`, `python`), featured wide-span items, instant live search filtering, clear buttons, and category filter pills. Inline `.glossary-term` tooltips use `data-definition`.
 
 ## Author (`#author`)
 

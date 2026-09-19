@@ -2,6 +2,67 @@
 
 Agent-maintained log. Newest first. Each entry: timestamp, who changed it, a plain-language change, and the benefit.
 
+## 2026-09-16T05:20:00-07:00
+
+- **Timestamp:** 2026-09-16T05:20:00-07:00
+- **Changed by:** agent
+- **Change:** Comprehensive curriculum reorganization, Quick Check redesign, Help fold styling fix, and Bento Grid Glossary implementation:
+  1. **Logical Curriculum Hierarchy:** Reorganized the entire website layout into the requested order: **Data Structures** (Stack, Queue, Linked List, Hash Map) → **Searching Algorithms** (Linear Search, Binary Search, BFS, A* Search) → **Sorting Algorithms** (Selection Sort, Bubble Sort, Quick Sort, Merge Sort) → **Cheat Sheet** (reordered matching the curriculum) → **Knowledge Check** → **Glossary**.
+  2. **Navigation & Scrollspy Sync:** Updated the sticky header links, hero quick-action buttons, and the right-hand dynamic Notion-style `scroll-outline` in `app.js` to mirror the new pedagogical sequence.
+  3. **Help Section Styling Fix:** Resolved broken layout and border collisions in `.lesson-fold.fold-help` by providing dedicated breathing room, isolated 1.25rem padding, subtle border boundaries, and distinct visual accents.
+  4. **Quick Check Redesign:** Elevated checkpoint cards with custom badge headers, question counters, clear A/B/C lettered option buttons, and animated feedback callouts with custom check/cross indicator icons.
+  5. **Interactive Bento Grid Glossary:** Built a high-performance CSS Grid Bento dictionary featuring categorized term tags (Data Structures, Algorithms, Complexity, Python), featured wide cards, real-time live search with clear button, and category filter pills with live term counters.
+- **Benefit:** Creates an intuitive pedagogical flow where students master data structures before algorithms, eliminates visual bugs in help and checkpoint folds, and provides a modern, instantly searchable reference glossary.
+
+## 2026-09-16T05:08:00-07:00
+
+- **Timestamp:** 2026-09-16T05:08:00-07:00
+- **Changed by:** agent
+- **Change:** Addressed hero cleanliness, pre-requisites section layout, and codeblock syntax highlighting:
+  1. **Hero Headline & Cards Clean-up:** Removed "Through Live Execution" from the hero title leaving a clean, punchy headline ("Master Data Structures & Algorithms"). Removed the 4 metric cards (algorithms, data structures, checkpoints, and quiz questions) to eliminate visual noise.
+  2. **Spacious Pre-requisites Section:** Redesigned `.starter-grid` and `.starter-card` to eliminate horizontal cramping. Upgraded column sizing from cramped 280px minimums to a comfortable 360px+ baseline, gave cards generous 1.75rem padding, styled the concept icons into floating badges with subtle borders, and added dedicated padding and borders for practice question accordions.
+  3. **Vibrant Codeblock Syntax Highlighting:** Engineered full syntax highlighting across all code containers (`.kw` in coral/crimson `#ff5277`, `.func` in sky blue `#38bdf8`, `.str` in emerald green `#34d399`, `.num` in tangerine orange `#fb923c`, and `.comment` in muted slate italic `#94a3b8`). Formatted code lines with flex alignment, fixed line-number gutters, and border separators so numbers and code never collide.
+- **Benefit:** Dramatically increases code and text legibility, removes horizontal squeezing and unnecessary scrollbars on prerequisite cards, and delivers a clean, modern aesthetic.
+
+## 2026-09-16T05:00:00-07:00
+
+- **Timestamp:** 2026-09-16T05:00:00-07:00
+- **Changed by:** agent
+- **Change:** Refined the visual design system and overhauled the hero section:
+  1. **Professional Hero Redesign & Explicit Content:** Replaced informal taglines with an explicit educational headline ("Master Data Structures & Algorithms Through Live Execution") and clear course context detailing 8 algorithms, 4 data structures, and interactive checkpoints.
+  2. **Gen-Z Interactive Algorithm Deck:** Designed and engineered a live terminal-style algorithm arena in the hero (`#hero-algo-deck`) featuring automated quick-sort partitioning, a laser sweep beam, live O(n log n) telemetry, hover pulse effects, and an interactive scramble button.
+  3. **Softened Color Scheme & Fixed Border Rendering:** Calibrated `--color-bg-primary` to a glare-free off-white (`#fbfbfc`), replaced harsh 2px black slabs with crisp, single-pixel borders (`#e2e8f0`) and layered soft-tech shadows. Fixed table and accordion border-rendering issues by enforcing clean cell separation without subpixel double-border clipping.
+- **Benefit:** Eliminates visual harshness and rendering defects while delivering an engaging, tech-forward first impression that clearly communicates the course's academic purpose.
+
+## 2026-09-16T04:55:00-07:00
+
+- **Timestamp:** 2026-09-16T04:55:00-07:00
+- **Changed by:** agent
+- **Change:** Transformed the site aesthetic to high-end Neo-Brutalism in Black, White, and Crimson Red:
+  1. **Color System & Gradients:** Completely eliminated purple and pink in favor of an authoritative palette of obsidian black (`#09090b`), crisp whites (`#ffffff`, `#fafafa`), and energetic crimson reds (`#e11d48`, `#ff1e42`). Integrated rich fiery gradients for hero headlines, primary actions, and visualizer comparison bars.
+  2. **Standardized Typography:** Realigned the entire typographic scale to a strict modular hierarchy using *Outfit* for punchy display headers, *Plus Jakarta Sans* for readable 16px body copy at 1.65 line-height, and *JetBrains Mono* for technical telemetry and code badges.
+  3. **Professional & Intuitive Navigation:** Upgraded navigation from a floating capsule to a sticky, edge-to-edge header with containerized layout, bold brutalist `[CDS]` badge, clear section links, automated scroll spy tracking, and an accessible mobile accordion menu.
+  4. **Neo-Brutalist Accents:** Replaced soft rounded cards with crisp 2px solid outlines, hard offset shadows (`3px 3px 0px` / `4px 4px 0px`), red accent borders, and tactile button presses.
+- **Benefit:** Elevates the learning hub to a professional, high-impact aesthetic that guides students with unambiguous visual hierarchy and intuitive section navigation.
+
+## 2026-09-16T04:40:00-07:00
+
+- **Timestamp:** 2026-09-16T04:40:00-07:00
+- **Changed by:** agent
+- **Change:** Complete 2026 UI/UX design overhaul:
+  1. **Typography & Expressive Hierarchy:** Paired bold display typeface *Outfit* (headings, stats, Big-O metrics) with clean humanist body typeface *Plus Jakarta Sans* and *JetBrains Mono* for code. Transformed the hero title with an energetic dopamine gradient punchline and live interactive pulsing edition badge.
+  2. **Organic Layouts & Anti-Grid Design:** Introduced calm floating ambient gradient mesh backgrounds (`.ambient-mesh` with drifting organic blobs), curved radial section dividers, and optical squircle container curves (`--border-radius: 20px`). Redesigned the brain map cards with an organic pill callout aesthetic.
+  3. **Motion Design & Micro-Interactions:** Added spring physics transitions (`cubic-bezier(0.16, 1, 0.3, 1)`), tactile magnetic button interactions, animated halo glows on active/comparing/sorted visualizer bars, and responsive interactive feedback on checkpoints and quiz options.
+  4. **Vibrant "Dopamine Design" with Calm Tech:** Formulated an eye-safe, glare-free light canvas (`#f8fafc`) and cosmic obsidian dark canvas (`#090a10`), highlighted with cyber cobalt, electric ultra-violet, neo-emerald, and solar amber dopamine accents meeting strict WCAG AA contrast standards.
+- **Benefit:** Gives students and educators a visually stimulating, modern learning experience with smoother visual feedback during algorithm execution while preserving eye comfort and accessibility across all screen sizes.
+
+## 2026-09-16T04:26:00-07:00
+
+- **Timestamp:** 2026-09-16T04:26:00-07:00
+- **Changed by:** agent
+- **Change:** Configured minimal Node.js runtime support (`package.json`, `server.js` with Express) and platform metadata (`metadata.json`, `.env.example`) so the static site can boot on port 3000 in containerized environments like Google AI Studio.
+- **Benefit:** Students and evaluators can interact with the educational DSA site and visualizers directly in the AI Studio preview environment without modifying the vanilla HTML/CSS/JS source or introducing complex build tools.
+
 ## 2026-09-08T11:00:00+05:30
 
 - **Timestamp:** 2026-09-08T11:00:00+05:30

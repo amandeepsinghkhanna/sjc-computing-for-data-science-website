@@ -4,7 +4,7 @@
 
 An interactive educational website for learning searching algorithms, sorting algorithms, and three core data structures. It is built for the **Computing for Data Science Lab** course at **St. Joseph's University**.
 
-Public title: **DSA without the emotional damage.** Author: Amandeep Singh Khanna (Sr. Data Scientist).
+Public title: **Interactive Data Structures & Algorithms (Computing for Data Science Lab)**. Author: Amandeep Singh Khanna (Sr. Data Scientist).
 
 ## Audience
 

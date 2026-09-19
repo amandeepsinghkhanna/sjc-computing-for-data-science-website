@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computing for Data Science Lab - DSA Without The Trauma</title>
-    <meta name="description" content="Interactive DSA learning hub — explore searching & sorting algorithms with visualizers, annotated Python code, and quizzes. Built for SJU CDS Lab students.">
-    <meta property="og:title" content="DSA Learning Hub — SJU CDS Lab">
-    <meta property="og:description" content="Interactive searching & sorting algorithm visualizer with flowcharts, brain maps, and annotated Python code.">
+    <title>Computing for Data Science Lab — Interactive Data Structures & Algorithms</title>
+    <meta name="description" content="Interactive computing laboratory — explore searching and sorting algorithms with live visualizers, annotated Python code, and quizzes. Built for SJU CDS Lab students.">
+    <meta property="og:title" content="Computing for Data Science Lab — Interactive Algorithms">
+    <meta property="og:description" content="Interactive searching and sorting algorithm visualizers with flowcharts, memory traces, and annotated Python code.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://amandeepsinghkhanna.github.io/">
-    <meta property="og:image" content="https://amandeepsinghkhanna.github.io/profile.png">
-    <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://amandeepsinghkhanna.github.io/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230066ff'/%3E%3Crect x='20' y='52' width='16' height='34' rx='4' fill='white'/%3E%3Crect x='42' y='28' width='16' height='58' rx='4' fill='white'/%3E%3Crect x='64' y='40' width='16' height='46' rx='4' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='8' fill='%23e11d48'/%3E%3Crect x='20' y='52' width='16' height='34' rx='2' fill='white'/%3E%3Crect x='42' y='28' width='16' height='58' rx='2' fill='white'/%3E%3Crect x='64' y='40' width='16' height='46' rx='2' fill='white'/%3E%3C/svg%3E">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -30,8 +27,8 @@
             },
             {
                 "@type": "LearningResource",
-                "name": "DSA without the emotional damage",
-                "description": "Learn how searching and sorting algorithms actually work under the hood. No boring lectures, just pure logic, flowcharts, and visuals.",
+                "name": "Interactive Data Structures & Algorithms",
+                "description": "Learn how searching and sorting algorithms actually work under the hood with real-time visual execution, step-by-step memory traces, and annotated Python implementations.",
                 "educationalLevel": "Beginner",
                 "teaches": [
                     "Linear Search",
@@ -131,7 +128,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -142,55 +139,97 @@
     <div class="nav-overlay" id="nav-overlay"></div>
     <div class="progress-bar" id="progress-bar"></div>
     <nav class="site-nav" aria-label="Main navigation">
-        <div class="nav-brand">
-            <span class="logo-cds">&lt;CDS&gt;</span> Computing for Data Science
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#prerequisites">Pre-requisites</a></li>
-            <li><a href="#searching">Searching</a></li>
-            <li><a href="#sorting">Sorting</a></li>
-            <li><a href="#data-structures">Data Structures</a></li>
-            <li><a href="#cheat-sheet">Cheat Sheet</a></li>
-        </ul>
-        <div class="nav-controls">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <div class="site-nav-container">
+            <a href="#home" class="nav-brand" aria-label="Computing for Data Science Home">
+                <span class="logo-cds">[CDS]</span>
+                <span class="brand-text">Computing for Data Science</span>
+            </a>
+                        <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#prerequisites">Pre-requisites</a></li>
+                <li><a href="#data-structures">Data Structures</a></li>
+                <li><a href="#searching">Searching</a></li>
+                <li><a href="#sorting">Sorting</a></li>
+                <li><a href="#cheat-sheet">Cheat Sheet</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌙</button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
 
     <main id="main-content">
     <!-- HERO SECTION -->
     <header id="home" tabindex="-1">
-        <div class="hero-visual" aria-hidden="true">
-            <svg viewBox="0 0 400 200" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
-                <rect class="bar bar-1" x="30" y="120" width="40" height="80" rx="4" fill="var(--color-accent-1)" opacity="0.6"/>
-                <rect class="bar bar-2" x="80" y="80" width="40" height="120" rx="4" fill="var(--color-accent-2)" opacity="0.6"/>
-                <rect class="bar bar-3" x="130" y="140" width="40" height="60" rx="4" fill="var(--color-accent-4)" opacity="0.6"/>
-                <rect class="bar bar-4" x="180" y="50" width="40" height="150" rx="4" fill="var(--color-accent-3)" opacity="0.6"/>
-                <rect class="bar bar-5" x="230" y="105" width="40" height="95" rx="4" fill="var(--color-accent-5)" opacity="0.6"/>
-                <rect class="bar bar-6" x="280" y="70" width="40" height="130" rx="4" fill="var(--color-accent-1)" opacity="0.6"/>
-                <rect class="bar bar-7" x="330" y="130" width="40" height="70" rx="4" fill="var(--color-accent-2)" opacity="0.6"/>
-                <rect class="scan-line" x="0" y="0" width="3" height="200" fill="var(--color-accent-1)" opacity="0.8" rx="2"/>
-            </svg>
+        <div class="ambient-mesh" aria-hidden="true">
+            <div class="organic-blob blob-red"></div>
+            <div class="organic-blob blob-crimson"></div>
+            <div class="organic-blob blob-dark"></div>
         </div>
-        <div class="hero-content">
-            <h1>DSA without the<br>emotional damage.</h1>
-            <p class="hero-text"><strong>DSA</strong> is how we store information and the recipes we use to search and sort it. Plain English first; optional Python after the picture. Hover the right edge anytime to jump to a section.</p>
-            <div class="btn-group">
-                <a href="#prerequisites" class="btn btn-primary">Start Learning</a>
-                <a href="#searching" class="btn btn-secondary">Skip to the first lesson</a>
+        
+        <!-- GEN-Z INTERACTIVE ALGORITHM ARENA -->
+        <div class="hero-visual-deck">
+            <div class="deck-window" id="hero-algo-deck">
+                <div class="deck-titlebar">
+                    <div class="deck-dots" aria-hidden="true">
+                        <span class="deck-dot dot-red"></span>
+                        <span class="deck-dot dot-amber"></span>
+                        <span class="deck-dot dot-green"></span>
+                    </div>
+                    <div class="deck-filename">
+                        <span class="deck-code-icon">⚡</span>
+                        <code>quick_sort_engine.py</code>
+                        <span class="deck-badge-chip">LIVE SIMULATION</span>
+                    </div>
+                    <div class="deck-actions">
+                        <button type="button" class="deck-btn" id="hero-shuffle-btn" aria-label="Scramble array and sort again">🔀 Scramble</button>
+                    </div>
+                </div>
+                <div class="deck-arena">
+                    <div class="deck-laser-beam" id="deck-laser-beam"></div>
+                    <div class="deck-bars-wrap" id="hero-deck-canvas" aria-label="Animated algorithm visualization bars">
+                        <!-- Dynamically populated and animated via app.js -->
+                    </div>
+                </div>
+                <div class="deck-footer">
+                    <div class="deck-metric">
+                        <span class="metric-label">PIVOT:</span>
+                        <span class="metric-val metric-red" id="hero-pivot-display">Active</span>
+                    </div>
+                    <div class="deck-metric">
+                        <span class="metric-label">COMPARISONS:</span>
+                        <span class="metric-val" id="hero-comp-counter">0</span>
+                    </div>
+                    <div class="deck-metric">
+                        <span class="metric-label">COMPLEXITY:</span>
+                        <span class="metric-val metric-badge">O(n log n)</span>
+                    </div>
+                    <div class="deck-metric hide-sm">
+                        <span class="metric-label">STATUS:</span>
+                        <span class="metric-val deck-status-pulse" id="hero-status-pill">Auto Sorting</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-stats">
-                <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label">Algorithms</span></div>
-                <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">Data Structures</span></div>
-                <div class="hero-stat"><span class="hero-stat-num">20+</span><span class="hero-stat-label">Checkpoints</span></div>
-                <div class="hero-stat"><span class="hero-stat-num">1</span><span class="hero-stat-label">Final Quiz</span></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-pulsing-dot" aria-hidden="true"></span>
+                <span>Interactive Learning Laboratory · SJU CDS Lab</span>
+            </div>
+            <h1>Master Data Structures & Algorithms</h1>
+            <p class="hero-text">A hands-on computing curriculum built for Data Science students. Step through <strong>8 foundational algorithms</strong> and <strong>4 essential data structures</strong> with real-time visual execution, step-by-step memory traces, annotated Python implementations, and interactive comprehension checkpoints.</p>
+                        <div class="btn-group">
+                <a href="#data-structures" class="btn btn-primary">Explore Data Structures</a>
+                <a href="#searching" class="btn btn-secondary">Explore Algorithms</a>
             </div>
         </div>
     </header>
 
-    <section id="prerequisites">
+    
+<section id="prerequisites">
         <div class="section-heading-row"><h2>Pre-requisites</h2><span class="tag time-tag">⏱️ ~15–20 min first visit</span></div>
         <p class="section-lede">Python fundamentals you need before the algorithms.</p>
         <p>A <span class="glossary-term" data-definition="A recipe the computer follows from top to bottom.">program</span> is a recipe. A <span class="glossary-term" data-definition="A named box that holds a value, like name = Ada.">variable</span> is a labeled box. Read one card. Do the paper try. Skip to <a href="#searching">Searching</a> only if this already feels easy.</p>
@@ -314,495 +353,11 @@
 
     <div class="section-divider"></div>
 
-    <section id="searching">
-<div class="section-heading-row"><h2>Searching</h2><span class="tag time-tag">⏱️ ~10 min</span></div>
-        <p class="section-lede">Linear Search on an unsorted list.</p>
-        <p>You have a pile that is <em>not</em> in order. The honest method: start at one end and check every item. That method is called <em>Linear Search</em>.</p>
-        <div class="algorithm-section algo-first" id="linear-search">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Searching</p>
-                <h3 class="lesson-title">Linear Search</h3>
-                <div class="lesson-meta"><span class="tag blue">Brute force</span><span class="tag complexity">O(n)</span></div>
-                </header>
-                <p class="lede-tight"><strong>Brute Force</strong> means trying every single possibility until you find the answer. No clever shortcuts, just raw checking. Like trying every key on a keychain to open a lock.</p>
-
-                <p><strong>Where you've already done this:</strong> Imagine you're looking for a specific book on a messy shelf where nothing is in alphabetical order. You have no choice but to start at one end and check every single book, one by one, until you either find the one you want or reach the other end and confirm it's not there. That's Linear Search. It checks each item in sequence, from first to last, without skipping ahead or making any assumptions about where the target might be.</p>
-
-                <p><strong>Why "linear":</strong> The name comes from the fact that the time it takes grows in a straight line with the size of the data. If you double the number of items, the search takes (roughly) twice as long in the worst case. A list of 10 items means up to 10 checks. A list of 10,000 items means up to 10,000 checks. This direct, proportional relationship between data size and work done is what computer scientists call O(n), or "linear time."</p>
-
-                <p><strong>Walk through it with real numbers:</strong> Say you have the list <code>[8, 3, 11, 5, 9]</code> and you're searching for <code>5</code>.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Step</th><th>Position checked</th><th>Value found</th><th>Match?</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Index 0</td><td>8</td><td>No, move on</td></tr>
-                            <tr><td>2</td><td>Index 1</td><td>3</td><td>No, move on</td></tr>
-                            <tr><td>3</td><td>Index 2</td><td>11</td><td>No, move on</td></tr>
-                            <tr><td>4</td><td>Index 3</td><td>5</td><td>Yes! Return 3</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>It took 4 checks to find the target at index 3. If you were searching for a value that doesn't exist (say, <code>99</code>), the algorithm would check all 5 items and then return <code>-1</code> to indicate "not found."</p>
-
-                <p><strong>How fast (or slow) is it:</strong></p>
-                <ul class="list-tight">
-                    <li><strong>Best case, O(1):</strong> The target is the very first item. One check, done.</li>
-                    <li><strong>Worst case, O(n):</strong> The target is the very last item, or it doesn't exist at all. You have to check every single element.</li>
-                    <li><strong>Average case, O(n):</strong> On average, the target will be somewhere in the middle, so you check about half the list. In Big-O notation, n/2 simplifies to O(n) because constants are dropped.</li>
-                </ul>
-
-                <p><strong>Why this vs the last lesson:</strong> You just learned to walk a list with a loop. Linear Search is that walk with a question: “is this the thing?” Next you will <em>put the shelf in order</em>. A faster search that needs order comes after that — do not use it on a messy pile.</p>
-
-                <p><strong>Where you'll actually see it used:</strong> Linear Search shows up more often in real software than you might expect. Checking if a username exists in a short list, scanning through search results on a page, verifying if an item is in a shopping cart, or looking for a specific row in a small spreadsheet are all forms of linear search. Python's <code>in</code> keyword (<code>if x in my_list</code>) is a linear search under the hood. For small datasets (under a few hundred items), the simplicity of linear search often outweighs the speed benefit of fancier approaches.</p>
-
-                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Forgetting to handle the "not found" case. If the loop finishes without finding the target, the function must explicitly return <code>-1</code> (or equivalent). Leaving this out causes the function to return <code>None</code> in Python, which can cause confusing bugs later. (2) Using Linear Search on large sorted data when Binary Search would be far more efficient. If you're searching the same sorted list thousands of times, switching to Binary Search turns a slow operation into a near-instant one.</p>
-                
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> A["Look at the first item"]
-    A --> B{"Is this the item<br>you're looking for?"}
-    B -- Yes --> Found[("Found it!<br>Return its position")]
-    B -- No --> C["Move to the next item"]
-    C --> D{"Have you checked<br>every item?"}
-    D -- No --> B
-    D -- Yes --> NotFound[("Not found.<br>Return -1")]
-    Found --> Stop([Stop])
-    NotFound --> Stop([Stop])
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Start</strong> at the first item (index 0).</li>
-                            <li><strong>Check</strong> if the current item matches what you're looking for.</li>
-                            <li><strong>Found it?</strong> Return the position and you're done.</li>
-                            <li><strong>Not a match?</strong> Move to the next item.</li>
-                            <li><strong>Repeat</strong> steps 2–4 until you find it or run out of items.</li>
-                            <li><strong>Ran out of items?</strong> <span class="glossary-term" data-definition="Send back an answer to whoever asked for it. return -1 is a standard way to say 'not found.'">Return</span> <code>-1</code>, it's not in the list.</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>The Goal:</strong> Find the <code>target</code> number.</li>
-                        <li><strong>The Loop:</strong> We need a <code>for</code> loop to look at every index <code>i</code> from start to finish.</li>
-                        <li><strong>The Check:</strong> Inside the loop, use an <code>if</code> statement.</li>
-                        <li><strong>The Backup:</strong> What if the loop finishes and we found nothing? We <code>return -1</code>.</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-linear-search"></code></pre>
-                </div>
-                </details>
-                
-                <p><strong>What if it fails:</strong> Empty list? The loop never runs, so you still return <code>-1</code>. Two copies of the same number? You stop at the <em>first</em> one.</p>
-                <details class="lesson-fold fold-help"><summary>Help: Linear Search</summary>
-                <ul class="mb-0">
-                    <li>Why -1? It is not a real position. Position 0 is the first item.</li>
-                    <li>Do I need the list sorted? No. That is the whole point.</li>
-                    <li>Picture: yellow = checking, grey = already seen, green = found.</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="linear-search"></div>
-            </div>
-
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <p class="viz-hint">Yellow = looking at this bar. Grey = already checked. Green = found. Type 5 (the story number), then Search. New Array picks random numbers.</p>
-                    <div class="viz-canvas" id="canvas-linear"></div>
-                    <div class="viz-controls">
-                        <input type="number" id="input-linear" class="viz-input" value="5">
-                        <button class="btn btn-primary viz-btn" id="btn-linear-search">Search</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-linear-reset">🔀 New Array</button>
-                        <span class="viz-status" id="status-linear" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <aside class="lesson-aside" id="speed-talk">
-            <h4 class="lesson-aside-title">Big-O notation (introduction)</h4>
-            <p class="lesson-aside-sub">How running time scales with input size</p>
-            <p>If the shelf has twice the books, Linear Search does about twice the work in the worst case. People write that as <code>O(n)</code> — n is “how many items.” We will add “halving” language when Binary Search appears. Pathfinding has its own letters (V and E) inside those lessons, not here.</p>
-        </aside>
-
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="sorting">
-<div class="section-heading-row"><h2>Sorting</h2><span class="tag time-tag">⏱️ ~20 min</span></div>
-        <p class="section-lede">Selection Sort and Bubble Sort.</p>
-        <p id="why-order"><strong>Why order matters:</strong> Once a shelf is A-to-Z, you can jump to the middle (next lesson). First you need a way to <em>make</em> that order. Two slow-but-clear methods: lock in the smallest remaining number (Selection), or swap neighbors until the big ones drift right (Bubble).</p>
-        <div class="table-wrap"><table class="cheat-table table-sm"><thead><tr><th></th><th>Selection</th><th>Bubble</th></tr></thead>
-        <tbody><tr><td>Move</td><td>One swap per pass, after a long look</td><td>Many neighbor swaps</td></tr>
-        <tr><td>What “done” looks like</td><td>Left side locked smallest-to-largest</td><td>Right side locked largest-to-smallest first</td></tr></tbody></table></div>
-        <div class="algorithm-section algo-first" id="selection-sort">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Sorting</p>
-                <h3 class="lesson-title">Selection Sort</h3>
-                <div class="lesson-meta"><span class="tag purple">Find the smallest</span><span class="tag complexity">O(n²)</span></div>
-                </header>
-
-                <p><strong>Where you've already done this:</strong> Imagine you're organising a row of books by height on a shelf. You scan the entire row with your eyes, find the shortest book, and move it to position 1. Then you scan the remaining books, find the next shortest, and move it to position 2. You keep going until every book is in its place. That's Selection Sort. It works by repeatedly <em>selecting</em> the smallest item from the unsorted portion of the list and placing it at the end of the sorted portion.</p>
-
-                <p><strong>What makes it different from Bubble Sort:</strong> Bubble Sort swaps neighbours constantly as it walks through the list, doing many small swaps per pass. Selection Sort takes a different approach: it looks at everything first, decides which item should go next, and then does exactly one swap to put it in the right spot. The result is that Selection Sort always makes at most n-1 total swaps (one per position), regardless of how messy the data is. Bubble Sort can make far more swaps on the same data.</p>
-
-                <p><strong>Walk through it with real numbers:</strong> Start with <code>[29, 10, 14, 37, 13]</code>.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Pass</th><th>Unsorted portion scanned</th><th>Smallest found</th><th>Swap with</th><th>Result</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>1</strong></td><td>[29, 10, 14, 37, 13]</td><td>10</td><td>29 (pos 0)</td><td><code>[<strong>10</strong>, 29, 14, 37, 13]</code></td></tr>
-                            <tr><td><strong>2</strong></td><td>[29, 14, 37, 13]</td><td>13</td><td>29 (pos 1)</td><td><code>[10, <strong>13</strong>, 14, 37, 29]</code></td></tr>
-                            <tr><td><strong>3</strong></td><td>[14, 37, 29]</td><td>14</td><td>14 (pos 2)</td><td><code>[10, 13, <strong>14</strong>, 37, 29]</code> &ndash; already in place</td></tr>
-                            <tr><td><strong>4</strong></td><td>[37, 29]</td><td>29</td><td>37 (pos 3)</td><td><code>[10, 13, 14, <strong>29</strong>, <strong>37</strong>]</code></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>Notice pass 3: the smallest item was already in the correct position, so the "swap" didn't actually change anything. This happens naturally and the algorithm handles it without any special logic.</p>
-
-                <p><strong>How fast (or slow) is it:</strong></p>
-                <ul class="list-tight">
-                    <li><strong>Best case, O(n²):</strong> Even if the list is already sorted, Selection Sort still scans the entire unsorted portion on every pass to confirm that the current item is the smallest. It cannot stop early. This is a key difference from Bubble Sort, which can detect a sorted list and stop after one pass.</li>
-                    <li><strong>Worst case, O(n²):</strong> Same number of comparisons regardless of the data's initial order. For 1,000 items, it makes roughly 500,000 comparisons.</li>
-                    <li><strong>Swaps:</strong> At most n-1 swaps total. This is the lowest swap count of any comparison-based sort, which matters when swapping is expensive (for example, writing to flash memory or moving large objects in memory).</li>
-                </ul>
-
-                <p><strong>The stability question:</strong> Selection Sort, as typically written, is <em>not stable</em>. A stable sort preserves the original order of items with equal values. For example, if two students both scored 85 and were originally listed alphabetically, a stable sort keeps them in alphabetical order. Selection Sort can break this order because it swaps items across long distances. Bubble Sort, by contrast, is stable because it only swaps adjacent items.</p>
-
-                <p><strong>Where you'll actually see it used:</strong> Like Bubble Sort, Selection Sort is too slow for large datasets in production code. However, it has a genuine niche: when the cost of writing data is high relative to the cost of reading it. Flash memory and EEPROM chips, for instance, wear out faster with more write operations. Because Selection Sort minimises the total number of swaps (writes), it is sometimes preferred for embedded systems with this kind of hardware constraint. It's also a useful teaching algorithm because it introduces the concept of "find the minimum in a subarray," which appears in many more advanced algorithms.</p>
-
-                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Assuming Selection Sort can stop early like Bubble Sort. It cannot. It always makes the same number of comparisons regardless of the input, because it must scan the full unsorted portion to guarantee it found the true minimum. (2) Confusing the minimum <em>value</em> with the minimum <em>index</em>. The algorithm tracks <code>min_idx</code> (the position of the smallest item), not the smallest value itself. After the inner loop finishes, it swaps based on that index. (3) Thinking Selection Sort is stable. The long-distance swap can reorder equal elements.</p>
-                
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> A["Start with the first<br>unsorted position"]
-    A --> B["Assume this position<br>holds the smallest item"]
-    B --> C["Check each item<br>to the right"]
-    C --> D{"Did you find a<br>smaller item?"}
-    D -- Yes --> E["Remember this new<br>position instead"]
-    D -- No --> F{"Are there more<br>items to check?"}
-    E --> F
-    F -- Yes --> C
-    F -- No --> G["Swap the smallest item<br>into this position"]
-    G --> H{"Is this the<br>last unsorted spot?"}
-    H -- No --> B
-    H -- Yes --> Sorted[("All items sorted!")]
-    Sorted --> Stop([Stop])
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Start</strong> at position 0, the first unsorted spot.</li>
-                            <li><strong>Assume</strong> the smallest item in the unsorted part is at this position.</li>
-                            <li><strong>Scan</strong> every item to the right.
-                                <ul class="list-circle">
-                                    <li>Found something smaller? Remember its position.</li>
-                                </ul>
-                            </li>
-                            <li><strong>Swap</strong> the smallest item you found into the current position.</li>
-                            <li><strong>Move</strong> to the next position and repeat steps 2–4.</li>
-                            <li><strong>Done</strong> once you've placed every item in its correct spot.</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>Outer Loop:</strong> A <code>for</code> loop (<code>i</code>) representing where the next smallest number should go.</li>
-                        <li><strong>Inner Loop:</strong> Assume <code>i</code> is the minimum. Use a second loop (<code>j</code>) starting from <code>i+1</code> to scan the rest.</li>
-                        <li><strong>The Swap:</strong> If we find something smaller, update <code>min_idx</code>. After the inner loop, swap them.</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-selection-sort"></code></pre>
-                </div>
-                </details>
-                
-                <details class="lesson-fold fold-help"><summary>Help: Selection Sort</summary>
-                <ul class="mb-0">
-                    <li>Each pass locks one smallest remaining number into place.</li>
-                    <li>Green bars on the left are finished. Do not touch them again.</li>
-                    <li>Compare with Bubble: Selection walks far to swap once; Bubble swaps neighbors all the time.</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="selection-sort"></div>
-            </div>
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <p class="viz-hint">Yellow = the seat we are filling. Purple = smallest-so-far. Green = locked in on the left.</p>
-                    <div class="viz-canvas" id="canvas-selection"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-selection-sort">Sort</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-selection-reset">🔀 New Array</button>
-                        <span class="viz-status" id="status-selection" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-<div class="algorithm-section" id="bubble-sort">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Sorting</p>
-                <h3 class="lesson-title">Bubble Sort</h3>
-                <div class="lesson-meta"><span class="tag purple">Neighbours only</span><span class="tag complexity">O(n²)</span></div>
-                </header>
-
-                <p><strong>Where you've already done this:</strong> Think about the last time you arranged a messy hand of playing cards. You probably didn't scan the whole hand to find the smallest card first. You just looked at two cards next to each other, swapped them if they were out of order, and moved on to the next pair. That's Bubble Sort. It only ever compares neighbours (two items standing right next to each other in the list) and swaps them if the left one is larger than the right one. One full walk through the list is called a <em>pass</em>.</p>
-
-                <p><strong>What actually happens during a pass:</strong> On the first pass, the algorithm starts at position 0 and compares every adjacent pair all the way to the end. Every time it finds a pair where the left number is bigger, it swaps them. Here's the key insight: the largest number in the list will win every single comparison it's involved in, so it gets pushed one position to the right each time, all the way to the final position by the end of the pass. This is where the name comes from: the largest value "bubbles up" to the top of the list, the same way an air bubble rises to the surface of water.</p>
-
-                <p><strong>Walk through it with real numbers:</strong> Start with <code>[5, 1, 4, 2]</code>.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Pass</th><th>What happens</th><th>Result after pass</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>1</strong></td><td>Compare 5 &amp; 1 → swap. Compare 5 &amp; 4 → swap. Compare 5 &amp; 2 → swap.</td><td><code>[1, 4, 2, <strong>5</strong>]</code> &ndash; 5 is locked at the end</td></tr>
-                            <tr><td><strong>2</strong></td><td>Compare 1 &amp; 4 → fine. Compare 4 &amp; 2 → swap.</td><td><code>[1, 2, <strong>4</strong>, 5]</code> &ndash; 4 is locked too</td></tr>
-                            <tr><td><strong>3</strong></td><td>Compare 1 &amp; 2 → fine. Zero swaps this entire pass.</td><td><code>[1, 2, 4, 5]</code> &ndash; sorted, stop early</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <p>Notice two things. First, each pass checks one fewer position than the last, because the end of the list is already sorted. That's why the code uses <code>n - i - 1</code> as the inner loop boundary. It is not a magic formula, just "don't re-check positions that are already in their final place." Second, pass 3 made zero swaps, which told the algorithm the list was already sorted and it could stop. This early-termination check is important: without it, the algorithm would keep making pointless passes over an already-sorted list.</p>
-
-                <p><strong>How fast (or slow) is it:</strong></p>
-                <ul class="list-tight">
-                    <li><strong>Best case, O(n):</strong> If the list is already sorted, the algorithm does one pass, sees zero swaps, and stops. That single pass makes n−1 comparisons, so it runs in linear time.</li>
-                    <li><strong>Worst case, O(n²):</strong> If the list is in reverse order (e.g., <code>[5, 4, 3, 2, 1]</code>), every pair needs a swap on every pass, and the algorithm needs the maximum number of passes. For a list of 1,000 items, that's roughly 500,000 comparisons.</li>
-                    <li><strong>Average case, O(n²):</strong> For a randomly shuffled list, Bubble Sort still tends to need most of those passes. This is genuinely slow compared to algorithms like Quick Sort, which averages O(n log n).</li>
-                </ul>
-
-                <p><strong>How it compares to Selection Sort:</strong> Both are O(n²) sorting algorithms, and both are used primarily for teaching. The difference is in <em>how</em> they move data. Selection Sort scans the entire unsorted portion to find the single smallest element, then places it in its final position with one swap. It minimises the number of swaps (at most n−1 total), which matters when writing data is expensive, like on flash storage. Bubble Sort swaps constantly during every pass, but it has a property Selection Sort doesn't: <em>stability</em>. Two elements with equal value will keep their original relative order after sorting. If you sort a class roster by grade and two students both have 85%, Bubble Sort guarantees they stay in whatever order they were in before (say, alphabetical). Selection Sort, as typically implemented, does not make that guarantee.</p>
-
-                <p><strong>Where you'll actually see it used:</strong> Honestly, almost nowhere in production software. Bubble Sort is one of the slowest general-purpose sorting algorithms. Python's built-in <code>sorted()</code> uses Timsort, which is roughly 1,000× faster on large lists. Bubble Sort survives in every introductory computer science course because it is the easiest sorting algorithm to trace by hand and understand step by step. It builds the mental model you need before tackling recursive algorithms like Quick Sort. It is also a common interview warm-up, not because anyone expects you to use it in real code, but because explaining <em>why</em> it's slow is a good test of whether someone genuinely understands time complexity.</p>
-
-                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Assuming Bubble Sort is <em>always</em> O(n²). With the early-termination check, an already-sorted list finishes in one pass at O(n). (2) Confusing comparisons with swaps. Every pass makes n−i−1 comparisons, but not every comparison causes a swap. (3) Off-by-one errors in the inner loop: forgetting the <code>-1</code> in <code>n-i-1</code> and accessing an index that doesn't exist, or forgetting the <code>-i</code> and wastefully re-checking elements already in their final place.</p>
-                
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> A["Start a new pass<br>through the list"]
-    A --> B["Compare two<br>neighbouring items"]
-    B --> C{"Are they in<br>the wrong order?"}
-    C -- Yes --> D["Swap them"]
-    C -- No --> E["Leave them as they are"]
-    D --> F["Move to the<br>next pair"]
-    E --> F
-    F --> G{"Reached the<br>end of the list?"}
-    G -- No --> B
-    G -- Yes --> H{"Did you swap<br>anything this pass?"}
-    H -- Yes --> A
-    H -- No --> Sorted[("List is sorted!")]
-    Sorted --> Stop([Stop])
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Start</strong> at the beginning of the list.</li>
-                            <li><strong>Compare</strong> the current item with the one right next to it.</li>
-                            <li><strong>Out of order?</strong> Swap them so the smaller comes first.</li>
-                            <li><strong>Move</strong> to the next pair and repeat steps 2–3.</li>
-                            <li><strong>Reached the end?</strong> The largest item is now at the very end. It's sorted.</li>
-                            <li><strong>Repeat</strong> steps 1–5 for the remaining unsorted items.</li>
-                            <li><strong>Done</strong> when a full pass needs zero swaps.</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>The Pass:</strong> We need to pass through the list multiple times. (Outer <code>for</code> loop).</li>
-                        <li><strong>The Check:</strong> Compare adjacent elements: <code>arr[j] > arr[j+1]</code>. If they are out of order, swap them!</li>
-                        <li><strong>The Optimization:</strong> The inner loop goes to <code>n - i - 1</code>. Why? Because after every pass, the biggest element is safely at the end.</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-bubble-sort"></code></pre>
-                </div>
-                </details>
-                
-                <details class="lesson-fold fold-help"><summary>Help: Bubble Sort</summary>
-                <ul class="mb-0">
-                    <li>Only neighbors swap. The biggest number of a pass rides to the right.</li>
-                    <li>If a pass makes <em>zero</em> swaps, we stop. The picture and the Python both do that now.</li>
-                    <li>That is why an already-sorted list is fast (one pass).</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="bubble-sort"></div>
-            </div>
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <p class="viz-hint">Two neighbors light up. Green = that end is finished. If a pass swaps nothing, we stop.</p>
-                    <div class="viz-canvas" id="canvas-bubble"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-bubble-sort">Sort</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-bubble-reset">🔀 New Array</button>
-                        <span class="viz-status" id="status-bubble" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="finding-sorted">
-<div class="section-heading-row"><h2>Binary Search</h2><span class="tag time-tag">⏱️ ~12 min</span></div>
-        <p class="section-lede">Search a sorted list by halving.</p>
-        <p>Now the shelf <em>is</em> in order. You can throw away half of it at a time. That is Binary Search. If it is not in order, go back to Linear Search.</p>
-        <div class="algorithm-section" id="binary-search">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Binary Search</p>
-                <h3 class="lesson-title">Binary Search</h3>
-                <div class="lesson-meta"><span class="tag blue">Halve and check</span><span class="tag blue">Requires sorted list</span><span class="tag complexity">O(log n)</span></div>
-                </header>
-                <p class="lede-tight"><strong><span class="glossary-term" data-definition="Arranged from smallest to largest (like 2, 5, 9, 14, 22). Without sorted order, Binary Search cannot work.">Sorted</span></strong> means the items are arranged from smallest to largest, like 2, 5, 9, 14, 22. If the list isn't sorted, Binary Search cannot work because there is no way to know which half to discard.</p>
-
-                <p><strong>Where you've already done this:</strong> Think about looking up a word in a physical dictionary. You don't start at page 1 and read forward. You open to roughly the middle, check whether your word comes before or after what you see, and then throw away the half that can't contain it. You keep halving the remaining pages until you land on your word. That's Binary Search. It works by repeatedly splitting the search area in half, checking the middle item, and discarding the half where the target cannot possibly be.</p>
-
-                <p><strong>The one strict rule:</strong> Binary Search only works on sorted data. If the list isn't in order, there's no way to know whether the target is in the left half or the right half. This is the trade-off: you need sorted data upfront, but in exchange, you get a search that's dramatically faster than checking every item.</p>
-
-                <p><strong>Walk through it with real numbers:</strong> Say you have the sorted list <code>[3, 7, 11, 15, 19, 23, 27]</code> and you're searching for <code>19</code>.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Step</th><th>Search window</th><th>Middle value</th><th>Decision</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>[3, 7, 11, <strong>15</strong>, 19, 23, 27]</td><td>15</td><td>19 > 15, discard left half</td></tr>
-                            <tr><td>2</td><td>[19, <strong>23</strong>, 27]</td><td>23</td><td>19 &lt; 23, discard right half</td></tr>
-                            <tr><td>3</td><td>[<strong>19</strong>]</td><td>19</td><td>Found it! Return index 4</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>Out of 7 items, it took only 3 checks. A linear search on the same list would have taken 5 checks. The difference becomes massive at scale: a sorted list of 1,000,000 items takes Linear Search up to 1,000,000 checks but Binary Search at most 20.</p>
-
-                <p><strong>Why "logarithmic" (O(log n)):</strong> Each step cuts the remaining data in half. If you start with n items, after one step you have n/2. After two steps, n/4. After three steps, n/8. The number of steps needed to reach 1 remaining item is log₂(n). For 1,000 items that's about 10 steps. For 1,000,000 items it's about 20. This is why Binary Search feels almost instant even on very large datasets, as long as the data is sorted.</p>
-
-                <p><strong>How it compares to Linear Search:</strong> Linear Search is simpler and works on unsorted data, but it checks every item one by one. Binary Search is restricted to sorted data, but it eliminates half the candidates per step. The key question is: "Will I search this data more than once?" If yes, sorting it once and then using Binary Search for every lookup is almost always worth it. If you only need to search once, sorting first (which itself costs O(n log n)) plus searching (O(log n)) may cost more total work than a single Linear Search (O(n)).</p>
-
-                <p><strong>Where you'll actually see it used:</strong> Binary Search is everywhere in real software, often hidden inside other tools. Database indexes use it to find records quickly. When you type a word in a search bar and it auto-completes, the app is often doing a binary search over a sorted word list. Python's <code>bisect</code> module is a built-in binary search implementation. Version control systems like Git use binary search (the <code>git bisect</code> command) to pinpoint which specific commit introduced a bug, halving the suspect range with each test.</p>
-
-                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Applying Binary Search to an unsorted list. It will run without crashing, but it will return incorrect results because it discards halves based on ordering that doesn't exist. (2) Getting the midpoint calculation wrong. The formula <code>mid = (low + high) // 2</code> works in Python, but in languages with fixed-size integers (like C or Java), <code>low + high</code> can overflow. The safer formula is <code>mid = low + (high - low) // 2</code>. (3) Off-by-one errors when updating <code>low</code> and <code>high</code>. After checking the middle, you must set <code>low = mid + 1</code> or <code>high = mid - 1</code> (not <code>low = mid</code> or <code>high = mid</code>), otherwise the search can loop forever.</p>
-                
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> A["Your list must be<br>sorted from low to high"]
-    A --> B["Mark the start and<br>end of your search area"]
-    B --> C{"Is there still an<br>area to search in?"}
-    C -- No --> NotFound[("Not found.<br>Return -1")]
-    C -- Yes --> D["Pick the middle item<br>in your search area"]
-    D --> E{"Is this the item?"}
-    E -- Yes --> Found[("Found it!<br>Return its position")]
-    E -- No --> F{"Is the middle item<br>smaller than your target?"}
-    F -- Yes --> G["Target is on the right.<br>Ignore the left half"]
-    F -- No --> H["Target is on the left.<br>Ignore the right half"]
-    G --> C
-    H --> C
-    Found --> Stop([Stop])
-    NotFound --> Stop([Stop])
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Make sure</strong> the list is sorted from smallest to largest.</li>
-                            <li><strong>Set</strong> <code>low</code> at the start and <code>high</code> at the end.</li>
-                            <li><strong>Find the middle:</strong> <code>mid = (low + high) // 2</code> (the <code>//</code> drops any decimal, called <span class="glossary-term" data-definition="A whole number (no decimals). 7 ÷ 2 = 3.5, but integer division makes it 3.">integer division</span>, so 7 ÷ 2 becomes 3 instead of 3.5).</li>
-                            <li><strong>Check</strong> the item at <code>mid</code>:
-                                <ul class="list-circle">
-                                    <li>Matches target? Return <code>mid</code>.</li>
-                                    <li>Too small? Ignore left half, set <code>low = mid + 1</code>.</li>
-                                    <li>Too big? Ignore right half, set <code>high = mid - 1</code>.</li>
-                                </ul>
-                            </li>
-                            <li><strong>Repeat</strong> steps 3–4 until you find it or <code>low</code> passes <code>high</code>.</li>
-                            <li><strong>Not found?</strong> Return <code>-1</code>.</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>The Pointers:</strong> We track our search window with a <code>low</code> (start) and <code>high</code> (end) variable.</li>
-                        <li><strong>The Loop:</strong> We use a <code>while low <= high</code> loop. Keep searching as long as our window exists.</li>
-                        <li><strong>The Logic:</strong> Calculate <code>mid</code>. If <code>arr[mid]</code> is too small, move the left boundary (<code>low = mid + 1</code>). If too big, move the right boundary (<code>high = mid - 1</code>).</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-binary-iter"></code></pre>
-                </div>
-                </details>
-                
-                <p><strong>What if the list is not sorted?</strong> Binary Search will still run, and it can <em>lie</em>. Example: <code>[9, 1, 4]</code> looking for <code>1</code>. The middle is 1 — lucky — but looking for <code>9</code> it may throw 9 away because it thinks “left is smaller.” Use Linear Search instead.</p>
-                <p><strong>The <code>//</code> mark:</strong> <code>5 // 2</code> is 2, not 2.5. We need a whole position number.</p>
-                <details class="lesson-fold fold-help"><summary>Help: Binary Search</summary>
-                <ul class="mb-0">
-                    <li>Unsorted? Do not use this. Use Linear Search.</li>
-                    <li>Grey bars are the half we discarded. They cannot hide the target <em>if</em> the list is sorted.</li>
-                    <li>“Log” just means “how many times can I cut this in half?”</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="binary-search"></div>
-            </div>
-
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <p class="viz-hint">Grey = thrown away. Yellow = middle of what is left. The first picture is sorted [3, 7, 11, 15, 19, 23, 27]. Try 19.</p>
-                    <div class="viz-canvas" id="canvas-binary"></div>
-                    <div class="viz-controls">
-                        <input type="number" id="input-binary" class="viz-input" value="19">
-                        <button class="btn btn-primary viz-btn" id="btn-binary-search">Search</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-binary-reset">🔀 New Array</button>
-                        <span class="viz-status" id="status-binary" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
     <section id="data-structures">
-<div class="section-heading-row"><h2>Data Structures</h2><span class="tag time-tag">⏱️ ~15 min</span></div>
-        <p class="section-lede">Stack and Queue.</p>
-        <p>Sometimes order of <em>access</em> matters more than sorting numbers: last plate on the pile (stack) vs first person in line (queue). Learn the queue before the path lessons.</p>
+        <div class="section-heading-row"><h2>Data Structures</h2><span class="tag time-tag">⏱️ ~25 min</span></div>
+        <p class="section-lede">The foundational containers of computer science: Stack, Queue, Linked List, and Hash Map.</p>
+        <p>Before you can search or sort data effectively, you need to understand how data is stored, connected, and accessed in memory. Explore LIFO stacks, FIFO queues, pointer-based linked lists, and O(1) hash maps.</p>
+
         <div class="algorithm-section algo-first" id="stack">
             <div class="algo-story">
                 <header class="lesson-header">
@@ -904,7 +459,8 @@ flowchart TD
                 </div>
             </div>
         </div>
-<div class="algorithm-section" id="queue">
+
+        <div class="algorithm-section" id="queue">
             <div class="algo-story">
                 <header class="lesson-header">
                 <p class="lesson-eyebrow">Data Structures</p>
@@ -1003,315 +559,13 @@ flowchart TD
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="section-divider"></div>
-
-    <section id="pathfinding">
-<div class="section-heading-row"><h2>Pathfinding</h2><span class="tag time-tag">⏱️ ~25 min</span></div>
-        <p class="section-lede">BFS and A* on trees and grids.</p>
-        <p>Now we are not looking up a number in a list. We are walking a map: org chart or city blocks. Use the Queue idea. Tabs on the picture: Org chart vs City grid.</p>
-        <div class="algorithm-section" id="bfs">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Pathfinding</p>
-                <h3 class="lesson-title">Breadth-First Search</h3>
-                <div class="lesson-meta"><span class="tag blue">Uses a queue</span><span class="tag complexity">O(V+E)</span></div>
-                </header>
-                <p class="lede-tight"><strong>Breadth-First Search (BFS)</strong> does not scan a sorted list. It walks a <span class="glossary-term" data-definition="A bunch of dots (nodes) connected by lines (edges). Trees and city grids are both graphs.">graph</span>: it always finishes the close neighbors before it walks farther away.</p>
-
-                <p><strong>Where you've already done this:</strong> You drop a pebble in a still pond. The first ripple hits the ducks one meter away. The next ripple hits two meters, then three. BFS is that ripple. It never “jumps” to a far node until every closer node has had a turn. A line at a coffee shop is the same idea: whoever has been waiting longest (arrived first) is served first. That line is a <a href="#queue">Queue</a> — you will meet it properly in Part 3.</p>
-
-                <p><strong>A little history:</strong> People have asked “what is the shortest walk through a maze?” for a long time. In 1959, Edward F. Moore published a clean method for the shortest path in a maze that is exactly this ripple idea. Social networks still use the same picture: your “friends” are one hop away, “friends of friends” are two hops — that is BFS counting <em>degrees of separation</em>.</p>
-
-                <p><strong>On a tree:</strong> A tree is a graph with no loops — like an org chart or a folder tree. Start at the boss (the <em>root</em>). BFS visits every person who reports directly to the boss (level 1), then their reports (level 2), and so on. Programmers call this <em>level-order</em> traversal.</p>
-                <p><strong>Walk through a tiny org chart:</strong> Root <code>A</code> has children <code>B</code> and <code>C</code>. <code>B</code> has <code>D</code> and <code>E</code>. Goal: find <code>E</code>.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Step</th><th>Pop from queue (front)</th><th>Queue after adding children</th><th>Notes</th></tr></thead>
-                        <tbody>
-                            <tr><td>0</td><td>—</td><td>A</td><td>Start: put the root in the queue.</td></tr>
-                            <tr><td>1</td><td>A</td><td>B, C</td><td>A is not E. Enqueue A's children, left to right.</td></tr>
-                            <tr><td>2</td><td>B</td><td>C, D, E</td><td>B is not E. Enqueue D and E.</td></tr>
-                            <tr><td>3</td><td>C</td><td>D, E</td><td>C is not E. C has no children here.</td></tr>
-                            <tr><td>4</td><td>D</td><td>E</td><td>D is not E.</td></tr>
-                            <tr><td>5</td><td>E</td><td>(empty)</td><td>Match. Stop. Path is A → B → E.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>Notice E is found only after everyone closer to A has been checked. That is the whole algorithm.</p>
-
-                <p><strong>On a grid:</strong> Treat the floor as graph paper. Each empty square is a node. Its neighbors are up, down, left, right — <em>not</em> diagonals (that keeps later A* math honest). Walls are squares you may not enter. Start in one cell; the goal is another. The ripple fills every cell 1 step away, then 2 steps, then 3. The <em>first</em> time you touch the goal, you have the fewest steps possible, because every cheaper cell was already processed.</p>
-                <p><strong>Walk through a 3×3 hallway:</strong> Start at (0,0), goal at (0,2), wall in the middle of the bottom row.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Step</th><th>Cell dequeued</th><th>New neighbors added</th><th>Distance from start</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>(0,0)</td><td>(0,1), (1,0)</td><td>0</td></tr>
-                            <tr><td>2</td><td>(0,1)</td><td>(0,2) goal is next door</td><td>1</td></tr>
-                            <tr><td>3</td><td>(1,0)</td><td>(2,0) if empty</td><td>1</td></tr>
-                            <tr><td>4</td><td>(0,2)</td><td>—</td><td>2 — first visit to the goal. Done.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <p><strong>How it actually works (the loop):</strong></p>
-                <ol class="list-tight">
-                    <li>Put the start in a <strong>queue</strong> (FIFO). Remember a <strong>parent</strong> for every cell so you can walk backward later.</li>
-                    <li>Mark start as <strong>visited</strong> so you never enqueue it twice. Forgetting this on a graph with cycles makes an infinite loop.</li>
-                    <li>While the queue is not empty: take the <em>front</em> item. If it is the goal, stop.</li>
-                    <li>Look at each neighbor. Skip walls. Skip already visited. Otherwise mark visited, set parent, enqueue.</li>
-                    <li>If the queue empties, there is no path.</li>
-                    <li>Build the path by following parent pointers from the goal back to the start, then reverse the list.</li>
-                </ol>
-                <p>A <strong>stack</strong> (last in, first out) would dive down one corridor (depth-first) and can take a long detour. The queue forces “closer first.”</p>
-
-                <p><strong>How fast / how much memory:</strong> Let V be nodes and E be edges (on a grid, both are about rows × cols). You look at each node and each edge a constant number of times, so time is O(V+E). The queue and visited set can hold every node, so extra memory is O(V). Best case you find the goal next door (tiny). Worst case you paint the whole reachable map.</p>
-
-                <p><strong>Where you'll see it in code:</strong> Python's <code>collections.deque</code> is the usual queue (do not <code>list.pop(0)</code> — that is slow). Web crawlers keep a frontier of URLs. “Friend of a friend” is unweighted hops. Games flood-fill a fog map. Compilers and browsers walk trees; <code>document.querySelector</code> is “find a node in this tree.” GPS uses BFS-like ideas when every road is treated as the same cost. Connected-component labeling in images is BFS/DFS on pixels.</p>
-
-                <p><strong>How it compares:</strong> Linear and Binary Search look up a <em>value in a list</em>. BFS looks up a <em>path in a graph</em>. Binary Search needs sorted numbers; BFS needs a neighborhood. Versus A*: BFS is the fair “check every equally close cell.” A* cheats (in a good way) with a guess toward the goal, so it usually paints fewer cells.</p>
-
-                <p class="mistakes"><strong>Common mistakes:</strong> (1) No <code>visited</code> set — cycles replay forever. (2) Using a Python list as a queue with <code>pop(0)</code> — O(n) every pop; use <code>deque</code>. (3) Diagonal moves while later using Manhattan distance in A*. (4) Thinking BFS minimizes kilometers — it minimizes <em>hops</em> when every edge costs 1.</p>
-
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> Q["Put start in a queue<br>Mark it visited"]
-    Q --> Loop{"Is the queue empty?"}
-    Loop -- Yes --> None[("No path.<br>Stop")]
-    Loop -- No --> Pop["Take the front item"]
-    Pop --> Goal{"Is this the goal?"}
-    Goal -- Yes --> Path["Walk parent pointers<br>back to start"]
-    Path --> Done([Return the path])
-    Goal -- No --> Nbr["For each neighbor:<br>skip walls and visited"]
-    Nbr --> Enq["Set parent, mark visited,<br>enqueue"]
-    Enq --> Loop
-    None --> Stop([Stop])
-    Done --> Stop
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Queue</strong> the start node and mark it visited.</li>
-                            <li><strong>Pop</strong> the front of the queue (the oldest waiting node).</li>
-                            <li><strong>Goal?</strong> Reconstruct the path from parent pointers and stop.</li>
-                            <li><strong>Neighbors:</strong> up/down/left/right on a grid, or children on a tree. Skip walls and visited nodes.</li>
-                            <li><strong>Enqueue</strong> each new neighbor; remember who you came from.</li>
-                            <li><strong>Repeat</strong> until the queue is empty (failure) or the goal pops (success).</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>The Goal:</strong> A path from start to goal, fewest hops.</li>
-                        <li><strong>The Queue:</strong> <code>deque</code> — append right, pop left.</li>
-                        <li><strong>The Memory:</strong> <code>visited</code> plus a <code>parent</code> dict.</li>
-                        <li><strong>The Loop:</strong> <code>while queue:</code> pop, maybe return, else expand neighbors.</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<p class="text-095 fw-500">Python — tree (adjacency list)</p>
-                <div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-bfs-tree"></code></pre>
-                </div>
-                <p class="text-095 fw-500 mt-1">Python — grid (4-neighbors)</p>
-                <div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-bfs-grid"></code></pre>
-                </div>
-                </details>
-                
-                <p><strong>List search vs path search:</strong> Linear/Binary answer “is this number in the list?” BFS answers “how do I walk from here to there, one handshake at a time?”</p>
-                <details class="lesson-fold fold-help"><summary>Help: BFS</summary>
-                <ul class="mb-0">
-                    <li>A <em>node</em> is a dot. An <em>edge</em> is a line. A <em>neighbor</em> is one step away.</li>
-                    <li>You already know the line: that is the Queue lesson.</li>
-                    <li>Org chart and city grid are two pictures of the same idea. Use the tabs on the right.</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="bfs"></div>
-            </div>
-
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <div class="viz-caption">Org chart</div>
-                    <div class="viz-canvas path-tree-canvas" id="canvas-bfs-tree"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-bfs-tree-run">Find path</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-bfs-tree-reset">🔀 New tree</button>
-                        <span class="viz-status" id="status-bfs-tree" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-                <div class="viz-container">
-                    <div class="viz-caption">City grid</div>
-                    <div class="viz-canvas path-grid-canvas" id="canvas-bfs-grid"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-bfs-grid-run">Find path</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-bfs-grid-reset">🔀 New maze</button>
-                        <span class="viz-status" id="status-bfs-grid" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-<div class="algorithm-section" id="astar">
-            <div class="algo-story">
-                <header class="lesson-header">
-                <p class="lesson-eyebrow">Pathfinding</p>
-                <h3 class="lesson-title">A* Search</h3>
-                <div class="lesson-meta"><span class="tag purple">Informed search</span><span class="tag purple">Heuristic</span><span class="tag complexity">O(E log V)</span></div>
-                </header>
-                <p class="lede-tight"><strong>A*</strong> (say “A star”) still walks a graph, but it does not treat every direction as equal. It keeps a running cost from the start (<code>g</code>) and a <span class="glossary-term" data-definition="An optimistic guess of remaining work. If the guess never overshoots, A* still finds a best path.">heuristic</span> guess of leftover work (<code>h</code>). It always expands the node with the smallest <code>f = g + h</code>.</p>
-
-                <p><strong>Where you've already done this:</strong> You are in a new city, walking to a cafe you can see on the map. You do not flood every alley equally (BFS). You prefer streets that still point toward the cafe, but you will detour around a closed block. That “how far do I still think it is?” is <code>h</code>. GPS and game characters do the same thing with better maps.</p>
-
-                <p><strong>A little history:</strong> In 1968 at SRI, Peter Hart, Nils Nilsson, and Bertram Raphael described a family of “A” algorithms. <strong>A*</strong> was the sweet spot: with an <em>admissible</em> heuristic (a guess that never overestimates), it finds an optimal path and does not waste work the way a blinder search does. Game AI and robot motion planning still teach A* first.</p>
-
-                <p><strong>On a tree:</strong> Same org chart, but each node also stores a guess “how many hops might remain?” A* does not wait to finish an entire level. It pops the open node whose <code>g + h</code> is smallest — often a child that already looks closer to the goal, even if some cousins are older in the queue sense.</p>
-                <p><strong>Walk through:</strong> Start <code>A</code> (<code>g=0</code>). Children <code>B</code> and <code>C</code>. Goal is under <code>C</code>. If <code>h(C)</code> is smaller than <code>h(B)</code>, A* expands C before it finishes B's whole subtree. A step table of the open set (a min-heap in code) is the right picture — not a FIFO line.</p>
-                <div class="table-wrap">
-                    <table class="cheat-table table-sm">
-                        <thead><tr><th>Popped</th><th>g</th><th>h (guess left)</th><th>f = g+h</th><th>Why this node</th></tr></thead>
-                        <tbody>
-                            <tr><td>A</td><td>0</td><td>2</td><td>2</td><td>Only the start is open.</td></tr>
-                            <tr><td>C</td><td>1</td><td>1</td><td>2</td><td>Looks closer to the goal than B.</td></tr>
-                            <tr><td>Goal under C</td><td>2</td><td>0</td><td>2</td><td>Goal popped — stop and rebuild the path.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>Important: stop when the goal is <em>popped</em> from the open set, not merely when you first see it as a neighbor. That is how you know no cheaper <code>f</code> is still hiding.</p>
-
-                <p><strong>On a grid:</strong> <code>g</code> is steps from start (each move costs 1). <code>h</code> is Manhattan distance: <code>|row_goal - row| + |col_goal - col|</code> — the taxi-meter if there were no walls. With only 4-way moves, you can never beat that number, so <code>h</code> never overestimates. Walls only make the real path longer, never shorter than Manhattan. That is why this guess is <em>admissible</em>.</p>
-
-                <p><strong>How it actually works (the loop):</strong></p>
-                <ol class="list-tight">
-                    <li>Keep an <strong>open set</strong> as a min-heap of <code>(f, node)</code>. Put start in with <code>g=0</code>.</li>
-                    <li>Keep <code>g</code> scores and parents. Optionally a closed set of finished nodes.</li>
-                    <li>Pop the smallest <code>f</code>. If it is the goal, reconstruct and stop.</li>
-                    <li>For each neighbor: skip walls. Compute <code>g2 = g + 1</code>. If this is cheaper than any old <code>g</code>, update parent, <code>f2 = g2 + h(neighbor)</code>, push on the heap.</li>
-                    <li>If the heap empties, no path.</li>
-                </ol>
-                <p>If you set <code>h = 0</code> everywhere, A* has no opinion about the goal and, on equal-cost edges, behaves like Dijkstra — which on a grid of cost-1 moves is the same family as BFS. The heuristic is the only extra brain.</p>
-
-                <p><strong>How fast / how much memory:</strong> Each heap operation is O(log V), and you may touch every edge, so typical time is O(E log V). A perfect heuristic that guessed the true remaining cost would walk almost a straight path. A useless heuristic (<code>h=0</code>) explores like BFS/Dijkstra. Memory is still O(V) for open/closed maps.</p>
-
-                <p><strong>Where you'll see it in code:</strong> Python <code>heapq</code> (<code>heappush</code> / <code>heappop</code>). Game NPCs walking around crates. Map apps when they have a straight-line (or Manhattan) estimate. Warehouse robots. The 8-puzzle with Manhattan tile distance. Minecraft-style pathfinding. Any time you can <em>guess remaining cost without lying high</em>.</p>
-
-                <p><strong>How it compares:</strong> BFS paints an expanding disk. A* paints a blob aimed at the goal — usually fewer cells, same optimal hop-count if <code>h</code> is admissible. Linear/Binary still do not apply: you are not probing a sorted array.</p>
-
-                <p class="mistakes"><strong>Common mistakes:</strong> (1) <code>h</code> that overestimates (e.g. “I swear it is 3 steps” when 5 are required) — you can miss the best path. (2) Diagonal steps plus Manhattan (the guess no longer matches the moves). (3) Scanning the whole open list instead of a heap on large maps. (4) Mixing up “visited fewer cells” with “a different destination.”</p>
-
-                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
-                    <div class="mermaid-container">
-                        <pre class="mermaid">
-flowchart TD
-    Start([Start]) --> Open["Put start in a min-heap<br>keyed by f = g + h"]
-    Open --> Empty{"Heap empty?"}
-    Empty -- Yes --> None[("No path")]
-    Empty -- No --> Pop["Pop smallest f"]
-    Pop --> IsGoal{"Goal popped?"}
-    IsGoal -- Yes --> Path["Follow parents<br>back to start"]
-    Path --> Done([Return the path])
-    IsGoal -- No --> Nbr["Each neighbor:<br>g2 = g + 1"]
-    Nbr --> Better{"Cheaper g?"}
-    Better -- Yes --> Push["Update parent<br>push f2 = g2 + h"]
-    Better -- No --> Empty
-    Push --> Empty
-    None --> Stop([Stop])
-    Done --> Stop
-                        </pre>
-                    </div>
-                </details>
-
-                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
-                    <div class="steps-container">
-                        <ol class="steps-list">
-                            <li><strong>Score start:</strong> <code>g=0</code>, <code>h=heuristic(start)</code>, push on a min-heap by <code>f</code>.</li>
-                            <li><strong>Pop</strong> the open node with smallest <code>f</code>.</li>
-                            <li><strong>If it is the goal</strong>, reconstruct the path and stop.</li>
-                            <li><strong>Relax neighbors:</strong> if a new path has smaller <code>g</code>, update parent and push the new <code>f</code>.</li>
-                            <li><strong>Repeat</strong> until the heap is empty (no path).</li>
-                        </ol>
-                    </div>
-                </details>
-
-                <div class="brain-card">
-                    <h4>🧠 The Brain Map: How to code this</h4>
-                    <ul>
-                        <li><strong>The Goal:</strong> A cheapest path, using a safe guess <code>h</code>.</li>
-                        <li><strong>The Heap:</strong> <code>heapq</code> of <code>(f, node)</code>.</li>
-                        <li><strong>The Scores:</strong> dicts for <code>g</code> and <code>parent</code>.</li>
-                        <li><strong>The Guard:</strong> never let <code>h</code> be bigger than the true leftover cost.</li>
-                    </ul>
-                </div>
-
-                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
-<p class="text-095 fw-500">Python — tree (heuristic on nodes)</p>
-                <div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-astar-tree"></code></pre>
-                </div>
-                <p class="text-095 fw-500 mt-1">Python — grid (Manhattan <code>h</code>)</p>
-                <div class="code-container">
-                    <button class="copy-btn">Copy</button>
-                    <pre><code id="code-astar-grid"></code></pre>
-                </div>
-                </details>
-                
-                <p>On a tiny 3-cell walk: start g=0, h=2, f=2. One step toward the goal: g=1, h=1, f=2. Goal: g=2, h=0, f=2. We stop when the goal is <em>taken out of the waiting list</em>, not when we first peek at it.</p>
-                <p><strong>Admissible</strong> means the guess never brags that you are closer than you really are. Footnote: if every guess is 0, A* has no opinion — like BFS on equal steps. That is not a new lesson.</p>
-                <details class="lesson-fold fold-help"><summary>Help: A* Search</summary>
-                <ul class="mb-0">
-                    <li>g = steps so far. h = guess left. f = g+h, smallest f goes next.</li>
-                    <li>Fewer yellow/purple cells than BFS is <em>typical</em>, not a promise on every maze.</li>
-                </ul></details>
-
-                <div class="checkpoint" data-algo="astar"></div>
-            </div>
-
-            <div class="algo-visualizer">
-                <div class="viz-container">
-                    <div class="viz-caption">Org chart</div>
-                    <div class="viz-canvas path-tree-canvas" id="canvas-astar-tree"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-astar-tree-run">Find path</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-astar-tree-reset">🔀 New tree</button>
-                        <span class="viz-status" id="status-astar-tree" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-                <div class="viz-container">
-                    <div class="viz-caption">City grid</div>
-                    <div class="viz-canvas path-grid-canvas" id="canvas-astar-grid"></div>
-                    <div class="viz-controls">
-                        <button class="btn btn-primary viz-btn" id="btn-astar-grid-run">Find path</button>
-                        <button class="btn btn-secondary viz-btn" id="btn-astar-grid-reset">🔀 New maze</button>
-                        <span class="viz-status" id="status-astar-grid" aria-live="polite" aria-atomic="true"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="chains">
-<div class="section-heading-row"><h2>More Data Structures</h2><span class="tag time-tag">⏱️ ~10 min</span></div>
-        <p class="section-lede">Linked List and Hash Map.</p>
-        <p>A linked list is boxes holding a value and an arrow to the next box. Use it when inserting at the front should be cheap.</p>
         <div class="algorithm-section" id="linked-list">
             <div class="algo-story">
                 <header class="lesson-header">
                 <p class="lesson-eyebrow">More Data Structures</p>
                 <h3 class="lesson-title">Linked List</h3>
-                <div class="lesson-meta"><span class="tag tag-purple-solid">Dynamic</span><span class="tag tag-blue-solid">Node-based</span></div>
+                <div class="lesson-meta"><span class="tag tag-red-solid">Dynamic</span><span class="tag tag-dark-solid">Node-based</span></div>
                 </header>
                 <p class="lede-tight"><strong><span class="glossary-term" data-definition="A structure that can grow and shrink as needed, with no fixed size limit.">Dynamic</span></strong> means the structure can grow and shrink as needed with no fixed size limit. <strong><span class="glossary-term" data-definition="Each item (called a node) stores its own value and a pointer to the next node in the chain.">Node-based</span></strong> means each item stores its own value <em>and</em> a pointer to the next item in the chain.</p>
 
@@ -1485,19 +739,785 @@ flowchart LR
 
     <div class="section-divider"></div>
 
-    <section id="divide">
-<div class="section-heading-row"><h2>Divide and Conquer Sorting</h2><span class="tag time-tag">⏱️ ~20 min</span></div>
-        <p class="section-lede">Quick Sort and Merge Sort.</p>
+    <section id="searching">
+        <div class="section-heading-row"><h2>Searching Algorithms</h2><span class="tag time-tag">⏱️ ~30 min</span></div>
+        <p class="section-lede">Linear Search, Binary Search, Breadth-First Search (BFS), and A* Search.</p>
+        <p>Techniques for finding elements in lists and navigating graph spaces. From sequential scanning to divide-and-conquer binary division, and level-by-level breadth exploration to heuristic pathfinding.</p>
+
+        <div class="algorithm-section algo-first" id="linear-search">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Searching</p>
+                <h3 class="lesson-title">Linear Search</h3>
+                <div class="lesson-meta"><span class="tag blue">Brute force</span><span class="tag complexity">O(n)</span></div>
+                </header>
+                <p class="lede-tight"><strong>Brute Force</strong> means trying every single possibility until you find the answer. No clever shortcuts, just raw checking. Like trying every key on a keychain to open a lock.</p>
+
+                <p><strong>Where you've already done this:</strong> Imagine you're looking for a specific book on a messy shelf where nothing is in alphabetical order. You have no choice but to start at one end and check every single book, one by one, until you either find the one you want or reach the other end and confirm it's not there. That's Linear Search. It checks each item in sequence, from first to last, without skipping ahead or making any assumptions about where the target might be.</p>
+
+                <p><strong>Why "linear":</strong> The name comes from the fact that the time it takes grows in a straight line with the size of the data. If you double the number of items, the search takes (roughly) twice as long in the worst case. A list of 10 items means up to 10 checks. A list of 10,000 items means up to 10,000 checks. This direct, proportional relationship between data size and work done is what computer scientists call O(n), or "linear time."</p>
+
+                <p><strong>Walk through it with real numbers:</strong> Say you have the list <code>[8, 3, 11, 5, 9]</code> and you're searching for <code>5</code>.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Step</th><th>Position checked</th><th>Value found</th><th>Match?</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Index 0</td><td>8</td><td>No, move on</td></tr>
+                            <tr><td>2</td><td>Index 1</td><td>3</td><td>No, move on</td></tr>
+                            <tr><td>3</td><td>Index 2</td><td>11</td><td>No, move on</td></tr>
+                            <tr><td>4</td><td>Index 3</td><td>5</td><td>Yes! Return 3</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>It took 4 checks to find the target at index 3. If you were searching for a value that doesn't exist (say, <code>99</code>), the algorithm would check all 5 items and then return <code>-1</code> to indicate "not found."</p>
+
+                <p><strong>How fast (or slow) is it:</strong></p>
+                <ul class="list-tight">
+                    <li><strong>Best case, O(1):</strong> The target is the very first item. One check, done.</li>
+                    <li><strong>Worst case, O(n):</strong> The target is the very last item, or it doesn't exist at all. You have to check every single element.</li>
+                    <li><strong>Average case, O(n):</strong> On average, the target will be somewhere in the middle, so you check about half the list. In Big-O notation, n/2 simplifies to O(n) because constants are dropped.</li>
+                </ul>
+
+                <p><strong>Why this vs the last lesson:</strong> You just learned to walk a list with a loop. Linear Search is that walk with a question: “is this the thing?” Next you will <em>put the shelf in order</em>. A faster search that needs order comes after that — do not use it on a messy pile.</p>
+
+                <p><strong>Where you'll actually see it used:</strong> Linear Search shows up more often in real software than you might expect. Checking if a username exists in a short list, scanning through search results on a page, verifying if an item is in a shopping cart, or looking for a specific row in a small spreadsheet are all forms of linear search. Python's <code>in</code> keyword (<code>if x in my_list</code>) is a linear search under the hood. For small datasets (under a few hundred items), the simplicity of linear search often outweighs the speed benefit of fancier approaches.</p>
+
+                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Forgetting to handle the "not found" case. If the loop finishes without finding the target, the function must explicitly return <code>-1</code> (or equivalent). Leaving this out causes the function to return <code>None</code> in Python, which can cause confusing bugs later. (2) Using Linear Search on large sorted data when Binary Search would be far more efficient. If you're searching the same sorted list thousands of times, switching to Binary Search turns a slow operation into a near-instant one.</p>
+                
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> A["Look at the first item"]
+    A --> B{"Is this the item<br>you're looking for?"}
+    B -- Yes --> Found[("Found it!<br>Return its position")]
+    B -- No --> C["Move to the next item"]
+    C --> D{"Have you checked<br>every item?"}
+    D -- No --> B
+    D -- Yes --> NotFound[("Not found.<br>Return -1")]
+    Found --> Stop([Stop])
+    NotFound --> Stop([Stop])
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Start</strong> at the first item (index 0).</li>
+                            <li><strong>Check</strong> if the current item matches what you're looking for.</li>
+                            <li><strong>Found it?</strong> Return the position and you're done.</li>
+                            <li><strong>Not a match?</strong> Move to the next item.</li>
+                            <li><strong>Repeat</strong> steps 2–4 until you find it or run out of items.</li>
+                            <li><strong>Ran out of items?</strong> <span class="glossary-term" data-definition="Send back an answer to whoever asked for it. return -1 is a standard way to say 'not found.'">Return</span> <code>-1</code>, it's not in the list.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>The Goal:</strong> Find the <code>target</code> number.</li>
+                        <li><strong>The Loop:</strong> We need a <code>for</code> loop to look at every index <code>i</code> from start to finish.</li>
+                        <li><strong>The Check:</strong> Inside the loop, use an <code>if</code> statement.</li>
+                        <li><strong>The Backup:</strong> What if the loop finishes and we found nothing? We <code>return -1</code>.</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-linear-search"></code></pre>
+                </div>
+                </details>
+                
+                <p><strong>What if it fails:</strong> Empty list? The loop never runs, so you still return <code>-1</code>. Two copies of the same number? You stop at the <em>first</em> one.</p>
+                <details class="lesson-fold fold-help"><summary>Help: Linear Search</summary>
+                <ul class="mb-0">
+                    <li>Why -1? It is not a real position. Position 0 is the first item.</li>
+                    <li>Do I need the list sorted? No. That is the whole point.</li>
+                    <li>Picture: yellow = checking, grey = already seen, green = found.</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="linear-search"></div>
+            </div>
+
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <p class="viz-hint">Yellow = looking at this bar. Grey = already checked. Green = found. Type 5 (the story number), then Search. New Array picks random numbers.</p>
+                    <div class="viz-canvas" id="canvas-linear"></div>
+                    <div class="viz-controls">
+                        <input type="number" id="input-linear" class="viz-input" value="5">
+                        <button class="btn btn-primary viz-btn" id="btn-linear-search">Search</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-linear-reset">🔀 New Array</button>
+                        <span class="viz-status" id="status-linear" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="lesson-aside" id="speed-talk">
+            <h4 class="lesson-aside-title">Big-O notation (introduction)</h4>
+            <p class="lesson-aside-sub">How running time scales with input size</p>
+            <p>If the shelf has twice the books, Linear Search does about twice the work in the worst case. People write that as <code>O(n)</code> — n is “how many items.” We will add “halving” language when Binary Search appears. Pathfinding has its own letters (V and E) inside those lessons, not here.</p>
+        </aside>
+
+        <div class="algorithm-section" id="binary-search">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Binary Search</p>
+                <h3 class="lesson-title">Binary Search</h3>
+                <div class="lesson-meta"><span class="tag blue">Halve and check</span><span class="tag blue">Requires sorted list</span><span class="tag complexity">O(log n)</span></div>
+                </header>
+                <p class="lede-tight"><strong><span class="glossary-term" data-definition="Arranged from smallest to largest (like 2, 5, 9, 14, 22). Without sorted order, Binary Search cannot work.">Sorted</span></strong> means the items are arranged from smallest to largest, like 2, 5, 9, 14, 22. If the list isn't sorted, Binary Search cannot work because there is no way to know which half to discard.</p>
+
+                <p><strong>Where you've already done this:</strong> Think about looking up a word in a physical dictionary. You don't start at page 1 and read forward. You open to roughly the middle, check whether your word comes before or after what you see, and then throw away the half that can't contain it. You keep halving the remaining pages until you land on your word. That's Binary Search. It works by repeatedly splitting the search area in half, checking the middle item, and discarding the half where the target cannot possibly be.</p>
+
+                <p><strong>The one strict rule:</strong> Binary Search only works on sorted data. If the list isn't in order, there's no way to know whether the target is in the left half or the right half. This is the trade-off: you need sorted data upfront, but in exchange, you get a search that's dramatically faster than checking every item.</p>
+
+                <p><strong>Walk through it with real numbers:</strong> Say you have the sorted list <code>[3, 7, 11, 15, 19, 23, 27]</code> and you're searching for <code>19</code>.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Step</th><th>Search window</th><th>Middle value</th><th>Decision</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>[3, 7, 11, <strong>15</strong>, 19, 23, 27]</td><td>15</td><td>19 > 15, discard left half</td></tr>
+                            <tr><td>2</td><td>[19, <strong>23</strong>, 27]</td><td>23</td><td>19 &lt; 23, discard right half</td></tr>
+                            <tr><td>3</td><td>[<strong>19</strong>]</td><td>19</td><td>Found it! Return index 4</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Out of 7 items, it took only 3 checks. A linear search on the same list would have taken 5 checks. The difference becomes massive at scale: a sorted list of 1,000,000 items takes Linear Search up to 1,000,000 checks but Binary Search at most 20.</p>
+
+                <p><strong>Why "logarithmic" (O(log n)):</strong> Each step cuts the remaining data in half. If you start with n items, after one step you have n/2. After two steps, n/4. After three steps, n/8. The number of steps needed to reach 1 remaining item is log₂(n). For 1,000 items that's about 10 steps. For 1,000,000 items it's about 20. This is why Binary Search feels almost instant even on very large datasets, as long as the data is sorted.</p>
+
+                <p><strong>How it compares to Linear Search:</strong> Linear Search is simpler and works on unsorted data, but it checks every item one by one. Binary Search is restricted to sorted data, but it eliminates half the candidates per step. The key question is: "Will I search this data more than once?" If yes, sorting it once and then using Binary Search for every lookup is almost always worth it. If you only need to search once, sorting first (which itself costs O(n log n)) plus searching (O(log n)) may cost more total work than a single Linear Search (O(n)).</p>
+
+                <p><strong>Where you'll actually see it used:</strong> Binary Search is everywhere in real software, often hidden inside other tools. Database indexes use it to find records quickly. When you type a word in a search bar and it auto-completes, the app is often doing a binary search over a sorted word list. Python's <code>bisect</code> module is a built-in binary search implementation. Version control systems like Git use binary search (the <code>git bisect</code> command) to pinpoint which specific commit introduced a bug, halving the suspect range with each test.</p>
+
+                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Applying Binary Search to an unsorted list. It will run without crashing, but it will return incorrect results because it discards halves based on ordering that doesn't exist. (2) Getting the midpoint calculation wrong. The formula <code>mid = (low + high) // 2</code> works in Python, but in languages with fixed-size integers (like C or Java), <code>low + high</code> can overflow. The safer formula is <code>mid = low + (high - low) // 2</code>. (3) Off-by-one errors when updating <code>low</code> and <code>high</code>. After checking the middle, you must set <code>low = mid + 1</code> or <code>high = mid - 1</code> (not <code>low = mid</code> or <code>high = mid</code>), otherwise the search can loop forever.</p>
+                
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> A["Your list must be<br>sorted from low to high"]
+    A --> B["Mark the start and<br>end of your search area"]
+    B --> C{"Is there still an<br>area to search in?"}
+    C -- No --> NotFound[("Not found.<br>Return -1")]
+    C -- Yes --> D["Pick the middle item<br>in your search area"]
+    D --> E{"Is this the item?"}
+    E -- Yes --> Found[("Found it!<br>Return its position")]
+    E -- No --> F{"Is the middle item<br>smaller than your target?"}
+    F -- Yes --> G["Target is on the right.<br>Ignore the left half"]
+    F -- No --> H["Target is on the left.<br>Ignore the right half"]
+    G --> C
+    H --> C
+    Found --> Stop([Stop])
+    NotFound --> Stop([Stop])
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Make sure</strong> the list is sorted from smallest to largest.</li>
+                            <li><strong>Set</strong> <code>low</code> at the start and <code>high</code> at the end.</li>
+                            <li><strong>Find the middle:</strong> <code>mid = (low + high) // 2</code> (the <code>//</code> drops any decimal, called <span class="glossary-term" data-definition="A whole number (no decimals). 7 ÷ 2 = 3.5, but integer division makes it 3.">integer division</span>, so 7 ÷ 2 becomes 3 instead of 3.5).</li>
+                            <li><strong>Check</strong> the item at <code>mid</code>:
+                                <ul class="list-circle">
+                                    <li>Matches target? Return <code>mid</code>.</li>
+                                    <li>Too small? Ignore left half, set <code>low = mid + 1</code>.</li>
+                                    <li>Too big? Ignore right half, set <code>high = mid - 1</code>.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Repeat</strong> steps 3–4 until you find it or <code>low</code> passes <code>high</code>.</li>
+                            <li><strong>Not found?</strong> Return <code>-1</code>.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>The Pointers:</strong> We track our search window with a <code>low</code> (start) and <code>high</code> (end) variable.</li>
+                        <li><strong>The Loop:</strong> We use a <code>while low <= high</code> loop. Keep searching as long as our window exists.</li>
+                        <li><strong>The Logic:</strong> Calculate <code>mid</code>. If <code>arr[mid]</code> is too small, move the left boundary (<code>low = mid + 1</code>). If too big, move the right boundary (<code>high = mid - 1</code>).</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-binary-iter"></code></pre>
+                </div>
+                </details>
+                
+                <p><strong>What if the list is not sorted?</strong> Binary Search will still run, and it can <em>lie</em>. Example: <code>[9, 1, 4]</code> looking for <code>1</code>. The middle is 1 — lucky — but looking for <code>9</code> it may throw 9 away because it thinks “left is smaller.” Use Linear Search instead.</p>
+                <p><strong>The <code>//</code> mark:</strong> <code>5 // 2</code> is 2, not 2.5. We need a whole position number.</p>
+                <details class="lesson-fold fold-help"><summary>Help: Binary Search</summary>
+                <ul class="mb-0">
+                    <li>Unsorted? Do not use this. Use Linear Search.</li>
+                    <li>Grey bars are the half we discarded. They cannot hide the target <em>if</em> the list is sorted.</li>
+                    <li>“Log” just means “how many times can I cut this in half?”</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="binary-search"></div>
+            </div>
+
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <p class="viz-hint">Grey = thrown away. Yellow = middle of what is left. The first picture is sorted [3, 7, 11, 15, 19, 23, 27]. Try 19.</p>
+                    <div class="viz-canvas" id="canvas-binary"></div>
+                    <div class="viz-controls">
+                        <input type="number" id="input-binary" class="viz-input" value="19">
+                        <button class="btn btn-primary viz-btn" id="btn-binary-search">Search</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-binary-reset">🔀 New Array</button>
+                        <span class="viz-status" id="status-binary" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-section" id="bfs">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Pathfinding</p>
+                <h3 class="lesson-title">Breadth-First Search</h3>
+                <div class="lesson-meta"><span class="tag blue">Uses a queue</span><span class="tag complexity">O(V+E)</span></div>
+                </header>
+                <p class="lede-tight"><strong>Breadth-First Search (BFS)</strong> does not scan a sorted list. It walks a <span class="glossary-term" data-definition="A bunch of dots (nodes) connected by lines (edges). Trees and city grids are both graphs.">graph</span>: it always finishes the close neighbors before it walks farther away.</p>
+
+                <p><strong>Where you've already done this:</strong> You drop a pebble in a still pond. The first ripple hits the ducks one meter away. The next ripple hits two meters, then three. BFS is that ripple. It never “jumps” to a far node until every closer node has had a turn. A line at a coffee shop is the same idea: whoever has been waiting longest (arrived first) is served first. That line is a <a href="#queue">Queue</a> — you will meet it properly in Part 3.</p>
+
+                <p><strong>A little history:</strong> People have asked “what is the shortest walk through a maze?” for a long time. In 1959, Edward F. Moore published a clean method for the shortest path in a maze that is exactly this ripple idea. Social networks still use the same picture: your “friends” are one hop away, “friends of friends” are two hops — that is BFS counting <em>degrees of separation</em>.</p>
+
+                <p><strong>On a tree:</strong> A tree is a graph with no loops — like an org chart or a folder tree. Start at the boss (the <em>root</em>). BFS visits every person who reports directly to the boss (level 1), then their reports (level 2), and so on. Programmers call this <em>level-order</em> traversal.</p>
+                <p><strong>Walk through a tiny org chart:</strong> Root <code>A</code> has children <code>B</code> and <code>C</code>. <code>B</code> has <code>D</code> and <code>E</code>. Goal: find <code>E</code>.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Step</th><th>Pop from queue (front)</th><th>Queue after adding children</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>0</td><td>—</td><td>A</td><td>Start: put the root in the queue.</td></tr>
+                            <tr><td>1</td><td>A</td><td>B, C</td><td>A is not E. Enqueue A's children, left to right.</td></tr>
+                            <tr><td>2</td><td>B</td><td>C, D, E</td><td>B is not E. Enqueue D and E.</td></tr>
+                            <tr><td>3</td><td>C</td><td>D, E</td><td>C is not E. C has no children here.</td></tr>
+                            <tr><td>4</td><td>D</td><td>E</td><td>D is not E.</td></tr>
+                            <tr><td>5</td><td>E</td><td>(empty)</td><td>Match. Stop. Path is A → B → E.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Notice E is found only after everyone closer to A has been checked. That is the whole algorithm.</p>
+
+                <p><strong>On a grid:</strong> Treat the floor as graph paper. Each empty square is a node. Its neighbors are up, down, left, right — <em>not</em> diagonals (that keeps later A* math honest). Walls are squares you may not enter. Start in one cell; the goal is another. The ripple fills every cell 1 step away, then 2 steps, then 3. The <em>first</em> time you touch the goal, you have the fewest steps possible, because every cheaper cell was already processed.</p>
+                <p><strong>Walk through a 3×3 hallway:</strong> Start at (0,0), goal at (0,2), wall in the middle of the bottom row.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Step</th><th>Cell dequeued</th><th>New neighbors added</th><th>Distance from start</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>(0,0)</td><td>(0,1), (1,0)</td><td>0</td></tr>
+                            <tr><td>2</td><td>(0,1)</td><td>(0,2) goal is next door</td><td>1</td></tr>
+                            <tr><td>3</td><td>(1,0)</td><td>(2,0) if empty</td><td>1</td></tr>
+                            <tr><td>4</td><td>(0,2)</td><td>—</td><td>2 — first visit to the goal. Done.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>How it actually works (the loop):</strong></p>
+                <ol class="list-tight">
+                    <li>Put the start in a <strong>queue</strong> (FIFO). Remember a <strong>parent</strong> for every cell so you can walk backward later.</li>
+                    <li>Mark start as <strong>visited</strong> so you never enqueue it twice. Forgetting this on a graph with cycles makes an infinite loop.</li>
+                    <li>While the queue is not empty: take the <em>front</em> item. If it is the goal, stop.</li>
+                    <li>Look at each neighbor. Skip walls. Skip already visited. Otherwise mark visited, set parent, enqueue.</li>
+                    <li>If the queue empties, there is no path.</li>
+                    <li>Build the path by following parent pointers from the goal back to the start, then reverse the list.</li>
+                </ol>
+                <p>A <strong>stack</strong> (last in, first out) would dive down one corridor (depth-first) and can take a long detour. The queue forces “closer first.”</p>
+
+                <p><strong>How fast / how much memory:</strong> Let V be nodes and E be edges (on a grid, both are about rows × cols). You look at each node and each edge a constant number of times, so time is O(V+E). The queue and visited set can hold every node, so extra memory is O(V). Best case you find the goal next door (tiny). Worst case you paint the whole reachable map.</p>
+
+                <p><strong>Where you'll see it in code:</strong> Python's <code>collections.deque</code> is the usual queue (do not <code>list.pop(0)</code> — that is slow). Web crawlers keep a frontier of URLs. “Friend of a friend” is unweighted hops. Games flood-fill a fog map. Compilers and browsers walk trees; <code>document.querySelector</code> is “find a node in this tree.” GPS uses BFS-like ideas when every road is treated as the same cost. Connected-component labeling in images is BFS/DFS on pixels.</p>
+
+                <p><strong>How it compares:</strong> Linear and Binary Search look up a <em>value in a list</em>. BFS looks up a <em>path in a graph</em>. Binary Search needs sorted numbers; BFS needs a neighborhood. Versus A*: BFS is the fair “check every equally close cell.” A* cheats (in a good way) with a guess toward the goal, so it usually paints fewer cells.</p>
+
+                <p class="mistakes"><strong>Common mistakes:</strong> (1) No <code>visited</code> set — cycles replay forever. (2) Using a Python list as a queue with <code>pop(0)</code> — O(n) every pop; use <code>deque</code>. (3) Diagonal moves while later using Manhattan distance in A*. (4) Thinking BFS minimizes kilometers — it minimizes <em>hops</em> when every edge costs 1.</p>
+
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> Q["Put start in a queue<br>Mark it visited"]
+    Q --> Loop{"Is the queue empty?"}
+    Loop -- Yes --> None[("No path.<br>Stop")]
+    Loop -- No --> Pop["Take the front item"]
+    Pop --> Goal{"Is this the goal?"}
+    Goal -- Yes --> Path["Walk parent pointers<br>back to start"]
+    Path --> Done([Return the path])
+    Goal -- No --> Nbr["For each neighbor:<br>skip walls and visited"]
+    Nbr --> Enq["Set parent, mark visited,<br>enqueue"]
+    Enq --> Loop
+    None --> Stop([Stop])
+    Done --> Stop
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Queue</strong> the start node and mark it visited.</li>
+                            <li><strong>Pop</strong> the front of the queue (the oldest waiting node).</li>
+                            <li><strong>Goal?</strong> Reconstruct the path from parent pointers and stop.</li>
+                            <li><strong>Neighbors:</strong> up/down/left/right on a grid, or children on a tree. Skip walls and visited nodes.</li>
+                            <li><strong>Enqueue</strong> each new neighbor; remember who you came from.</li>
+                            <li><strong>Repeat</strong> until the queue is empty (failure) or the goal pops (success).</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>The Goal:</strong> A path from start to goal, fewest hops.</li>
+                        <li><strong>The Queue:</strong> <code>deque</code> — append right, pop left.</li>
+                        <li><strong>The Memory:</strong> <code>visited</code> plus a <code>parent</code> dict.</li>
+                        <li><strong>The Loop:</strong> <code>while queue:</code> pop, maybe return, else expand neighbors.</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<p class="text-095 fw-500">Python — tree (adjacency list)</p>
+                <div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-bfs-tree"></code></pre>
+                </div>
+                <p class="text-095 fw-500 mt-1">Python — grid (4-neighbors)</p>
+                <div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-bfs-grid"></code></pre>
+                </div>
+                </details>
+                
+                <p><strong>List search vs path search:</strong> Linear/Binary answer “is this number in the list?” BFS answers “how do I walk from here to there, one handshake at a time?”</p>
+                <details class="lesson-fold fold-help"><summary>Help: BFS</summary>
+                <ul class="mb-0">
+                    <li>A <em>node</em> is a dot. An <em>edge</em> is a line. A <em>neighbor</em> is one step away.</li>
+                    <li>You already know the line: that is the Queue lesson.</li>
+                    <li>Org chart and city grid are two pictures of the same idea. Use the tabs on the right.</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="bfs"></div>
+            </div>
+
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <div class="viz-caption">Org chart</div>
+                    <div class="viz-canvas path-tree-canvas" id="canvas-bfs-tree"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-bfs-tree-run">Find path</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-bfs-tree-reset">🔀 New tree</button>
+                        <span class="viz-status" id="status-bfs-tree" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+                <div class="viz-container">
+                    <div class="viz-caption">City grid</div>
+                    <div class="viz-canvas path-grid-canvas" id="canvas-bfs-grid"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-bfs-grid-run">Find path</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-bfs-grid-reset">🔀 New maze</button>
+                        <span class="viz-status" id="status-bfs-grid" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-section" id="astar">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Pathfinding</p>
+                <h3 class="lesson-title">A* Search</h3>
+                <div class="lesson-meta"><span class="tag red">Informed search</span><span class="tag red">Heuristic</span><span class="tag complexity">O(E log V)</span></div>
+                </header>
+                <p class="lede-tight"><strong>A*</strong> (say “A star”) still walks a graph, but it does not treat every direction as equal. It keeps a running cost from the start (<code>g</code>) and a <span class="glossary-term" data-definition="An optimistic guess of remaining work. If the guess never overshoots, A* still finds a best path.">heuristic</span> guess of leftover work (<code>h</code>). It always expands the node with the smallest <code>f = g + h</code>.</p>
+
+                <p><strong>Where you've already done this:</strong> You are in a new city, walking to a cafe you can see on the map. You do not flood every alley equally (BFS). You prefer streets that still point toward the cafe, but you will detour around a closed block. That “how far do I still think it is?” is <code>h</code>. GPS and game characters do the same thing with better maps.</p>
+
+                <p><strong>A little history:</strong> In 1968 at SRI, Peter Hart, Nils Nilsson, and Bertram Raphael described a family of “A” algorithms. <strong>A*</strong> was the sweet spot: with an <em>admissible</em> heuristic (a guess that never overestimates), it finds an optimal path and does not waste work the way a blinder search does. Game AI and robot motion planning still teach A* first.</p>
+
+                <p><strong>On a tree:</strong> Same org chart, but each node also stores a guess “how many hops might remain?” A* does not wait to finish an entire level. It pops the open node whose <code>g + h</code> is smallest — often a child that already looks closer to the goal, even if some cousins are older in the queue sense.</p>
+                <p><strong>Walk through:</strong> Start <code>A</code> (<code>g=0</code>). Children <code>B</code> and <code>C</code>. Goal is under <code>C</code>. If <code>h(C)</code> is smaller than <code>h(B)</code>, A* expands C before it finishes B's whole subtree. A step table of the open set (a min-heap in code) is the right picture — not a FIFO line.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Popped</th><th>g</th><th>h (guess left)</th><th>f = g+h</th><th>Why this node</th></tr></thead>
+                        <tbody>
+                            <tr><td>A</td><td>0</td><td>2</td><td>2</td><td>Only the start is open.</td></tr>
+                            <tr><td>C</td><td>1</td><td>1</td><td>2</td><td>Looks closer to the goal than B.</td></tr>
+                            <tr><td>Goal under C</td><td>2</td><td>0</td><td>2</td><td>Goal popped — stop and rebuild the path.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Important: stop when the goal is <em>popped</em> from the open set, not merely when you first see it as a neighbor. That is how you know no cheaper <code>f</code> is still hiding.</p>
+
+                <p><strong>On a grid:</strong> <code>g</code> is steps from start (each move costs 1). <code>h</code> is Manhattan distance: <code>|row_goal - row| + |col_goal - col|</code> — the taxi-meter if there were no walls. With only 4-way moves, you can never beat that number, so <code>h</code> never overestimates. Walls only make the real path longer, never shorter than Manhattan. That is why this guess is <em>admissible</em>.</p>
+
+                <p><strong>How it actually works (the loop):</strong></p>
+                <ol class="list-tight">
+                    <li>Keep an <strong>open set</strong> as a min-heap of <code>(f, node)</code>. Put start in with <code>g=0</code>.</li>
+                    <li>Keep <code>g</code> scores and parents. Optionally a closed set of finished nodes.</li>
+                    <li>Pop the smallest <code>f</code>. If it is the goal, reconstruct and stop.</li>
+                    <li>For each neighbor: skip walls. Compute <code>g2 = g + 1</code>. If this is cheaper than any old <code>g</code>, update parent, <code>f2 = g2 + h(neighbor)</code>, push on the heap.</li>
+                    <li>If the heap empties, no path.</li>
+                </ol>
+                <p>If you set <code>h = 0</code> everywhere, A* has no opinion about the goal and, on equal-cost edges, behaves like Dijkstra — which on a grid of cost-1 moves is the same family as BFS. The heuristic is the only extra brain.</p>
+
+                <p><strong>How fast / how much memory:</strong> Each heap operation is O(log V), and you may touch every edge, so typical time is O(E log V). A perfect heuristic that guessed the true remaining cost would walk almost a straight path. A useless heuristic (<code>h=0</code>) explores like BFS/Dijkstra. Memory is still O(V) for open/closed maps.</p>
+
+                <p><strong>Where you'll see it in code:</strong> Python <code>heapq</code> (<code>heappush</code> / <code>heappop</code>). Game NPCs walking around crates. Map apps when they have a straight-line (or Manhattan) estimate. Warehouse robots. The 8-puzzle with Manhattan tile distance. Minecraft-style pathfinding. Any time you can <em>guess remaining cost without lying high</em>.</p>
+
+                <p><strong>How it compares:</strong> BFS paints an expanding disk. A* paints a blob aimed at the goal — usually fewer cells, same optimal hop-count if <code>h</code> is admissible. Linear/Binary still do not apply: you are not probing a sorted array.</p>
+
+                <p class="mistakes"><strong>Common mistakes:</strong> (1) <code>h</code> that overestimates (e.g. “I swear it is 3 steps” when 5 are required) — you can miss the best path. (2) Diagonal steps plus Manhattan (the guess no longer matches the moves). (3) Scanning the whole open list instead of a heap on large maps. (4) Mixing up “visited fewer cells” with “a different destination.”</p>
+
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> Open["Put start in a min-heap<br>keyed by f = g + h"]
+    Open --> Empty{"Heap empty?"}
+    Empty -- Yes --> None[("No path")]
+    Empty -- No --> Pop["Pop smallest f"]
+    Pop --> IsGoal{"Goal popped?"}
+    IsGoal -- Yes --> Path["Follow parents<br>back to start"]
+    Path --> Done([Return the path])
+    IsGoal -- No --> Nbr["Each neighbor:<br>g2 = g + 1"]
+    Nbr --> Better{"Cheaper g?"}
+    Better -- Yes --> Push["Update parent<br>push f2 = g2 + h"]
+    Better -- No --> Empty
+    Push --> Empty
+    None --> Stop([Stop])
+    Done --> Stop
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Score start:</strong> <code>g=0</code>, <code>h=heuristic(start)</code>, push on a min-heap by <code>f</code>.</li>
+                            <li><strong>Pop</strong> the open node with smallest <code>f</code>.</li>
+                            <li><strong>If it is the goal</strong>, reconstruct the path and stop.</li>
+                            <li><strong>Relax neighbors:</strong> if a new path has smaller <code>g</code>, update parent and push the new <code>f</code>.</li>
+                            <li><strong>Repeat</strong> until the heap is empty (no path).</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>The Goal:</strong> A cheapest path, using a safe guess <code>h</code>.</li>
+                        <li><strong>The Heap:</strong> <code>heapq</code> of <code>(f, node)</code>.</li>
+                        <li><strong>The Scores:</strong> dicts for <code>g</code> and <code>parent</code>.</li>
+                        <li><strong>The Guard:</strong> never let <code>h</code> be bigger than the true leftover cost.</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<p class="text-095 fw-500">Python — tree (heuristic on nodes)</p>
+                <div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-astar-tree"></code></pre>
+                </div>
+                <p class="text-095 fw-500 mt-1">Python — grid (Manhattan <code>h</code>)</p>
+                <div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-astar-grid"></code></pre>
+                </div>
+                </details>
+                
+                <p>On a tiny 3-cell walk: start g=0, h=2, f=2. One step toward the goal: g=1, h=1, f=2. Goal: g=2, h=0, f=2. We stop when the goal is <em>taken out of the waiting list</em>, not when we first peek at it.</p>
+                <p><strong>Admissible</strong> means the guess never brags that you are closer than you really are. Footnote: if every guess is 0, A* has no opinion — like BFS on equal steps. That is not a new lesson.</p>
+                <details class="lesson-fold fold-help"><summary>Help: A* Search</summary>
+                <ul class="mb-0">
+                    <li>g = steps so far. h = guess left. f = g+h, smallest f goes next.</li>
+                    <li>Fewer yellow/crimson cells than BFS is <em>typical</em>, not a promise on every maze.</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="astar"></div>
+            </div>
+
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <div class="viz-caption">Org chart</div>
+                    <div class="viz-canvas path-tree-canvas" id="canvas-astar-tree"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-astar-tree-run">Find path</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-astar-tree-reset">🔀 New tree</button>
+                        <span class="viz-status" id="status-astar-tree" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+                <div class="viz-container">
+                    <div class="viz-caption">City grid</div>
+                    <div class="viz-canvas path-grid-canvas" id="canvas-astar-grid"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-astar-grid-run">Find path</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-astar-grid-reset">🔀 New maze</button>
+                        <span class="viz-status" id="status-astar-grid" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="sorting">
+        <div class="section-heading-row"><h2>Sorting Algorithms</h2><span class="tag time-tag">⏱️ ~30 min</span></div>
+        <p class="section-lede">Selection Sort, Bubble Sort, Quick Sort, and Merge Sort.</p>
+        <p id="why-order"><strong>Why order matters:</strong> Sorting transforms disordered chaos into predictable sequences, enabling lightning-fast lookups. Contrast simple comparison sorts with divide-and-conquer recursive partitioning and merging.</p>
+        <div class="table-wrap"><table class="cheat-table table-sm"><thead><tr><th></th><th>Selection</th><th>Bubble</th><th>Quick</th><th>Merge</th></tr></thead>
+        <tbody><tr><td>Method</td><td>One swap per pass, locks minimum</td><td>Continuous neighbor swaps</td><td>Divide and conquer via pivot</td><td>Recursive divide &amp; linear merge</td></tr>
+        <tr><td>Average Time</td><td>O(n²)</td><td>O(n²)</td><td>O(n log n)</td><td>O(n log n)</td></tr>
+        <tr><td>Space</td><td>O(1)</td><td>O(1)</td><td>O(log n)</td><td>O(n)</td></tr></tbody></table></div>
+
+        <div class="algorithm-section algo-first" id="selection-sort">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Sorting</p>
+                <h3 class="lesson-title">Selection Sort</h3>
+                <div class="lesson-meta"><span class="tag red">Find the smallest</span><span class="tag complexity">O(n²)</span></div>
+                </header>
+
+                <p><strong>Where you've already done this:</strong> Imagine you're organising a row of books by height on a shelf. You scan the entire row with your eyes, find the shortest book, and move it to position 1. Then you scan the remaining books, find the next shortest, and move it to position 2. You keep going until every book is in its place. That's Selection Sort. It works by repeatedly <em>selecting</em> the smallest item from the unsorted portion of the list and placing it at the end of the sorted portion.</p>
+
+                <p><strong>What makes it different from Bubble Sort:</strong> Bubble Sort swaps neighbours constantly as it walks through the list, doing many small swaps per pass. Selection Sort takes a different approach: it looks at everything first, decides which item should go next, and then does exactly one swap to put it in the right spot. The result is that Selection Sort always makes at most n-1 total swaps (one per position), regardless of how messy the data is. Bubble Sort can make far more swaps on the same data.</p>
+
+                <p><strong>Walk through it with real numbers:</strong> Start with <code>[29, 10, 14, 37, 13]</code>.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Pass</th><th>Unsorted portion scanned</th><th>Smallest found</th><th>Swap with</th><th>Result</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>[29, 10, 14, 37, 13]</td><td>10</td><td>29 (pos 0)</td><td><code>[<strong>10</strong>, 29, 14, 37, 13]</code></td></tr>
+                            <tr><td><strong>2</strong></td><td>[29, 14, 37, 13]</td><td>13</td><td>29 (pos 1)</td><td><code>[10, <strong>13</strong>, 14, 37, 29]</code></td></tr>
+                            <tr><td><strong>3</strong></td><td>[14, 37, 29]</td><td>14</td><td>14 (pos 2)</td><td><code>[10, 13, <strong>14</strong>, 37, 29]</code> &ndash; already in place</td></tr>
+                            <tr><td><strong>4</strong></td><td>[37, 29]</td><td>29</td><td>37 (pos 3)</td><td><code>[10, 13, 14, <strong>29</strong>, <strong>37</strong>]</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Notice pass 3: the smallest item was already in the correct position, so the "swap" didn't actually change anything. This happens naturally and the algorithm handles it without any special logic.</p>
+
+                <p><strong>How fast (or slow) is it:</strong></p>
+                <ul class="list-tight">
+                    <li><strong>Best case, O(n²):</strong> Even if the list is already sorted, Selection Sort still scans the entire unsorted portion on every pass to confirm that the current item is the smallest. It cannot stop early. This is a key difference from Bubble Sort, which can detect a sorted list and stop after one pass.</li>
+                    <li><strong>Worst case, O(n²):</strong> Same number of comparisons regardless of the data's initial order. For 1,000 items, it makes roughly 500,000 comparisons.</li>
+                    <li><strong>Swaps:</strong> At most n-1 swaps total. This is the lowest swap count of any comparison-based sort, which matters when swapping is expensive (for example, writing to flash memory or moving large objects in memory).</li>
+                </ul>
+
+                <p><strong>The stability question:</strong> Selection Sort, as typically written, is <em>not stable</em>. A stable sort preserves the original order of items with equal values. For example, if two students both scored 85 and were originally listed alphabetically, a stable sort keeps them in alphabetical order. Selection Sort can break this order because it swaps items across long distances. Bubble Sort, by contrast, is stable because it only swaps adjacent items.</p>
+
+                <p><strong>Where you'll actually see it used:</strong> Like Bubble Sort, Selection Sort is too slow for large datasets in production code. However, it has a genuine niche: when the cost of writing data is high relative to the cost of reading it. Flash memory and EEPROM chips, for instance, wear out faster with more write operations. Because Selection Sort minimises the total number of swaps (writes), it is sometimes preferred for embedded systems with this kind of hardware constraint. It's also a useful teaching algorithm because it introduces the concept of "find the minimum in a subarray," which appears in many more advanced algorithms.</p>
+
+                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Assuming Selection Sort can stop early like Bubble Sort. It cannot. It always makes the same number of comparisons regardless of the input, because it must scan the full unsorted portion to guarantee it found the true minimum. (2) Confusing the minimum <em>value</em> with the minimum <em>index</em>. The algorithm tracks <code>min_idx</code> (the position of the smallest item), not the smallest value itself. After the inner loop finishes, it swaps based on that index. (3) Thinking Selection Sort is stable. The long-distance swap can reorder equal elements.</p>
+                
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> A["Start with the first<br>unsorted position"]
+    A --> B["Assume this position<br>holds the smallest item"]
+    B --> C["Check each item<br>to the right"]
+    C --> D{"Did you find a<br>smaller item?"}
+    D -- Yes --> E["Remember this new<br>position instead"]
+    D -- No --> F{"Are there more<br>items to check?"}
+    E --> F
+    F -- Yes --> C
+    F -- No --> G["Swap the smallest item<br>into this position"]
+    G --> H{"Is this the<br>last unsorted spot?"}
+    H -- No --> B
+    H -- Yes --> Sorted[("All items sorted!")]
+    Sorted --> Stop([Stop])
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Start</strong> at position 0, the first unsorted spot.</li>
+                            <li><strong>Assume</strong> the smallest item in the unsorted part is at this position.</li>
+                            <li><strong>Scan</strong> every item to the right.
+                                <ul class="list-circle">
+                                    <li>Found something smaller? Remember its position.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Swap</strong> the smallest item you found into the current position.</li>
+                            <li><strong>Move</strong> to the next position and repeat steps 2–4.</li>
+                            <li><strong>Done</strong> once you've placed every item in its correct spot.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>Outer Loop:</strong> A <code>for</code> loop (<code>i</code>) representing where the next smallest number should go.</li>
+                        <li><strong>Inner Loop:</strong> Assume <code>i</code> is the minimum. Use a second loop (<code>j</code>) starting from <code>i+1</code> to scan the rest.</li>
+                        <li><strong>The Swap:</strong> If we find something smaller, update <code>min_idx</code>. After the inner loop, swap them.</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-selection-sort"></code></pre>
+                </div>
+                </details>
+                
+                <details class="lesson-fold fold-help"><summary>Help: Selection Sort</summary>
+                <ul class="mb-0">
+                    <li>Each pass locks one smallest remaining number into place.</li>
+                    <li>Green bars on the left are finished. Do not touch them again.</li>
+                    <li>Compare with Bubble: Selection walks far to swap once; Bubble swaps neighbors all the time.</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="selection-sort"></div>
+            </div>
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <p class="viz-hint">Amber = the seat we are filling. Crimson = smallest-so-far. Emerald = locked in on the left.</p>
+                    <div class="viz-canvas" id="canvas-selection"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-selection-sort">Sort</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-selection-reset">🔀 New Array</button>
+                        <span class="viz-status" id="status-selection" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-section" id="bubble-sort">
+            <div class="algo-story">
+                <header class="lesson-header">
+                <p class="lesson-eyebrow">Sorting</p>
+                <h3 class="lesson-title">Bubble Sort</h3>
+                <div class="lesson-meta"><span class="tag red">Neighbours only</span><span class="tag complexity">O(n²)</span></div>
+                </header>
+
+                <p><strong>Where you've already done this:</strong> Think about the last time you arranged a messy hand of playing cards. You probably didn't scan the whole hand to find the smallest card first. You just looked at two cards next to each other, swapped them if they were out of order, and moved on to the next pair. That's Bubble Sort. It only ever compares neighbours (two items standing right next to each other in the list) and swaps them if the left one is larger than the right one. One full walk through the list is called a <em>pass</em>.</p>
+
+                <p><strong>What actually happens during a pass:</strong> On the first pass, the algorithm starts at position 0 and compares every adjacent pair all the way to the end. Every time it finds a pair where the left number is bigger, it swaps them. Here's the key insight: the largest number in the list will win every single comparison it's involved in, so it gets pushed one position to the right each time, all the way to the final position by the end of the pass. This is where the name comes from: the largest value "bubbles up" to the top of the list, the same way an air bubble rises to the surface of water.</p>
+
+                <p><strong>Walk through it with real numbers:</strong> Start with <code>[5, 1, 4, 2]</code>.</p>
+                <div class="table-wrap">
+                    <table class="cheat-table table-sm">
+                        <thead><tr><th>Pass</th><th>What happens</th><th>Result after pass</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>Compare 5 &amp; 1 → swap. Compare 5 &amp; 4 → swap. Compare 5 &amp; 2 → swap.</td><td><code>[1, 4, 2, <strong>5</strong>]</code> &ndash; 5 is locked at the end</td></tr>
+                            <tr><td><strong>2</strong></td><td>Compare 1 &amp; 4 → fine. Compare 4 &amp; 2 → swap.</td><td><code>[1, 2, <strong>4</strong>, 5]</code> &ndash; 4 is locked too</td></tr>
+                            <tr><td><strong>3</strong></td><td>Compare 1 &amp; 2 → fine. Zero swaps this entire pass.</td><td><code>[1, 2, 4, 5]</code> &ndash; sorted, stop early</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Notice two things. First, each pass checks one fewer position than the last, because the end of the list is already sorted. That's why the code uses <code>n - i - 1</code> as the inner loop boundary. It is not a magic formula, just "don't re-check positions that are already in their final place." Second, pass 3 made zero swaps, which told the algorithm the list was already sorted and it could stop. This early-termination check is important: without it, the algorithm would keep making pointless passes over an already-sorted list.</p>
+
+                <p><strong>How fast (or slow) is it:</strong></p>
+                <ul class="list-tight">
+                    <li><strong>Best case, O(n):</strong> If the list is already sorted, the algorithm does one pass, sees zero swaps, and stops. That single pass makes n−1 comparisons, so it runs in linear time.</li>
+                    <li><strong>Worst case, O(n²):</strong> If the list is in reverse order (e.g., <code>[5, 4, 3, 2, 1]</code>), every pair needs a swap on every pass, and the algorithm needs the maximum number of passes. For a list of 1,000 items, that's roughly 500,000 comparisons.</li>
+                    <li><strong>Average case, O(n²):</strong> For a randomly shuffled list, Bubble Sort still tends to need most of those passes. This is genuinely slow compared to algorithms like Quick Sort, which averages O(n log n).</li>
+                </ul>
+
+                <p><strong>How it compares to Selection Sort:</strong> Both are O(n²) sorting algorithms, and both are used primarily for teaching. The difference is in <em>how</em> they move data. Selection Sort scans the entire unsorted portion to find the single smallest element, then places it in its final position with one swap. It minimises the number of swaps (at most n−1 total), which matters when writing data is expensive, like on flash storage. Bubble Sort swaps constantly during every pass, but it has a property Selection Sort doesn't: <em>stability</em>. Two elements with equal value will keep their original relative order after sorting. If you sort a class roster by grade and two students both have 85%, Bubble Sort guarantees they stay in whatever order they were in before (say, alphabetical). Selection Sort, as typically implemented, does not make that guarantee.</p>
+
+                <p><strong>Where you'll actually see it used:</strong> Honestly, almost nowhere in production software. Bubble Sort is one of the slowest general-purpose sorting algorithms. Python's built-in <code>sorted()</code> uses Timsort, which is roughly 1,000× faster on large lists. Bubble Sort survives in every introductory computer science course because it is the easiest sorting algorithm to trace by hand and understand step by step. It builds the mental model you need before tackling recursive algorithms like Quick Sort. It is also a common interview warm-up, not because anyone expects you to use it in real code, but because explaining <em>why</em> it's slow is a good test of whether someone genuinely understands time complexity.</p>
+
+                <p class="mistakes"><strong>Common mistakes to watch for:</strong> (1) Assuming Bubble Sort is <em>always</em> O(n²). With the early-termination check, an already-sorted list finishes in one pass at O(n). (2) Confusing comparisons with swaps. Every pass makes n−i−1 comparisons, but not every comparison causes a swap. (3) Off-by-one errors in the inner loop: forgetting the <code>-1</code> in <code>n-i-1</code> and accessing an index that doesn't exist, or forgetting the <code>-i</code> and wastefully re-checking elements already in their final place.</p>
+                
+                <details class="lesson-fold fold-flowchart"><summary>Flowchart</summary>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> A["Start a new pass<br>through the list"]
+    A --> B["Compare two<br>neighbouring items"]
+    B --> C{"Are they in<br>the wrong order?"}
+    C -- Yes --> D["Swap them"]
+    C -- No --> E["Leave them as they are"]
+    D --> F["Move to the<br>next pair"]
+    E --> F
+    F --> G{"Reached the<br>end of the list?"}
+    G -- No --> B
+    G -- Yes --> H{"Did you swap<br>anything this pass?"}
+    H -- Yes --> A
+    H -- No --> Sorted[("List is sorted!")]
+    Sorted --> Stop([Stop])
+                        </pre>
+                    </div>
+                </details>
+
+                <details class="lesson-fold fold-steps"><summary>Algorithm steps</summary>
+                    <div class="steps-container">
+                        <ol class="steps-list">
+                            <li><strong>Start</strong> at the beginning of the list.</li>
+                            <li><strong>Compare</strong> the current item with the one right next to it.</li>
+                            <li><strong>Out of order?</strong> Swap them so the smaller comes first.</li>
+                            <li><strong>Move</strong> to the next pair and repeat steps 2–3.</li>
+                            <li><strong>Reached the end?</strong> The largest item is now at the very end. It's sorted.</li>
+                            <li><strong>Repeat</strong> steps 1–5 for the remaining unsorted items.</li>
+                            <li><strong>Done</strong> when a full pass needs zero swaps.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="brain-card">
+                    <h4>🧠 The Brain Map: How to code this</h4>
+                    <ul>
+                        <li><strong>The Pass:</strong> We need to pass through the list multiple times. (Outer <code>for</code> loop).</li>
+                        <li><strong>The Check:</strong> Compare adjacent elements: <code>arr[j] > arr[j+1]</code>. If they are out of order, swap them!</li>
+                        <li><strong>The Optimization:</strong> The inner loop goes to <code>n - i - 1</code>. Why? Because after every pass, the biggest element is safely at the end.</li>
+                    </ul>
+                </div>
+
+                <details class="lesson-fold fold-code"><summary>Python code (optional)</summary>
+<div class="code-container">
+                    <button class="copy-btn">Copy</button>
+                    <pre><code id="code-bubble-sort"></code></pre>
+                </div>
+                </details>
+                
+                <details class="lesson-fold fold-help"><summary>Help: Bubble Sort</summary>
+                <ul class="mb-0">
+                    <li>Only neighbors swap. The biggest number of a pass rides to the right.</li>
+                    <li>If a pass makes <em>zero</em> swaps, we stop. The picture and the Python both do that now.</li>
+                    <li>That is why an already-sorted list is fast (one pass).</li>
+                </ul></details>
+
+                <div class="checkpoint" data-algo="bubble-sort"></div>
+            </div>
+            <div class="algo-visualizer">
+                <div class="viz-container">
+                    <p class="viz-hint">Two neighbors light up. Green = that end is finished. If a pass swaps nothing, we stop.</p>
+                    <div class="viz-canvas" id="canvas-bubble"></div>
+                    <div class="viz-controls">
+                        <button class="btn btn-primary viz-btn" id="btn-bubble-sort">Sort</button>
+                        <button class="btn btn-secondary viz-btn" id="btn-bubble-reset">🔀 New Array</button>
+                        <span class="viz-status" id="status-bubble" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="brain-card" id="recursion-bridge">
             <h4>Recursion (bridge concept)</h4>
             <p>If a list has 0 or 1 item, it is already sorted. If it is longer, Quick Sort parks one number (the pivot), then asks the <em>same</em> recipe to sort the left leftover and the right leftover. That self-call is <span class="glossary-term" data-definition="A function that calls itself on a smaller piece until a tiny easy case.">recursion</span>. The tiny easy case is the <em>base case</em>.</p>
         </div>
+
         <div class="algorithm-section" id="quick-sort">
             <div class="algo-story">
                 <header class="lesson-header">
                 <p class="lesson-eyebrow">Divide and Conquer Sorting</p>
                 <h3 class="lesson-title">Quick Sort</h3>
-                <div class="lesson-meta"><span class="tag purple">Divide and conquer</span><span class="tag complexity">O(n log n)</span></div>
+                <div class="lesson-meta"><span class="tag red">Divide and conquer</span><span class="tag complexity">O(n log n)</span></div>
                 </header>
 
                 <p><strong>Where you've already done this:</strong> Imagine you're a teacher sorting exam papers into grade ranges. You pick one paper at random (say it scored 65), and you ask a student to help you split the pile: everything below 65 goes to the left, everything 65 and above goes to the right. Now the 65 paper is in its correct position. You repeat this process on the left pile and the right pile separately, picking a new "splitter" paper each time, until every pile has just one paper. That's Quick Sort. It picks a reference value (called the <em>pivot</em>), partitions the list around it, and then recursively sorts the two resulting halves.</p>
@@ -1603,7 +1623,7 @@ flowchart TD
             </div>
             <div class="algo-visualizer">
                 <div class="viz-container">
-                    <p class="viz-hint">Purple = pivot. After it sits, we sort the left group and the right group the same way.</p>
+                    <p class="viz-hint">Crimson = pivot. After it sits, we sort the left group and the right group the same way.</p>
                     <div class="viz-canvas" id="canvas-quick"></div>
                     <div class="viz-controls">
                         <button class="btn btn-primary viz-btn" id="btn-quick-sort">Sort</button>
@@ -1619,7 +1639,7 @@ flowchart TD
                 <header class="lesson-header">
                 <p class="lesson-eyebrow">Divide and Conquer Sorting</p>
                 <h3 class="lesson-title">Merge Sort</h3>
-                <div class="lesson-meta"><span class="tag purple">Split then merge</span><span class="tag complexity">O(n log n)</span></div>
+                <div class="lesson-meta"><span class="tag red">Split then merge</span><span class="tag complexity">O(n log n)</span></div>
                 </header>
 
                 <p><strong>Where you've already done this:</strong> Two teaching assistants each hold a pile of exam papers already sorted by score. You merge them into one sorted pile by always taking the smaller front paper from either pile. Merge Sort does the same on numbers: split until each piece has one item, then <span class="glossary-term" data-definition="Combine two already-sorted lists by always taking the smaller front item.">merge</span> sorted halves.</p>
@@ -1691,12 +1711,29 @@ flowchart TD
     </section>
 
     <div class="section-divider"></div>
+
     <section id="cheat-sheet">
         <div class="section-heading-row"><h2>Cheat Sheet</h2></div>
         <p class="section-lede">Everything above, in one scannable place.</p>
         <p>You just learned eight algorithms and four data structures. Here's the whole thing on one page. Bookmark this for exam night. <strong><span class="glossary-term" data-definition="How many extra 'checks' or comparisons an algorithm needs as the data grows. n is the number of items in the list.">Time</span></strong> is how many steps it takes; <strong><span class="glossary-term" data-definition="How much extra memory an algorithm needs beyond the original list. O(1) means it barely needs any extra space.">space</span></strong> is how much extra memory it needs on top of the original list.</p>
 
-        <h3 class="mt-25">🔎 Searching</h3>
+        <h3 class="mt-25">📦 Data Structures</h3>
+        <div class="table-wrap">
+            <table class="cheat-table">
+                <thead>
+                    <tr><th>Structure</th><th>Add</th><th>Remove</th><th>Access pattern</th><th>Use it when…</th><th>Do not use when…</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Structure"><strong>Stack</strong></td><td data-label="Add"><code>O(1)</code> push</td><td data-label="Remove"><code>O(1)</code> pop</td><td data-label="Access pattern">LIFO (last in, first out)</td><td data-label="Use it when…">You need to undo actions or track "return points" (like recursion).</td></tr>
+                    <tr><td data-label="Structure"><strong>Queue</strong></td><td data-label="Add"><code>O(1)</code> enqueue</td><td data-label="Remove"><code>O(n)</code>* dequeue</td><td data-label="Access pattern">FIFO (first in, first out)</td><td data-label="Use it when…">Requests need to be handled fairly, in the order they arrived.</td></tr>
+                    <tr><td data-label="Structure"><strong>Linked List</strong></td><td data-label="Add"><code>O(1)</code> at head</td><td data-label="Remove"><code>O(n)</code> by value</td><td data-label="Access pattern">Chain of nodes, no random access</td><td data-label="Use it when…">You insert/delete often and don't need to jump to a random position.</td></tr>
+                    <tr><td data-label="Structure"><strong>Hash Map</strong></td><td data-label="Add"><code>O(1)</code> avg put</td><td data-label="Remove"><code>O(1)</code> avg*</td><td data-label="Access pattern">Key → value via hash + chain</td><td data-label="Use it when…">You look up by name/ID repeatedly (counts, visited sets, caches).</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-sm mt-1">* With Python's plain <code>list</code>. Use <code>collections.deque</code> for a true O(1) queue on both ends. Hash map delete is average O(1) when chains stay short.</p>
+
+        <h3 class="mt-3">🔎 Searching</h3>
         <div class="table-wrap">
             <table class="cheat-table">
                 <thead>
@@ -1737,25 +1774,13 @@ flowchart TD
             </table>
         </div>
 
-        <h3 class="mt-3">📦 Data Structures</h3>
-        <div class="table-wrap">
-            <table class="cheat-table">
-                <thead>
-                    <tr><th>Structure</th><th>Add</th><th>Remove</th><th>Access pattern</th><th>Use it when…</th><th>Do not use when…</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td data-label="Structure"><strong>Stack</strong></td><td data-label="Add"><code>O(1)</code> push</td><td data-label="Remove"><code>O(1)</code> pop</td><td data-label="Access pattern">LIFO (last in, first out)</td><td data-label="Use it when…">You need to undo actions or track "return points" (like recursion).</td></tr>
-                    <tr><td data-label="Structure"><strong>Queue</strong></td><td data-label="Add"><code>O(1)</code> enqueue</td><td data-label="Remove"><code>O(n)</code>* dequeue</td><td data-label="Access pattern">FIFO (first in, first out)</td><td data-label="Use it when…">Requests need to be handled fairly, in the order they arrived.</td></tr>
-                    <tr><td data-label="Structure"><strong>Linked List</strong></td><td data-label="Add"><code>O(1)</code> at head</td><td data-label="Remove"><code>O(n)</code> by value</td><td data-label="Access pattern">Chain of nodes, no random access</td><td data-label="Use it when…">You insert/delete often and don't need to jump to a random position.</td></tr>
-                    <tr><td data-label="Structure"><strong>Hash Map</strong></td><td data-label="Add"><code>O(1)</code> avg put</td><td data-label="Remove"><code>O(1)</code> avg*</td><td data-label="Access pattern">Key → value via hash + chain</td><td data-label="Use it when…">You look up by name/ID repeatedly (counts, visited sets, caches).</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="text-sm mt-1">* With Python's plain <code>list</code>. Use <code>collections.deque</code> for a true O(1) queue on both ends. Hash map delete is average O(1) when chains stay short.</p>
-
         <div class="brain-card mt-25">
             <h4>🧭 Still not sure which to pick?</h4>
             <ul class="mb-0">
+                <li>Need "last one in, first one out" (undo, back button)? → <strong>Stack.</strong></li>
+                <li>Need "first come, first served"? → <strong>Queue.</strong></li>
+                <li>Inserting/deleting constantly at head, size unknown ahead of time? → <strong>Linked List.</strong></li>
+                <li>Looking up items by key/name instantly? → <strong>Hash Map.</strong></li>
                 <li>List is <strong>sorted</strong> and you'll search it a lot? → <strong>Binary Search.</strong></li>
                 <li>List is <strong>small or unsorted</strong>, one-off search? → <strong>Linear Search</strong> is simpler and fine.</li>
                 <li>Need fewest <strong>hops</strong> on a tree, maze, or unweighted graph? → <strong>BFS.</strong></li>
@@ -1763,14 +1788,12 @@ flowchart TD
                 <li>Sorting a <strong>huge</strong> list and speed matters? → <strong>Quick Sort</strong> (in place) or <strong>Merge Sort</strong> (stable, guaranteed).</li>
                 <li>Need <strong>stable</strong> O(n log n) or worst-case guarantees? → <strong>Merge Sort.</strong></li>
                 <li>Just <strong>learning</strong> how sorting works, or the list is tiny? → <strong>Selection</strong> or <strong>Bubble Sort.</strong></li>
-                <li>Need "last one in, first one out" (undo, back button)? → <strong>Stack.</strong></li>
-                <li>Need "first come, first served"? → <strong>Queue.</strong></li>
-                <li>Inserting/deleting constantly, size unknown ahead of time? → <strong>Linked List.</strong></li>
-                <li>Look up by key/name over and over? → <strong>Hash Map</strong> (Python <code>dict</code>).</li>
             </ul>
         </div>
     </section>
+
     <div class="section-divider"></div>
+
 <section id="quiz">
         <div class="section-heading-row text-center"><h2>Knowledge Check</h2></div>
         <p class="section-lede text-center">Eighteen short situations. Wrong answers point you back to the lesson.</p>
@@ -1780,16 +1803,36 @@ flowchart TD
             <!-- Questions will be injected here by JS -->
         </div>
     </section>
+
     <div class="section-divider"></div>
-<section id="glossary">
-        <div class="section-heading-row"><h2>Glossary</h2></div>
-        <p class="section-lede">Every term from this page, in one place.</p>
-        <p>Forgot what a word meant three sections ago? Look it up here instead of scrolling back.</p>
-        <div class="glossary-grid" id="glossary-grid">
+
+    <section id="glossary">
+        <div class="section-heading-row"><h2>Glossary</h2><span class="tag time-tag">📚 Bento Reference</span></div>
+        <p class="section-lede">Interactive Bento Dictionary — every concept, term, and complexity in one place.</p>
+        <p>Instant lookup for all computing terminology. Use the live search bar or category filters to explore.</p>
+
+        <div class="glossary-toolbar">
+            <div class="glossary-search-wrap">
+                <span class="glossary-search-icon">🔍</span>
+                <input type=text id="glossary-search" class="glossary-search-input" placeholder="Search terms or definitions (e.g. LIFO, recursion, Big-O)..." aria-label="Search glossary terms">
+                <button type=button id="glossary-clear-btn" class="glossary-clear-btn" aria-label="Clear search" hidden>✕</button>
+            </div>
+            <div class="glossary-filter-pills" id="glossary-filters" role="tablist">
+                <button type="button" class="bento-filter-btn is-active" data-cat="all">All (<span id="glossary-count-all">0</span>)</button>
+                <button type="button" class="bento-filter-btn" data-cat="structures">Data Structures</button>
+                <button type="button" class="bento-filter-btn" data-cat="algorithms">Algorithms</button>
+                <button type="button" class="bento-filter-btn" data-cat="complexity">Complexity</button>
+                <button type="button" class="bento-filter-btn" data-cat="python">Python &amp; Code</button>
+            </div>
+        </div>
+
+        <div class="bento-glossary-grid" id="glossary-grid">
             <!-- Populated by app.js -->
         </div>
     </section>
+
     <div class="section-divider"></div>
+
 <section id="author">
         <h2 class="text-center">About the Creator</h2>
         <div class="card author-card">
@@ -1800,6 +1843,7 @@ flowchart TD
             <a href="https://amandeepsinghkhanna.github.io/" target="_blank" rel="noopener noreferrer" class="btn btn-primary portfolio-btn">View Portfolio <span>&rarr;</span></a>
         </div>
     </section>
+
     </main>
 
     <!-- FOOTER -->

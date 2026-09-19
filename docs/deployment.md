@@ -1,8 +1,9 @@
 # Deployment
 
-## Local
+## Local and Container Environments
 
-Open `index.html` in a modern browser, or serve the repo root with any static server (example: `python -m http.server`). There is no build step.
+Open `index.html` in a modern browser, serve the repo root with any static server (example: `python -m http.server`), or run via Node.js:
+- `npm run dev` or `node server.js` binds to `0.0.0.0:3000` using Express.
 
 ## Hosting
 

@@ -7,6 +7,8 @@ computing-for-datascience/
 ├── index.html      Page structure, copy, Mermaid source, canvas IDs
 ├── style.css       Tokens, layout, visualizer, quiz, DS, print
 ├── app.js          Snippets, Visualizer + pathfinding + DS classes, quiz, UI chrome
+├── server.js       Minimal Express static file server for container/preview environments
+├── package.json    Node configuration for scripts and dependencies (Express)
 ├── profile.png     Author photo
 ├── robots.txt
 ├── sitemap.xml
@@ -16,7 +18,7 @@ computing-for-datascience/
 └── graphify-out/   Knowledge graph (query with graphify)
 ```
 
-No bundler, no `package.json`, no server-side code. Open `index.html` locally or serve the folder as static files.
+No bundler required. Open `index.html` locally, serve the folder as static files, or run `npm run dev` with Express.
 
 ## Boot order
 

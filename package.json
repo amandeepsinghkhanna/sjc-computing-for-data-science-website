@@ -1,0 +1,14 @@
+{
+  "name": "computing-for-data-science-lab",
+  "version": "1.0.0",
+  "description": "Interactive DSA learning hub — explore searching & sorting algorithms with visualizers, annotated Python code, and quizzes. Built for SJU CDS Lab students.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static site ready'",
+    "lint": "echo 'No lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

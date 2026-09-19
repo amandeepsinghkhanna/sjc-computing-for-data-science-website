@@ -63,7 +63,7 @@ function escapeHtml(text) {
 function highlightPython(line) {
     const escaped = escapeHtml(line);
     return escaped.replace(
-        /(#.*)|(["'].*?["'])|\b(def|for|while|if|elif|else|return|in|not|and|or|True|False|None|break|continue|from|import|class)\b|\b(range|len|print|deque|heappush|heappop|abs)\b|\b(\d+)\b/g,
+        /(#.*)|(["'].*?["'])|\b(def|for|while|if|elif|else|return|in|not|and|or|True|False|None|break|continue|from|import|class|self|as|is|pass)\b|\b(range|len|print|deque|heappush|heappop|abs|sum|ord|enumerate|reverse|set|list|dict|min|max|append|pop|popleft)\b|\b(\d+)\b/g,
         (match, comment, str, kw, func, num) => {
             if (comment !== undefined) return `<span class="comment">${comment}</span>`;
             if (str !== undefined) return `<span class="str">${str}</span>`;
@@ -1880,10 +1880,18 @@ function buildCheckpoints() {
         const questions = checkpointData[algo];
         if (!questions) return;
 
-        const heading = document.createElement('div');
-        heading.className = 'checkpoint-heading';
-        heading.textContent = 'Quick Check';
-        container.appendChild(heading);
+        container.innerHTML = '';
+
+        const header = document.createElement('div');
+        header.className = 'checkpoint-header';
+        header.innerHTML = `
+            <div class="checkpoint-badge">
+                <span class="checkpoint-icon">🎯</span>
+                <span>Quick Check</span>
+            </div>
+            <span class="checkpoint-count">${questions.length} Question${questions.length > 1 ? 's' : ''}</span>
+        `;
+        container.appendChild(header);
 
         questions.forEach((q, qIdx) => {
             const qDiv = document.createElement('div');
@@ -1891,23 +1899,24 @@ function buildCheckpoints() {
 
             const qText = document.createElement('div');
             qText.className = 'check-q-text';
-            qText.textContent = `${qIdx + 1}. ${q.q}`;
+            qText.innerHTML = `<span class="check-q-num">Q${qIdx + 1}</span><span>${escapeHtml(q.q)}</span>`;
 
             const optsWrap = document.createElement('div');
             optsWrap.className = 'check-opts';
             q.opts.forEach((opt, oi) => {
                 const btn = document.createElement('button');
+                btn.type = 'button';
                 btn.className = 'check-opt';
                 btn.dataset.q = String(qIdx);
                 btn.dataset.opt = String(oi);
-                btn.textContent = opt;
+                const letter = String.fromCharCode(65 + oi);
+                btn.innerHTML = `<span class="check-opt-letter">${letter}</span><span class="check-opt-label">${escapeHtml(opt)}</span>`;
                 optsWrap.appendChild(btn);
             });
 
             const feedback = document.createElement('div');
             feedback.className = 'check-feedback';
             feedback.dataset.q = String(qIdx);
-            feedback.textContent = q.explanation;
 
             qDiv.append(qText, optsWrap, feedback);
             container.appendChild(qDiv);
@@ -1927,15 +1936,22 @@ function buildCheckpoints() {
             if (opts[0].disabled) return;
 
             opts.forEach((o) => { o.disabled = true; });
-            opts.forEach((o) => o.classList.remove('selected'));
 
             if (optIdx === q.ans) {
                 this.classList.add('correct');
                 feedback.classList.add('is-correct');
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✓</div>
+                    <div class="feedback-text"><strong>Correct!</strong> ${escapeHtml(q.explanation)}</div>
+                `;
             } else {
                 this.classList.add('wrong');
                 opts[q.ans].classList.add('correct');
                 feedback.classList.add('is-wrong');
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✕</div>
+                    <div class="feedback-text"><strong>Not quite.</strong> ${escapeHtml(q.explanation)}</div>
+                `;
             }
 
             feedback.classList.add('show');
@@ -1953,63 +1969,146 @@ function buildCheckpoints() {
 buildCheckpoints();
 
 /* -------------------------------------------------------------------------
-   6. GLOSSARY
+   6. BENTO GRID GLOSSARY
    ------------------------------------------------------------------------- */
 const glossaryTerms = [
-    { term: "Admissible", def: "A heuristic that never overestimates leftover cost. If h is admissible, A* still finds a cheapest path." },
-    { term: "Algorithm", def: "A step-by-step set of instructions for solving a problem — like a recipe, but for data." },
-    { term: "Array", def: "Another name for a list — a collection of items stored in order. In Python, lists and simple arrays work the same way." },
-    { term: "Big-O Notation", def: "Shorthand for roughly how many steps an algorithm takes as the amount of data (n) grows. The lower the number inside the parentheses, the faster it stays as data grows." },
-    { term: "Brute Force", def: "Trying every single possibility until you find the answer — no clever shortcuts, just raw checking." },
-    { term: "Collision", def: "When two different keys hash to the same bucket. Chains store both." },
-    { term: "Class", def: "A named bundle of data plus the actions that use it (push, pop). You do not need object-oriented theory to use the snippets here." },
-    { term: "Data Structure", def: "A specific way of organizing information so it can be used efficiently — like a list, stack, queue, or linked list." },
-    { term: "Divide and Conquer", def: "Breaking a big problem into smaller, identical sub-problems, solving each tiny piece easily, then combining the results." },
-    { term: "Dynamic (size)", def: "Able to grow and shrink as needed, with no fixed size limit — as opposed to a structure with a fixed capacity." },
-    { term: "FIFO", def: "\"First In, First Out.\" The item that has been waiting the longest gets removed first — like a line at a coffee shop." },
-    { term: "Frontier", def: "The set of nodes waiting to be expanded — the queue in BFS, or the open heap in A*." },
-    { term: "Graph", def: "Dots (nodes) connected by lines (edges). A tree is a graph with no loops; a grid is a graph of cells." },
-    { term: "Grid", def: "Graph paper: rows and columns. On this page you may move north, east, south, or west — not diagonally." },
-    { term: "Hash", def: "A recipe that turns a key (like a name) into a bucket index so lookup skips scanning everything." },
-    { term: "Hop", def: "One step to a neighbor. BFS counts hops, not kilometers." },
-    { term: "Heuristic", def: "An educated guess of remaining work. In A*, h estimates leftover cost to the goal." },
-    { term: "Index", def: "The position number of an item in a list. Starts at 0, not 1." },
-    { term: "Indent", def: "Spaces at the start of a Python line that show which lines belong together." },
-    { term: "Integer Division", def: "Division that drops any decimal remainder. 7 ÷ 2 = 3.5, but integer division (Python's // operator) makes it 3." },
-    { term: "LIFO", def: "\"Last In, First Out.\" The most recently added item is the first one you can remove — like a stack of plates." },
-    { term: "Manhattan distance", def: "Taxi-meter distance: |dx| + |dy|. On a 4-way grid it never overestimates how many steps remain." },
-    { term: "Merge (sort)", def: "Combine two already-sorted lists by always taking the smaller front item." },
-    { term: "Mutable", def: "Can be changed after creation. Mutable lists let you replace, add, or remove items after the list is created." },
-    { term: "Neighbor", def: "A node one edge away. On this page's grids: north, east, south, or west — not diagonal." },
-    { term: "Node", def: "A labeled box: in a linked list it holds a value and an arrow; in BFS it is a dot on a map." },
-    { term: "None", def: "Python's way of saying nothing is here — empty stack, missing next box, empty list." },
-    { term: "Partition", def: "The step in Quick Sort that rearranges items around a pivot so smaller items end up on one side and larger items on the other." },
-    { term: "Pivot", def: "A reference value chosen during Quick Sort. Every other item is compared against it to decide which side it belongs on." },
-    { term: "Pointer", def: "An arrow to another box. In a linked list, next points at the following node." },
-    { term: "Program", def: "A recipe the computer follows from top to bottom." },
-    { term: "Queue", def: "A first-in-first-out line. BFS uses a queue so closer nodes are processed before farther ones. Full lesson in Part 3." },
-    { term: "Recursion", def: "When a function calls itself to solve smaller versions of the same problem, until the problem becomes trivially easy to solve." },
-    { term: "Sorted", def: "Arranged from smallest to largest (like 2, 5, 9, 14, 22). Several algorithms, like Binary Search, only work on sorted data." },
-    { term: "Space Complexity", def: "How much extra memory an algorithm needs beyond the original list — separate from how many steps (time) it takes." },
-    { term: "Stable (sort)", def: "A stable sort keeps equal items in their original relative order — useful when sorting by one field but wanting ties to stay put." },
-    { term: "Time Complexity", def: "A measure of how many steps an algorithm takes as the data grows, usually written in Big-O notation like O(n) or O(log n)." },
-    { term: "Tree", def: "A graph with no loops, like an org chart. One root, branches downward." },
-    { term: "Unweighted vs weighted", def: "Unweighted means every edge costs the same (BFS finds fewest hops). Weighted means edges can have different costs (kilometers, time)." },
-    { term: "Variable", def: "A labeled box that holds a value, like name = \"Ada\"." }
+    { term: "Admissible", cat: "algorithms", def: "A heuristic that never overestimates leftover cost. If h is admissible, A* still finds a cheapest path." },
+    { term: "Algorithm", cat: "algorithms", def: "A step-by-step set of instructions for solving a problem — like a recipe, but for data." },
+    { term: "Array", cat: "structures", def: "Another name for a list — a collection of items stored in order. In Python, lists and simple arrays work the same way." },
+    { term: "Big-O Notation", cat: "complexity", featured: true, def: "Shorthand for roughly how many steps an algorithm takes as the amount of data (n) grows. The lower the number inside the parentheses, the faster it stays as data grows." },
+    { term: "Brute Force", cat: "algorithms", def: "Trying every single possibility until you find the answer — no clever shortcuts, just raw checking." },
+    { term: "Collision", cat: "structures", def: "When two different keys hash to the same bucket. Chains store both." },
+    { term: "Class", cat: "python", def: "A named bundle of data plus the actions that use it (push, pop). You do not need object-oriented theory to use the snippets here." },
+    { term: "Data Structure", cat: "structures", featured: true, def: "A specific way of organizing information so it can be used efficiently — like a list, stack, queue, or linked list." },
+    { term: "Divide and Conquer", cat: "algorithms", featured: true, def: "Breaking a big problem into smaller, identical sub-problems, solving each tiny piece easily, then combining the results." },
+    { term: "Dynamic (size)", cat: "structures", def: "Able to grow and shrink as needed, with no fixed size limit — as opposed to a structure with a fixed capacity." },
+    { term: "FIFO", cat: "structures", def: "\"First In, First Out.\" The item that has been waiting the longest gets removed first — like a line at a coffee shop." },
+    { term: "Frontier", cat: "algorithms", def: "The set of nodes waiting to be expanded — the queue in BFS, or the open heap in A*." },
+    { term: "Graph", cat: "structures", def: "Dots (nodes) connected by lines (edges). A tree is a graph with no loops; a grid is a graph of cells." },
+    { term: "Grid", cat: "structures", def: "Graph paper: rows and columns. On this page you may move north, east, south, or west — not diagonally." },
+    { term: "Hash", cat: "structures", featured: true, def: "A recipe that turns a key (like a name) into a bucket index so lookup skips scanning everything." },
+    { term: "Hop", cat: "algorithms", def: "One step to a neighbor. BFS counts hops, not kilometers." },
+    { term: "Heuristic", cat: "algorithms", def: "An educated guess of remaining work. In A*, h estimates leftover cost to the goal." },
+    { term: "Index", cat: "python", def: "The position number of an item in a list. Starts at 0, not 1." },
+    { term: "Indent", cat: "python", def: "Spaces at the start of a Python line that show which lines belong together." },
+    { term: "Integer Division", cat: "python", def: "Division that drops any decimal remainder. 7 ÷ 2 = 3.5, but integer division (Python's // operator) makes it 3." },
+    { term: "LIFO", cat: "structures", def: "\"Last In, First Out.\" The most recently added item is the first one you can remove — like a stack of plates." },
+    { term: "Manhattan distance", cat: "algorithms", def: "Taxi-meter distance: |dx| + |dy|. On a 4-way grid it never overestimates how many steps remain." },
+    { term: "Merge (sort)", cat: "algorithms", def: "Combine two already-sorted lists by always taking the smaller front item." },
+    { term: "Mutable", cat: "python", def: "Can be changed after creation. Mutable lists let you replace, add, or remove items after the list is created." },
+    { term: "Neighbor", cat: "algorithms", def: "A node one edge away. On this page's grids: north, east, south, or west — not diagonal." },
+    { term: "Node", cat: "structures", def: "A labeled box: in a linked list it holds a value and an arrow; in BFS it is a dot on a map." },
+    { term: "None", cat: "python", def: "Python's way of saying nothing is here — empty stack, missing next box, empty list." },
+    { term: "Partition", cat: "algorithms", def: "The step in Quick Sort that rearranges items around a pivot so smaller items end up on one side and larger items on the other." },
+    { term: "Pivot", cat: "algorithms", def: "A reference value chosen during Quick Sort. Every other item is compared against it to decide which side it belongs on." },
+    { term: "Pointer", cat: "structures", def: "An arrow to another box. In a linked list, next points at the following node." },
+    { term: "Program", cat: "python", def: "A recipe the computer follows from top to bottom." },
+    { term: "Queue", cat: "structures", def: "A first-in-first-out line. BFS uses a queue so closer nodes are processed before farther ones. Full lesson in Data Structures." },
+    { term: "Recursion", cat: "algorithms", featured: true, def: "When a function calls itself to solve smaller versions of the same problem, until the problem becomes trivially easy to solve." },
+    { term: "Sorted", cat: "algorithms", def: "Arranged from smallest to largest (like 2, 5, 9, 14, 22). Several algorithms, like Binary Search, only work on sorted data." },
+    { term: "Space Complexity", cat: "complexity", def: "How much extra memory an algorithm needs beyond the original list — separate from how many steps (time) it takes." },
+    { term: "Stable (sort)", cat: "algorithms", def: "A stable sort keeps equal items in their original relative order — useful when sorting by one field but wanting ties to stay put." },
+    { term: "Time Complexity", cat: "complexity", featured: true, def: "A measure of how many steps an algorithm takes as the data grows, usually written in Big-O notation like O(n) or O(log n)." },
+    { term: "Tree", cat: "structures", def: "A graph with no loops, like an org chart. One root, branches downward." },
+    { term: "Unweighted vs weighted", cat: "algorithms", def: "Unweighted means every edge costs the same (BFS finds fewest hops). Weighted means edges can have different costs (kilometers, time)." },
+    { term: "Variable", cat: "python", def: "A labeled box that holds a value, like name = \"Ada\"." }
 ];
 
-function buildGlossary() {
+const categoryLabels = {
+    structures: 'Data Structure',
+    algorithms: 'Algorithm',
+    complexity: 'Complexity',
+    python: 'Python'
+};
+
+let activeGlossaryCategory = 'all';
+let activeGlossarySearch = '';
+
+function renderGlossaryCards() {
     const grid = document.getElementById('glossary-grid');
     if (!grid) return;
-    grid.innerHTML = glossaryTerms
-        .slice()
-        .sort((a, b) => a.term.localeCompare(b.term))
-        .map(({ term, def }) => `
-            <div class="glossary-item">
-                <span class="glossary-term-name">${escapeHtml(term)}</span>
-                <span class="glossary-def">${escapeHtml(def)}</span>
+
+    const query = activeGlossarySearch.trim().toLowerCase();
+    const filtered = glossaryTerms
+        .filter(item => {
+            const matchesCategory = (activeGlossaryCategory === 'all' || item.cat === activeGlossaryCategory);
+            const matchesQuery = !query ||
+                item.term.toLowerCase().includes(query) ||
+                item.def.toLowerCase().includes(query) ||
+                (categoryLabels[item.cat] && categoryLabels[item.cat].toLowerCase().includes(query));
+            return matchesCategory && matchesQuery;
+        })
+        .sort((a, b) => a.term.localeCompare(b.term));
+
+    const totalCountEl = document.getElementById('glossary-count-all');
+    if (totalCountEl) {
+        totalCountEl.textContent = String(glossaryTerms.length);
+    }
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="bento-no-results">
+                <div class="bento-no-results-icon">🔍</div>
+                <h4 style="margin: 0 0 0.5rem; font-weight: 800;">No matching terms found</h4>
+                <p style="margin: 0;">Try searching for a different keyword like <em>"stack"</em>, <em>"O(n)"</em>, or <em>"recursion"</em>.</p>
             </div>
-        `).join('');
+        `;
+        return;
+    }
+
+    grid.innerHTML = filtered.map(item => {
+        const catLabel = categoryLabels[item.cat] || item.cat;
+        const isWide = item.featured ? ' bento-wide' : '';
+        return `
+            <article class="bento-card${isWide}">
+                <div class="bento-card-head">
+                    <h4 class="bento-term-name">${escapeHtml(item.term)}</h4>
+                    <span class="bento-tag tag-cat-${item.cat}">${escapeHtml(catLabel)}</span>
+                </div>
+                <div class="bento-card-body">
+                    <p class="bento-def">${escapeHtml(item.def)}</p>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+function initGlossaryToolbar() {
+    const searchInput = document.getElementById('glossary-search');
+    const clearBtn = document.getElementById('glossary-clear-btn');
+    const filterBtns = document.querySelectorAll('#glossary-filters .bento-filter-btn');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            activeGlossarySearch = e.target.value;
+            if (clearBtn) clearBtn.hidden = !activeGlossarySearch;
+            renderGlossaryCards();
+        });
+    }
+
+    if (clearBtn && searchInput) {
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            activeGlossarySearch = '';
+            clearBtn.hidden = true;
+            searchInput.focus();
+            renderGlossaryCards();
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('is-active'));
+            this.classList.add('is-active');
+            activeGlossaryCategory = this.dataset.cat || 'all';
+            renderGlossaryCards();
+        });
+    });
+}
+
+function buildGlossary() {
+    renderGlossaryCards();
+    initGlossaryToolbar();
 }
 
 buildGlossary();
@@ -2026,7 +2125,7 @@ function buildColorLegends() {
             <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-pivot"></span> Pivot</span>
             <span class="viz-legend-item"><span class="viz-legend-swatch viz-legend-swatch-excluded"></span> Excluded</span>
         </div>`;
-    document.querySelectorAll('#linear-search .viz-container, #binary-search .viz-container, #sorting .viz-container, #divide .viz-container').forEach(container => {
+    document.querySelectorAll('#linear-search .viz-container, #binary-search .viz-container, #selection-sort .viz-container, #bubble-sort .viz-container, #quick-sort .viz-container, #merge-sort .viz-container, #sorting .viz-container').forEach(container => {
         if (!container.querySelector('.viz-legend')) {
             container.insertAdjacentHTML('beforeend', legendHtml);
         }
@@ -2204,23 +2303,23 @@ document.querySelectorAll('.mermaid').forEach(el => {
 });
 
 const MERMAID_LIGHT_VARS = {
-    primaryColor: '#f2f2f5',
-    primaryTextColor: '#111111',
-    primaryBorderColor: '#eaeaee',
-    lineColor: '#555555',
-    secondaryColor: '#f9f9fb',
-    tertiaryColor: '#f59e0b',
-    fontFamily: 'Inter, sans-serif'
+    primaryColor: '#ffffff',
+    primaryTextColor: '#09090b',
+    primaryBorderColor: '#18181b',
+    lineColor: '#18181b',
+    secondaryColor: '#f4f4f5',
+    tertiaryColor: '#e11d48',
+    fontFamily: "'Plus Jakarta Sans', sans-serif"
 };
 const MERMAID_DARK_VARS = {
-    primaryColor: '#1c1c24',
-    primaryTextColor: '#f3f4f6',
-    primaryBorderColor: '#374151',
-    lineColor: '#c0c4cc',
-    secondaryColor: '#14141a',
-    tertiaryColor: '#f59e0b',
-    fontFamily: 'Inter, sans-serif',
-    background: '#0d0d12'
+    primaryColor: '#18181b',
+    primaryTextColor: '#fafafa',
+    primaryBorderColor: '#3f3f46',
+    lineColor: '#e4e4e7',
+    secondaryColor: '#121215',
+    tertiaryColor: '#e11d48',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    background: '#09090b'
 };
 
 function reThemeMermaid(isDark) {
@@ -2306,6 +2405,30 @@ navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', closeNav);
 });
 
+// Top Navigation Scroll Spy for professional intuitive feedback
+const mainNavAnchors = Array.from(navLinks.querySelectorAll('a[href^="#"]'));
+const mainSections = mainNavAnchors
+    .map(a => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        return el ? { id, a, el } : null;
+    })
+    .filter(Boolean);
+
+if ('IntersectionObserver' in window && mainSections.length) {
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                mainNavAnchors.forEach(a => a.classList.remove('is-active'));
+                const match = mainSections.find(s => s.el === entry.target);
+                if (match) match.a.classList.add('is-active');
+            }
+        });
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.05 });
+
+    mainSections.forEach(s => navObserver.observe(s.el));
+}
+
 // Copy Code
 document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2346,20 +2469,21 @@ if (progressBar) {
 
 const SCROLL_OUTLINE_SECTIONS = [
     { id: 'prerequisites', label: 'Pre-requisites' },
-    { id: 'linear-search', label: 'Linear Search' },
-    { id: 'selection-sort', label: 'Selection Sort' },
-    { id: 'bubble-sort', label: 'Bubble Sort' },
-    { id: 'binary-search', label: 'Binary Search' },
     { id: 'stack', label: 'Stack' },
     { id: 'queue', label: 'Queue' },
+    { id: 'linked-list', label: 'Linked List' },
+    { id: 'hash-map', label: 'Hash Map' },
+    { id: 'linear-search', label: 'Linear Search' },
+    { id: 'binary-search', label: 'Binary Search' },
     { id: 'bfs', label: 'BFS' },
     { id: 'astar', label: 'A*' },
-    { id: 'linked-list', label: 'Linked List' },
+    { id: 'selection-sort', label: 'Selection Sort' },
+    { id: 'bubble-sort', label: 'Bubble Sort' },
     { id: 'quick-sort', label: 'Quick Sort' },
     { id: 'merge-sort', label: 'Merge Sort' },
-    { id: 'hash-map', label: 'Hash Map' },
     { id: 'cheat-sheet', label: 'Cheat Sheet' },
-    { id: 'quiz', label: 'Quiz' }
+    { id: 'quiz', label: 'Quiz' },
+    { id: 'glossary', label: 'Glossary' }
 ];
 
 const NAV_OFFSET = 78;
@@ -2457,6 +2581,168 @@ document.addEventListener('click', (e) => {
         term.classList.toggle('is-open');
     }
 });
+
+// --------------------------------------------------------------------------
+// GEN-Z HERO ALGORITHM ARENA (Interactive Live Quick Sort Visualizer)
+// --------------------------------------------------------------------------
+function initHeroAlgoDeck() {
+    const canvas = document.getElementById('hero-deck-canvas');
+    const shuffleBtn = document.getElementById('hero-shuffle-btn');
+    const compCounter = document.getElementById('hero-comp-counter');
+    const pivotDisplay = document.getElementById('hero-pivot-display');
+    const statusPill = document.getElementById('hero-status-pill');
+    if (!canvas) return;
+
+    let array = [];
+    let isSorting = false;
+    let compCount = 0;
+    let cancelSorting = false;
+    let restartTimer = null;
+
+    function resetArray() {
+        const baseValues = [35, 82, 24, 95, 60, 18, 75, 42, 90, 30, 68, 52, 85, 40];
+        array = baseValues.slice().sort(() => Math.random() - 0.5);
+        compCount = 0;
+        if (compCounter) compCounter.textContent = '0';
+        if (pivotDisplay) pivotDisplay.textContent = 'Ready';
+        if (statusPill) statusPill.textContent = 'Auto Sorting';
+        renderBars();
+    }
+
+    function renderBars(highlights = {}) {
+        canvas.innerHTML = '';
+        const maxVal = Math.max(...array, 100);
+        array.forEach((val, idx) => {
+            const bar = document.createElement('div');
+            bar.className = 'deck-bar';
+            const pct = Math.max(16, Math.round((val / maxVal) * 100));
+            bar.style.height = `${pct}%`;
+
+            if (highlights.pivot === idx) {
+                bar.classList.add('is-pivot');
+            } else if (highlights.comparing && highlights.comparing.includes(idx)) {
+                bar.classList.add('is-comparing');
+            } else if (highlights.sorted && highlights.sorted.includes(idx)) {
+                bar.classList.add('is-sorted');
+            }
+
+            const label = document.createElement('span');
+            label.className = 'deck-bar-val';
+            label.textContent = val;
+            bar.appendChild(label);
+
+            canvas.appendChild(bar);
+        });
+    }
+
+    function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function runQuickSort() {
+        if (isSorting) return;
+        isSorting = true;
+        cancelSorting = false;
+        const sortedIndices = new Set();
+
+        async function partition(low, high) {
+            if (cancelSorting) return -1;
+            const pivot = array[high];
+            if (pivotDisplay) pivotDisplay.textContent = `${pivot}`;
+            renderBars({ pivot: high, sorted: Array.from(sortedIndices) });
+            await sleep(130);
+
+            let i = low - 1;
+            for (let j = low; j < high; j++) {
+                if (cancelSorting) return -1;
+                compCount++;
+                if (compCounter) compCounter.textContent = String(compCount);
+
+                renderBars({
+                    pivot: high,
+                    comparing: [j, high],
+                    sorted: Array.from(sortedIndices)
+                });
+                await sleep(110);
+
+                if (array[j] < pivot) {
+                    i++;
+                    const temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    renderBars({
+                        pivot: high,
+                        comparing: [i, j],
+                        sorted: Array.from(sortedIndices)
+                    });
+                    await sleep(90);
+                }
+            }
+
+            const temp = array[i + 1];
+            array[i + 1] = array[high];
+            array[high] = temp;
+            sortedIndices.add(i + 1);
+
+            renderBars({ sorted: Array.from(sortedIndices) });
+            await sleep(90);
+            return i + 1;
+        }
+
+        async function quickSort(low, high) {
+            if (cancelSorting) return;
+            if (low < high) {
+                const pi = await partition(low, high);
+                if (pi === -1 || cancelSorting) return;
+                await quickSort(low, pi - 1);
+                await quickSort(pi + 1, high);
+            } else if (low === high) {
+                sortedIndices.add(low);
+                renderBars({ sorted: Array.from(sortedIndices) });
+            }
+        }
+
+        await quickSort(0, array.length - 1);
+
+        if (!cancelSorting) {
+            for (let k = 0; k < array.length; k++) {
+                sortedIndices.add(k);
+            }
+            renderBars({ sorted: Array.from(sortedIndices) });
+            if (statusPill) statusPill.textContent = 'Sorted ⚡';
+            if (pivotDisplay) pivotDisplay.textContent = 'Complete';
+            isSorting = false;
+
+            restartTimer = setTimeout(() => {
+                if (!isSorting && !cancelSorting) {
+                    resetArray();
+                    runQuickSort();
+                }
+            }, 3500);
+        } else {
+            isSorting = false;
+        }
+    }
+
+    if (shuffleBtn) {
+        shuffleBtn.addEventListener('click', () => {
+            if (restartTimer) clearTimeout(restartTimer);
+            cancelSorting = true;
+            isSorting = false;
+            setTimeout(() => {
+                resetArray();
+                runQuickSort();
+            }, 60);
+        });
+    }
+
+    resetArray();
+    setTimeout(() => {
+        runQuickSort();
+    }, 450);
+}
+
+initHeroAlgoDeck();
 
 function runSelfCheck() {
     const failures = [];
