@@ -2,6 +2,29 @@
 
 Agent-maintained log. Newest first. Each entry: timestamp, who changed it, a plain-language change, and the benefit.
 
+## 2026-09-20T09:30:00-07:00
+
+- **Timestamp:** 2026-09-20T09:30:00-07:00
+- **Changed by:** agent
+- **Change:** Resolved mobile portrait orientation clipping and overflow regressions across navigation, pre-requisites, code blocks, and quizzes while preserving desktop and landscape layouts:
+  1. **Navigation Bar & Hamburger Button Cut-Off Fix**: Configured responsive brand abbreviation in `index.html` and `style.css` (`brand-full` swaps to `brand-short` "CDS Lab" below 480px). Applied `min-width: 0`, `overflow: hidden`, and text ellipsis to `.nav-brand` and `.brand-text`, with `flex-shrink: 0` on `.nav-controls` and `.hamburger`. This guarantees ample right padding (14px) and comfortable 38px/44px touch targets on all portrait mobile viewports.
+  2. **Pre-requisites Card Width & Grid Containment**: Replaced fixed 360px grid sizing in `.starter-grid` on mobile/tablets with `grid-template-columns: minmax(0, 1fr)`. Added `min-width: 0`, `max-width: 100%`, and `box-sizing: border-box` to `.starter-card`, `.lesson-fold`, and `.fold-paper` so cards and practice questions never exceed the portrait screen width.
+  3. **Python Code Container Scroll Containment**: Configured `.code-container`, `pre`, and `code` with strict `min-width: 0`, `max-width: 100%`, and `-webkit-overflow-scrolling: touch`. Set `.code-line` to `width: max-content; min-width: 100%`, allowing long Python statements to scroll smoothly inside their dark container without blowing out the enclosing card.
+  4. **Quiz & Checkpoint Question/Option Word-Wrapping**: Added `word-break: break-word`, `overflow-wrap: break-word`, and `white-space: normal` across `.check-q-text`, `.check-opt`, `.check-opt-label`, `.quiz-question`, and `.quiz-opt`. Restructured option layouts to avoid flex clipping on narrow screens and adjusted mobile card padding (0.85rem) so long questions, inline code, and options display completely without any cut-off.
+  5. **Viewport Horizontal Overflow Hardening**: Enforced `overflow-x: hidden`, `width: 100%`, and `max-width: 100%` on `html` and `body` to prevent horizontal page drift.
+- **Benefit:** Resolves all clipping and cut-off issues on smartphones in portrait orientation, ensuring pristine readability, touch interaction, and layout stability while keeping the desktop and landscape presentations untouched.
+
+- **Timestamp:** 2026-09-19T11:51:00-07:00
+- **Changed by:** agent
+- **Change:** Comprehensive UI and UX optimization for mobile phones and tablets while strictly preserving the desktop layout:
+  1. **Tablet-Aware Navigation & Header**: Adjusted mobile navigation drawer breakpoint to 992px (`@media (max-width: 992px)`), matching the algorithm column collapse so tablet screens receive the touch-friendly slide-down drawer with large 48px tap targets and momentum scrolling. Disabled desktop floating outline hover-zones on tablets to prevent touch interference.
+  2. **Interactive Hero Algorithm Arena on Mobile**: Tuned `.hero-visual-deck` for small viewports by hiding the secondary simulation chip on mobile (< 768px) to prevent title bar collisions, reducing bar gaps to 3px on mobile (< 480px), setting bar number fonts to 0.5rem (and hiding on <= 360px), and restructuring metrics into a balanced 2x2 grid.
+  3. **Mobile Visualizer Touch Controls**: Expanded button touch targets to 42px minimum height, enforced 16px minimum font size on `.viz-input` to prevent iOS browser auto-zoom, and converted `.viz-status` into a full-width centered pill beneath controls.
+  4. **Compact Bento & Hero Stats Grids**: Transformed `.hero-stats` into a balanced 2x2 grid on mobile devices to prevent excessive vertical scrolling, and made `.bento-glossary-grid` single-column on mobile (< 640px) with touch-friendly filter tags.
+  5. **Responsive Typography & Containers**: Refined main and header horizontal padding (0.875rem on phones), scaled hero headings with `clamp()`, stacked hero CTA buttons vertically on narrow viewports, and tuned checkpoint card padding for comfortable thumb readability.
+  6. **Zero Desktop Regression**: Scoped all layout adjustments strictly within `@media (max-width: 992px)`, `@media (max-width: 768px)`, `@media (max-width: 480px)`, and `@media (max-width: 360px)` so desktop/PC layout remains pixel-perfect.
+- **Benefit:** The application is now fully responsive, touch-friendly, and visually engaging on smartphones and tablets of all sizes without any regressions to the desktop design.
+
 ## 2026-09-19T11:42:00-07:00
 
 - **Timestamp:** 2026-09-19T11:42:00-07:00

@@ -38,7 +38,16 @@ Bar states: `.viz-bar.active` (checking), `.comparing`, `.sorted`, `.pivot`, `.i
 
 Layout utilities (`.mt-3`, `.lede-tight`, `.tag-easy`, …) replace one-off inline styles on lesson copy. **Header hierarchy:** `.section-heading-row` + `.section-lede` (section), `.lesson-header` / `.lesson-eyebrow` / `.lesson-title` / `.lesson-meta` (lesson). **Folds:** `.lesson-fold` with `.fold-flowchart`, `.fold-steps`, `.fold-code`, `.fold-help`, `.fold-paper`; **asides:** `.lesson-aside`. Quiz chrome uses `.quiz-feedback`, `.quiz-score`, `.quiz-nav-btn.is-visible`. Glossary tooltips use `--color-bg-secondary` / `--color-text-primary`.
 
-Breakpoints: hamburger at 1140px; column algorithm layout at 992px; mobile padding/stats at 768px.
+Breakpoints:
+- `>= 993px`: Full desktop multi-column workspace with side-by-side algorithm & visualizer split view, 4-column hero statistics, and Notion-style floating scroll outline.
+- `<= 992px` (Tablets & Medium screens): Touch-friendly hamburger navigation drawer, stacked single-column algorithm layout, 2-column hero metrics, responsive starter grid with `minmax(0, 1fr)`, and touch-interference protection (scroll outline disabled).
+- `<= 768px` (Large phones & Small tablets): Compact page container padding, auto-scaling interactive hero deck, responsive single-column starter cards, touch-optimized visualizer controls (42px min height, 16px inputs to prevent iOS auto-zoom), scrollable table wraps, and single-column featured bento glossary cards.
+- `<= 480px` (Standard mobile phones & Portrait orientation):
+  - **Header & Brand**: Adaptive brand title swapping full text to `.brand-short` ("CDS Lab") with text truncation protection, preserving hamburger button padding and 44px touch targets without edge clipping.
+  - **Cards & Code Containment**: Strict `min-width: 0`, `max-width: 100%`, and `box-sizing: border-box` containment across `.starter-card`, `.lesson-fold`, `.fold-paper`, and `.code-container`. Code lines scroll cleanly within code blocks (`-webkit-overflow-scrolling: touch`) without stretching parent grid cards or inducing horizontal blowout.
+  - **Checkpoints & Quiz Ergonomics**: Automatic multi-line word-wrapping (`word-break: break-word`, `overflow-wrap: break-word`, `white-space: normal`) on `.check-opt`, `.check-opt-label`, `.quiz-opt`, and `.quiz-question` so long options and inline code never get cut off on portrait screens.
+  - **Compact Stages**: Refined typography scaling with `clamp()`, full-width vertical action button groups, 2x2 compact hero stats grid, ultra-compact visualizer canvas & bar sizing, responsive data structure stages (7-bucket scrollable hash map row), and touch-spaced quiz cards.
+- `<= 360px` (Ultra-narrow viewports): Ultra-compact header with logo mark, single-column metrics, tight starter card padding, and hidden hero bar numbers for clean layout preservation.
 
 ## JavaScript surface (`app.js`)
 
